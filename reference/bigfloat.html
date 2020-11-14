@@ -112,9 +112,9 @@
     <p>Creates or tests for high-precision floating-point numeric vectors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bigfloat</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>bigfloat</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>as_bigfloat</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>as_bigfloat</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='fu'>is_bigfloat</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
@@ -122,12 +122,12 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Object to be coerced or tested</p></td>
+      <th>...</th>
+      <td><p>Numeric or character vectors.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Further arguments passed to or from other methods</p></td>
+      <th>x</th>
+      <td><p>Object to be coerced or tested.</p></td>
     </tr>
     </table>
 
@@ -139,7 +139,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>bigfloat</span><span class='op'>(</span><span class='fl'>1</span> <span class='op'>/</span> <span class='fl'>3</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
-#&gt; [1] 0.33333333333333331482961625624739099293947219848633</div><div class='input'><span class='fu'>bigfloat</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>3</span>
+#&gt; [1] 0.333333333333333</div><div class='input'><span class='fu'>bigfloat</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>3</span>
 </div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
 #&gt; [1] 0.33333333333333333333333333333333333333333333333333</div></pre>
   </div>
