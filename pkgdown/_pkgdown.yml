@@ -1,5 +1,11 @@
 reference:
-  - contents:
+  - title: "Vector types"
+    contents:
     - biginteger
     - bigfloat
     - bignum-constants
+  - title: "Operations"
+    contents:
+    - bignum-format
+    - bignum-arith
+    - bignum-math

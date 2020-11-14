@@ -27,6 +27,6 @@ NA_bigfloat_
 bigpi
 }
 \seealso{
-\code{\link{NA}}, \code{\link{pi}}
+\code{\link{NA}} and \code{\link{pi}} are the base constants.
 }
 \keyword{datasets}

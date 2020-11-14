@@ -4,7 +4,6 @@
 \alias{biginteger}
 \alias{as_biginteger}
 \alias{is_biginteger}
-\alias{format.bignum_biginteger}
 \title{Arbitrary-Precision Integer Vectors}
 \usage{
 biginteger(x = character())
@@ -12,8 +11,6 @@ biginteger(x = character())
 as_biginteger(x, ...)
 
 is_biginteger(x)
-
-\method{format}{bignum_biginteger}(x, ...)
 }
 \arguments{
 \item{x}{Object to be coerced or tested}
@@ -24,5 +21,7 @@ is_biginteger(x)
 Creates or tests for arbitrary-precision integer vectors.
 }
 \seealso{
-\code{\link[=bigfloat]{bigfloat()}}, \code{\link[=integer]{integer()}}
+\code{\link{NA_biginteger_}} to represent missing values.
+
+\code{\link[=format.bignum_biginteger]{format()}} for pretty printing.
 }

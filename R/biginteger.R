@@ -5,7 +5,10 @@
 #' @param x Object to be coerced or tested
 #' @param ... Further arguments passed to or from other methods
 #'
-#' @seealso [bigfloat()], [integer()]
+#' @seealso
+#' [`NA_biginteger_`] to represent missing values.
+#'
+#' [`format()`][format.bignum_biginteger()] for pretty printing.
 #' @name biginteger
 NULL
 
@@ -30,12 +33,6 @@ as_biginteger <- function(x, ...) {
 #' @export
 is_biginteger <- function(x) {
   inherits(x, "bignum_biginteger")
-}
-
-#' @rdname biginteger
-#' @export
-format.bignum_biginteger <- function(x, ...) {
-  c_biginteger_format(x)
 }
 
 #' @export
@@ -170,61 +167,4 @@ vec_compare_impl.bignum_biginteger <- function(x, y, na_equal = FALSE) {
 #' @export
 vec_proxy_order.bignum_biginteger <- function(x, ...) {
   c_biginteger_rank(x)
-}
-
-
-# Mathematical operations ------------------------------------------------------
-
-#' @export
-vec_math.bignum_biginteger <- function(.fn, .x, ..., na.rm = FALSE) {
-  switch(
-    .fn,
-
-    # Summary group
-    prod = c_biginteger_prod(.x, na.rm),
-    sum = c_biginteger_sum(.x, na.rm),
-
-    # Math group
-    abs = c_biginteger_abs(.x),
-    sign = c_biginteger_sign(.x),
-    sqrt = sqrt(vec_cast(.x, bigfloat())),
-    ceiling = .x,
-    floor = .x,
-    trunc = .x,
-    cumsum = c_biginteger_cumsum(.x),
-    cumprod = c_biginteger_cumprod(.x),
-    cummax = c_biginteger_cummax(.x),
-    cummin = c_biginteger_cummin(.x),
-    exp = exp(vec_cast(.x, bigfloat())),
-    expm1 = expm1(vec_cast(.x, bigfloat())),
-    log = log(vec_cast(.x, bigfloat())),
-    log10 = log10(vec_cast(.x, bigfloat())),
-    log2 = log2(vec_cast(.x, bigfloat())),
-    log1p = log1p(vec_cast(.x, bigfloat())),
-    cos = cos(vec_cast(.x, bigfloat())),
-    cosh = cosh(vec_cast(.x, bigfloat())),
-    cospi = cospi(vec_cast(.x, bigfloat())),
-    sin = sin(vec_cast(.x, bigfloat())),
-    sinh = sinh(vec_cast(.x, bigfloat())),
-    sinpi = sinpi(vec_cast(.x, bigfloat())),
-    tan = tan(vec_cast(.x, bigfloat())),
-    tanh = tanh(vec_cast(.x, bigfloat())),
-    tanpi = tanpi(vec_cast(.x, bigfloat())),
-    acos = acos(vec_cast(.x, bigfloat())),
-    acosh = acosh(vec_cast(.x, bigfloat())),
-    asin = asin(vec_cast(.x, bigfloat())),
-    asinh = asinh(vec_cast(.x, bigfloat())),
-    atan = atan(vec_cast(.x, bigfloat())),
-    atanh = atanh(vec_cast(.x, bigfloat())),
-    gamma = gamma(vec_cast(.x, bigfloat())),
-    lgamma = lgamma(vec_cast(.x, bigfloat())),
-
-    # Other
-    mean = c_biginteger_sum(.x, na.rm) / sum(!is.na(.x)),
-    is.nan = FALSE,
-    is.finite = !is.na(.x),
-    is.infinite = FALSE,
-
-    stop_unsupported(.x, .fn)
-  )
 }

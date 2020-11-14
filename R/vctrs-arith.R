@@ -1,3 +1,11 @@
+#' Arithmetic operations
+#'
+#' [biginteger()] and [bigfloat()] vectors support infix operators:
+#' `+`, `-`, `*`, `/`, `^`, `%%` and `%/%`.
+#'
+#' @name bignum-arith
+NULL
+
 # base -------------------------------------------------------------------------
 
 #' @method vec_arith integer

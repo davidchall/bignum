@@ -5,13 +5,13 @@
 #'
 #' `bigpi` is a higher precision version of [`pi`].
 #'
+#' @seealso [`NA`] and [`pi`] are the base constants.
 #' @examples
 #' NA_biginteger_
 #'
 #' NA_bigfloat_
 #'
 #' bigpi
-#' @seealso [`NA`], [`pi`]
 #' @name bignum-constants
 NULL
 

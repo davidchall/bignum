@@ -4,7 +4,6 @@
 \alias{bigfloat}
 \alias{as_bigfloat}
 \alias{is_bigfloat}
-\alias{format.bignum_bigfloat}
 \title{High-Precision Numeric Vectors}
 \usage{
 bigfloat(x = character())
@@ -12,8 +11,6 @@ bigfloat(x = character())
 as_bigfloat(x, ...)
 
 is_bigfloat(x)
-
-\method{format}{bignum_bigfloat}(x, scientific = FALSE, ...)
 }
 \arguments{
 \item{x}{Object to be coerced or tested}
@@ -28,5 +25,7 @@ bigfloat(1 / 3)
 bigfloat(1) / 3
 }
 \seealso{
-\code{\link[=biginteger]{biginteger()}}, \code{\link[=double]{double()}}
+\code{\link{NA_bigfloat_}} to represent missing values.
+
+\code{\link[=format.bignum_bigfloat]{format()}} for pretty printing.
 }
