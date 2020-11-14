@@ -8,49 +8,6 @@
  *  Casting  *
  *-----------*/
 [[cpp11::register]]
-cpp11::strings c_integer_to_bigfloat(cpp11::integers x) {
-  bigfloat_vector output(x.size());
-
-  for (std::size_t i=0; i<x.size(); ++i) {
-    if (x[i] == NA_INTEGER) {
-      output.is_na[i] = true;
-    } else {
-      try {
-        output.data[i] = bigfloat_type(x[i]);
-      } catch (...) {
-        output.is_na[i] = true;
-      }
-    }
-  }
-
-  return output.encode();
-}
-
-[[cpp11::register]]
-cpp11::strings c_double_to_bigfloat(cpp11::doubles x) {
-  bigfloat_vector output(x.size());
-
-  for (std::size_t i=0; i<x.size(); ++i) {
-    if (ISNA(x[i])) {
-      output.is_na[i] = true;
-    } else {
-      try {
-        output.data[i] = bigfloat_type(x[i]);
-      } catch (...) {
-        output.is_na[i] = true;
-      }
-    }
-  }
-
-  return output.encode();
-}
-
-[[cpp11::register]]
-cpp11::strings c_character_to_bigfloat(cpp11::strings x) {
-  return bigfloat_vector(x).encode();
-}
-
-[[cpp11::register]]
 cpp11::logicals c_bigfloat_to_logical(cpp11::strings x) {
   bigfloat_vector input(x);
   cpp11::writable::logicals output(input.size());

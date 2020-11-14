@@ -8,49 +8,6 @@
  *  Casting  *
  *-----------*/
 [[cpp11::register]]
-cpp11::strings c_integer_to_biginteger(cpp11::integers x) {
-  biginteger_vector output(x.size());
-
-  for (std::size_t i=0; i<x.size(); ++i) {
-    if (x[i] == NA_INTEGER) {
-      output.is_na[i] = true;
-    } else {
-      try {
-        output.data[i] = biginteger_type(x[i]);
-      } catch (...) {
-        output.is_na[i] = true;
-      }
-    }
-  }
-
-  return output.encode();
-}
-
-[[cpp11::register]]
-cpp11::strings c_double_to_biginteger(cpp11::doubles x) {
-  biginteger_vector output(x.size());
-
-  for (std::size_t i=0; i<x.size(); ++i) {
-    if (std::isnan(x[i])) {
-      output.is_na[i] = true;
-    } else {
-      try {
-        output.data[i] = biginteger_type(x[i]);
-      } catch (...) {
-        output.is_na[i] = true;
-      }
-    }
-  }
-
-  return output.encode();
-}
-
-[[cpp11::register]]
-cpp11::strings c_character_to_biginteger(cpp11::strings x) {
-  return biginteger_vector(x).encode();
-}
-
-[[cpp11::register]]
 cpp11::logicals c_biginteger_to_logical(cpp11::strings x) {
   biginteger_vector input(x);
   cpp11::writable::logicals output(input.size());
