@@ -58,7 +58,7 @@ cpp11::logicals c_bigfloat_to_logical(cpp11::strings x) {
   for (std::size_t i=0; i<input.size(); ++i) {
     if (input.is_na[i]) {
       output[i] = NA_LOGICAL;
-    } else if (isnan(input.data[i])) {
+    } else if (std::isnan(input.data[i])) {
       output[i] = NA_LOGICAL;
     } else {
       output[i] = input.data[i] == 0 ? FALSE : TRUE;
@@ -79,7 +79,7 @@ cpp11::integers c_bigfloat_to_integer(cpp11::strings x) {
   for (std::size_t i=0; i<input.size(); ++i) {
     if (input.is_na[i]) {
       output[i] = NA_INTEGER;
-    } else if (isnan(input.data[i])) {
+    } else if (std::isnan(input.data[i])) {
       output[i] = NA_INTEGER;
     } else if (input.data[i] < vmin || input.data[i] > vmax) {
       output[i] = NA_INTEGER;
