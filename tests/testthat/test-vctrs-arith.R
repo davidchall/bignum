@@ -161,3 +161,24 @@ test_that("unary operations work", {
   expect_equal(-biginteger(x), biginteger(-x))
   expect_equal(-bigfloat(x), bigfloat(-x))
 })
+
+test_that("other operations fail", {
+  x <- 2
+  y <- 3
+
+  expect_error(biginteger(x) & biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) & bigfloat(y), class = "vctrs_error_incompatible_op")
+
+  expect_error(biginteger(x) & bigfloat(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) & biginteger(y), class = "vctrs_error_incompatible_op")
+
+  expect_error(biginteger(x) & as.integer(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.integer(x) & biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) & as.integer(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.integer(x) & bigfloat(y), class = "vctrs_error_incompatible_op")
+
+  expect_error(biginteger(x) & as.double(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.double(x) & biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) & as.double(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.double(x) & bigfloat(y), class = "vctrs_error_incompatible_op")
+})
