@@ -56,12 +56,8 @@ c_bigfloat_pow <- function(lhs, rhs) {
   .Call("_bignum_c_bigfloat_pow", lhs, rhs, PACKAGE = "bignum")
 }
 
-c_bigfloat_remainder <- function(lhs, rhs) {
-  .Call("_bignum_c_bigfloat_remainder", lhs, rhs, PACKAGE = "bignum")
-}
-
-c_bigfloat_quotient <- function(lhs, rhs) {
-  .Call("_bignum_c_bigfloat_quotient", lhs, rhs, PACKAGE = "bignum")
+c_bigfloat_modulo <- function(lhs, rhs) {
+  .Call("_bignum_c_bigfloat_modulo", lhs, rhs, PACKAGE = "bignum")
 }
 
 c_bigfloat_sum <- function(x, na_rm) {
@@ -244,8 +240,8 @@ c_biginteger_pow <- function(lhs, rhs) {
   .Call("_bignum_c_biginteger_pow", lhs, rhs, PACKAGE = "bignum")
 }
 
-c_biginteger_remainder <- function(lhs, rhs) {
-  .Call("_bignum_c_biginteger_remainder", lhs, rhs, PACKAGE = "bignum")
+c_biginteger_modulo <- function(lhs, rhs) {
+  .Call("_bignum_c_biginteger_modulo", lhs, rhs, PACKAGE = "bignum")
 }
 
 c_biginteger_quotient <- function(lhs, rhs) {

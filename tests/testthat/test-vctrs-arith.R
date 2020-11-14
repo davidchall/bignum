@@ -1,0 +1,163 @@
+test_that("addition works", {
+  x <- 2
+  y <- 3
+  ans <- 5
+
+  expect_equal(biginteger(x) + biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) + bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) + bigfloat(y), bigfloat(ans))
+  expect_equal(bigfloat(x) + biginteger(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) + as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x) + biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) + as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x) + bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) + as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) + biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) + as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) + bigfloat(y), bigfloat(ans))
+})
+
+test_that("subtraction works", {
+  x <- 2
+  y <- 3
+  ans <- -1
+
+  expect_equal(biginteger(x) - biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) - bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) - bigfloat(y), bigfloat(ans))
+  expect_equal(bigfloat(x) - biginteger(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) - as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x) - biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) - as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x) - bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) - as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) - biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) - as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) - bigfloat(y), bigfloat(ans))
+})
+
+test_that("multiplication works", {
+  x <- 2
+  y <- 3
+  ans <- 6
+
+  expect_equal(biginteger(x) * biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) * bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) * bigfloat(y), bigfloat(ans))
+  expect_equal(bigfloat(x) * biginteger(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) * as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x) * biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) * as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x) * bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) * as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) * biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) * as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) * bigfloat(y), bigfloat(ans))
+})
+
+test_that("division works", {
+  x <- 6
+  y <- 3
+  ans <- 2
+
+  expect_equal(biginteger(x) / biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) / bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) / bigfloat(y), bigfloat(ans))
+  expect_equal(bigfloat(x) / biginteger(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) / as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x) / biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) / as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x) / bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) / as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) / biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) / as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) / bigfloat(y), bigfloat(ans))
+})
+
+test_that("exponentiation works", {
+  x <- 2
+  y <- 3
+  ans <- 8
+
+  expect_equal(biginteger(x) ^ biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) ^ bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) ^ bigfloat(y), bigfloat(ans))
+  expect_equal(bigfloat(x) ^ biginteger(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) ^ as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x) ^ biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) ^ as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x) ^ bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) ^ as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) ^ biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) ^ as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) ^ bigfloat(y), bigfloat(ans))
+})
+
+test_that("modulo works", {
+  x <- 5
+  y <- 2
+  ans <- 1
+
+  expect_equal(biginteger(x) %% biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) %% bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) %% bigfloat(y), bigfloat(ans))
+  expect_equal(bigfloat(x) %% biginteger(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) %% as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x) %% biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) %% as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x) %% bigfloat(y), bigfloat(ans))
+
+  expect_equal(biginteger(x) %% as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) %% biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x) %% as.double(y), bigfloat(ans))
+  expect_equal(as.double(x) %% bigfloat(y), bigfloat(ans))
+})
+
+test_that("quotient works", {
+  x <- 5
+  y <- 2
+  ans <- 2
+
+  expect_equal(biginteger(x) %/% biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) %/% bigfloat(y), biginteger(ans))
+
+  expect_equal(biginteger(x) %/% bigfloat(y), biginteger(ans))
+  expect_equal(bigfloat(x) %/% biginteger(y), biginteger(ans))
+
+  expect_equal(biginteger(x) %/% as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x) %/% biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) %/% as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x) %/% bigfloat(y), biginteger(ans))
+
+  expect_equal(biginteger(x) %/% as.double(y), biginteger(ans))
+  expect_equal(as.double(x) %/% biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x) %/% as.double(y), biginteger(ans))
+  expect_equal(as.double(x) %/% bigfloat(y), biginteger(ans))
+})
+
+test_that("unary operations work", {
+  x <- 2
+
+  expect_equal(+biginteger(x), biginteger(x))
+  expect_equal(+bigfloat(x), bigfloat(x))
+
+  expect_equal(-biginteger(x), biginteger(-x))
+  expect_equal(-bigfloat(x), bigfloat(-x))
+})

@@ -163,7 +163,7 @@ cpp11::strings c_biginteger_pow(cpp11::strings lhs, cpp11::integers rhs) {
 }
 
 [[cpp11::register]]
-cpp11::strings c_biginteger_remainder(cpp11::strings lhs, cpp11::strings rhs) {
+cpp11::strings c_biginteger_modulo(cpp11::strings lhs, cpp11::strings rhs) {
   return binary_operation(
     biginteger_vector(lhs), biginteger_vector(rhs),
     [](const biginteger_type &x, const biginteger_type &y) { return x % y; }

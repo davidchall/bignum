@@ -182,22 +182,10 @@ cpp11::strings c_bigfloat_pow(cpp11::strings lhs, cpp11::strings rhs) {
 }
 
 [[cpp11::register]]
-cpp11::strings c_bigfloat_remainder(cpp11::strings lhs, cpp11::strings rhs) {
+cpp11::strings c_bigfloat_modulo(cpp11::strings lhs, cpp11::strings rhs) {
   return binary_operation(
     bigfloat_vector(lhs), bigfloat_vector(rhs),
     [](const bigfloat_type &x, const bigfloat_type &y) { return boost::multiprecision::fmod(x, y); }
-  ).encode();
-}
-
-[[cpp11::register]]
-cpp11::strings c_bigfloat_quotient(cpp11::strings lhs, cpp11::strings rhs) {
-  return binary_operation(
-    bigfloat_vector(lhs), bigfloat_vector(rhs),
-    [](const bigfloat_type &x, const bigfloat_type &y) {
-      int quotient;
-      boost::multiprecision::remquo(x, y, &quotient);
-      return quotient;
-    }
   ).encode();
 }
 

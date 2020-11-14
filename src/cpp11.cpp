@@ -103,17 +103,10 @@ extern "C" SEXP _bignum_c_bigfloat_pow(SEXP lhs, SEXP rhs) {
   END_CPP11
 }
 // bigfloat_interface.cpp
-cpp11::strings c_bigfloat_remainder(cpp11::strings lhs, cpp11::strings rhs);
-extern "C" SEXP _bignum_c_bigfloat_remainder(SEXP lhs, SEXP rhs) {
+cpp11::strings c_bigfloat_modulo(cpp11::strings lhs, cpp11::strings rhs);
+extern "C" SEXP _bignum_c_bigfloat_modulo(SEXP lhs, SEXP rhs) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_bigfloat_remainder(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(rhs)));
-  END_CPP11
-}
-// bigfloat_interface.cpp
-cpp11::strings c_bigfloat_quotient(cpp11::strings lhs, cpp11::strings rhs);
-extern "C" SEXP _bignum_c_bigfloat_quotient(SEXP lhs, SEXP rhs) {
-  BEGIN_CPP11
-    return cpp11::as_sexp(c_bigfloat_quotient(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(rhs)));
+    return cpp11::as_sexp(c_bigfloat_modulo(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(rhs)));
   END_CPP11
 }
 // bigfloat_interface.cpp
@@ -432,10 +425,10 @@ extern "C" SEXP _bignum_c_biginteger_pow(SEXP lhs, SEXP rhs) {
   END_CPP11
 }
 // biginteger_interface.cpp
-cpp11::strings c_biginteger_remainder(cpp11::strings lhs, cpp11::strings rhs);
-extern "C" SEXP _bignum_c_biginteger_remainder(SEXP lhs, SEXP rhs) {
+cpp11::strings c_biginteger_modulo(cpp11::strings lhs, cpp11::strings rhs);
+extern "C" SEXP _bignum_c_biginteger_modulo(SEXP lhs, SEXP rhs) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_biginteger_remainder(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(rhs)));
+    return cpp11::as_sexp(c_biginteger_modulo(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(rhs)));
   END_CPP11
 }
 // biginteger_interface.cpp
@@ -531,12 +524,11 @@ extern SEXP _bignum_c_bigfloat_log(SEXP);
 extern SEXP _bignum_c_bigfloat_log10(SEXP);
 extern SEXP _bignum_c_bigfloat_log1p(SEXP);
 extern SEXP _bignum_c_bigfloat_log2(SEXP);
+extern SEXP _bignum_c_bigfloat_modulo(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_multiply(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_pow(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_prod(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_quotient(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_rank(SEXP);
-extern SEXP _bignum_c_bigfloat_remainder(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_sign(SEXP);
 extern SEXP _bignum_c_bigfloat_sin(SEXP);
 extern SEXP _bignum_c_bigfloat_sinh(SEXP);
@@ -557,12 +549,12 @@ extern SEXP _bignum_c_biginteger_cummin(SEXP);
 extern SEXP _bignum_c_biginteger_cumprod(SEXP);
 extern SEXP _bignum_c_biginteger_cumsum(SEXP);
 extern SEXP _bignum_c_biginteger_format(SEXP);
+extern SEXP _bignum_c_biginteger_modulo(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_multiply(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_pow(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_prod(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_quotient(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_rank(SEXP);
-extern SEXP _bignum_c_biginteger_remainder(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_sign(SEXP);
 extern SEXP _bignum_c_biginteger_subtract(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_sum(SEXP, SEXP);
@@ -604,12 +596,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat_log10",          (DL_FUNC) &_bignum_c_bigfloat_log10,          1},
     {"_bignum_c_bigfloat_log1p",          (DL_FUNC) &_bignum_c_bigfloat_log1p,          1},
     {"_bignum_c_bigfloat_log2",           (DL_FUNC) &_bignum_c_bigfloat_log2,           1},
+    {"_bignum_c_bigfloat_modulo",         (DL_FUNC) &_bignum_c_bigfloat_modulo,         2},
     {"_bignum_c_bigfloat_multiply",       (DL_FUNC) &_bignum_c_bigfloat_multiply,       2},
     {"_bignum_c_bigfloat_pow",            (DL_FUNC) &_bignum_c_bigfloat_pow,            2},
     {"_bignum_c_bigfloat_prod",           (DL_FUNC) &_bignum_c_bigfloat_prod,           2},
-    {"_bignum_c_bigfloat_quotient",       (DL_FUNC) &_bignum_c_bigfloat_quotient,       2},
     {"_bignum_c_bigfloat_rank",           (DL_FUNC) &_bignum_c_bigfloat_rank,           1},
-    {"_bignum_c_bigfloat_remainder",      (DL_FUNC) &_bignum_c_bigfloat_remainder,      2},
     {"_bignum_c_bigfloat_sign",           (DL_FUNC) &_bignum_c_bigfloat_sign,           1},
     {"_bignum_c_bigfloat_sin",            (DL_FUNC) &_bignum_c_bigfloat_sin,            1},
     {"_bignum_c_bigfloat_sinh",           (DL_FUNC) &_bignum_c_bigfloat_sinh,           1},
@@ -630,12 +621,12 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_biginteger_cumprod",      (DL_FUNC) &_bignum_c_biginteger_cumprod,      1},
     {"_bignum_c_biginteger_cumsum",       (DL_FUNC) &_bignum_c_biginteger_cumsum,       1},
     {"_bignum_c_biginteger_format",       (DL_FUNC) &_bignum_c_biginteger_format,       1},
+    {"_bignum_c_biginteger_modulo",       (DL_FUNC) &_bignum_c_biginteger_modulo,       2},
     {"_bignum_c_biginteger_multiply",     (DL_FUNC) &_bignum_c_biginteger_multiply,     2},
     {"_bignum_c_biginteger_pow",          (DL_FUNC) &_bignum_c_biginteger_pow,          2},
     {"_bignum_c_biginteger_prod",         (DL_FUNC) &_bignum_c_biginteger_prod,         2},
     {"_bignum_c_biginteger_quotient",     (DL_FUNC) &_bignum_c_biginteger_quotient,     2},
     {"_bignum_c_biginteger_rank",         (DL_FUNC) &_bignum_c_biginteger_rank,         1},
-    {"_bignum_c_biginteger_remainder",    (DL_FUNC) &_bignum_c_biginteger_remainder,    2},
     {"_bignum_c_biginteger_sign",         (DL_FUNC) &_bignum_c_biginteger_sign,         1},
     {"_bignum_c_biginteger_subtract",     (DL_FUNC) &_bignum_c_biginteger_subtract,     2},
     {"_bignum_c_biginteger_sum",          (DL_FUNC) &_bignum_c_biginteger_sum,          2},
