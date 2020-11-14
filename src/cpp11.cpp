@@ -5,27 +5,6 @@
 #include "cpp11/declarations.hpp"
 
 // bigfloat_interface.cpp
-cpp11::strings c_integer_to_bigfloat(cpp11::integers x);
-extern "C" SEXP _bignum_c_integer_to_bigfloat(SEXP x) {
-  BEGIN_CPP11
-    return cpp11::as_sexp(c_integer_to_bigfloat(cpp11::as_cpp<cpp11::decay_t<cpp11::integers>>(x)));
-  END_CPP11
-}
-// bigfloat_interface.cpp
-cpp11::strings c_double_to_bigfloat(cpp11::doubles x);
-extern "C" SEXP _bignum_c_double_to_bigfloat(SEXP x) {
-  BEGIN_CPP11
-    return cpp11::as_sexp(c_double_to_bigfloat(cpp11::as_cpp<cpp11::decay_t<cpp11::doubles>>(x)));
-  END_CPP11
-}
-// bigfloat_interface.cpp
-cpp11::strings c_character_to_bigfloat(cpp11::strings x);
-extern "C" SEXP _bignum_c_character_to_bigfloat(SEXP x) {
-  BEGIN_CPP11
-    return cpp11::as_sexp(c_character_to_bigfloat(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x)));
-  END_CPP11
-}
-// bigfloat_interface.cpp
 cpp11::logicals c_bigfloat_to_logical(cpp11::strings x);
 extern "C" SEXP _bignum_c_bigfloat_to_logical(SEXP x) {
   BEGIN_CPP11
@@ -334,27 +313,6 @@ extern "C" SEXP _bignum_c_bigfloat_lgamma(SEXP lhs) {
   END_CPP11
 }
 // biginteger_interface.cpp
-cpp11::strings c_integer_to_biginteger(cpp11::integers x);
-extern "C" SEXP _bignum_c_integer_to_biginteger(SEXP x) {
-  BEGIN_CPP11
-    return cpp11::as_sexp(c_integer_to_biginteger(cpp11::as_cpp<cpp11::decay_t<cpp11::integers>>(x)));
-  END_CPP11
-}
-// biginteger_interface.cpp
-cpp11::strings c_double_to_biginteger(cpp11::doubles x);
-extern "C" SEXP _bignum_c_double_to_biginteger(SEXP x) {
-  BEGIN_CPP11
-    return cpp11::as_sexp(c_double_to_biginteger(cpp11::as_cpp<cpp11::decay_t<cpp11::doubles>>(x)));
-  END_CPP11
-}
-// biginteger_interface.cpp
-cpp11::strings c_character_to_biginteger(cpp11::strings x);
-extern "C" SEXP _bignum_c_character_to_biginteger(SEXP x) {
-  BEGIN_CPP11
-    return cpp11::as_sexp(c_character_to_biginteger(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x)));
-  END_CPP11
-}
-// biginteger_interface.cpp
 cpp11::logicals c_biginteger_to_logical(cpp11::strings x);
 extern "C" SEXP _bignum_c_biginteger_to_logical(SEXP x) {
   BEGIN_CPP11
@@ -561,84 +519,72 @@ extern SEXP _bignum_c_biginteger_sum(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_to_double(SEXP);
 extern SEXP _bignum_c_biginteger_to_integer(SEXP);
 extern SEXP _bignum_c_biginteger_to_logical(SEXP);
-extern SEXP _bignum_c_character_to_bigfloat(SEXP);
-extern SEXP _bignum_c_character_to_biginteger(SEXP);
-extern SEXP _bignum_c_double_to_bigfloat(SEXP);
-extern SEXP _bignum_c_double_to_biginteger(SEXP);
-extern SEXP _bignum_c_integer_to_bigfloat(SEXP);
-extern SEXP _bignum_c_integer_to_biginteger(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_bignum_c_bigfloat_abs",            (DL_FUNC) &_bignum_c_bigfloat_abs,            1},
-    {"_bignum_c_bigfloat_acos",           (DL_FUNC) &_bignum_c_bigfloat_acos,           1},
-    {"_bignum_c_bigfloat_acosh",          (DL_FUNC) &_bignum_c_bigfloat_acosh,          1},
-    {"_bignum_c_bigfloat_add",            (DL_FUNC) &_bignum_c_bigfloat_add,            2},
-    {"_bignum_c_bigfloat_asin",           (DL_FUNC) &_bignum_c_bigfloat_asin,           1},
-    {"_bignum_c_bigfloat_asinh",          (DL_FUNC) &_bignum_c_bigfloat_asinh,          1},
-    {"_bignum_c_bigfloat_atan",           (DL_FUNC) &_bignum_c_bigfloat_atan,           1},
-    {"_bignum_c_bigfloat_atanh",          (DL_FUNC) &_bignum_c_bigfloat_atanh,          1},
-    {"_bignum_c_bigfloat_ceiling",        (DL_FUNC) &_bignum_c_bigfloat_ceiling,        1},
-    {"_bignum_c_bigfloat_compare",        (DL_FUNC) &_bignum_c_bigfloat_compare,        3},
-    {"_bignum_c_bigfloat_cos",            (DL_FUNC) &_bignum_c_bigfloat_cos,            1},
-    {"_bignum_c_bigfloat_cosh",           (DL_FUNC) &_bignum_c_bigfloat_cosh,           1},
-    {"_bignum_c_bigfloat_cummax",         (DL_FUNC) &_bignum_c_bigfloat_cummax,         1},
-    {"_bignum_c_bigfloat_cummin",         (DL_FUNC) &_bignum_c_bigfloat_cummin,         1},
-    {"_bignum_c_bigfloat_cumprod",        (DL_FUNC) &_bignum_c_bigfloat_cumprod,        1},
-    {"_bignum_c_bigfloat_cumsum",         (DL_FUNC) &_bignum_c_bigfloat_cumsum,         1},
-    {"_bignum_c_bigfloat_divide",         (DL_FUNC) &_bignum_c_bigfloat_divide,         2},
-    {"_bignum_c_bigfloat_exp",            (DL_FUNC) &_bignum_c_bigfloat_exp,            1},
-    {"_bignum_c_bigfloat_expm1",          (DL_FUNC) &_bignum_c_bigfloat_expm1,          1},
-    {"_bignum_c_bigfloat_floor",          (DL_FUNC) &_bignum_c_bigfloat_floor,          1},
-    {"_bignum_c_bigfloat_format",         (DL_FUNC) &_bignum_c_bigfloat_format,         2},
-    {"_bignum_c_bigfloat_gamma",          (DL_FUNC) &_bignum_c_bigfloat_gamma,          1},
-    {"_bignum_c_bigfloat_lgamma",         (DL_FUNC) &_bignum_c_bigfloat_lgamma,         1},
-    {"_bignum_c_bigfloat_log",            (DL_FUNC) &_bignum_c_bigfloat_log,            1},
-    {"_bignum_c_bigfloat_log10",          (DL_FUNC) &_bignum_c_bigfloat_log10,          1},
-    {"_bignum_c_bigfloat_log1p",          (DL_FUNC) &_bignum_c_bigfloat_log1p,          1},
-    {"_bignum_c_bigfloat_log2",           (DL_FUNC) &_bignum_c_bigfloat_log2,           1},
-    {"_bignum_c_bigfloat_modulo",         (DL_FUNC) &_bignum_c_bigfloat_modulo,         2},
-    {"_bignum_c_bigfloat_multiply",       (DL_FUNC) &_bignum_c_bigfloat_multiply,       2},
-    {"_bignum_c_bigfloat_pow",            (DL_FUNC) &_bignum_c_bigfloat_pow,            2},
-    {"_bignum_c_bigfloat_prod",           (DL_FUNC) &_bignum_c_bigfloat_prod,           2},
-    {"_bignum_c_bigfloat_rank",           (DL_FUNC) &_bignum_c_bigfloat_rank,           1},
-    {"_bignum_c_bigfloat_sign",           (DL_FUNC) &_bignum_c_bigfloat_sign,           1},
-    {"_bignum_c_bigfloat_sin",            (DL_FUNC) &_bignum_c_bigfloat_sin,            1},
-    {"_bignum_c_bigfloat_sinh",           (DL_FUNC) &_bignum_c_bigfloat_sinh,           1},
-    {"_bignum_c_bigfloat_sqrt",           (DL_FUNC) &_bignum_c_bigfloat_sqrt,           1},
-    {"_bignum_c_bigfloat_subtract",       (DL_FUNC) &_bignum_c_bigfloat_subtract,       2},
-    {"_bignum_c_bigfloat_sum",            (DL_FUNC) &_bignum_c_bigfloat_sum,            2},
-    {"_bignum_c_bigfloat_tan",            (DL_FUNC) &_bignum_c_bigfloat_tan,            1},
-    {"_bignum_c_bigfloat_tanh",           (DL_FUNC) &_bignum_c_bigfloat_tanh,           1},
-    {"_bignum_c_bigfloat_to_double",      (DL_FUNC) &_bignum_c_bigfloat_to_double,      1},
-    {"_bignum_c_bigfloat_to_integer",     (DL_FUNC) &_bignum_c_bigfloat_to_integer,     1},
-    {"_bignum_c_bigfloat_to_logical",     (DL_FUNC) &_bignum_c_bigfloat_to_logical,     1},
-    {"_bignum_c_bigfloat_trunc",          (DL_FUNC) &_bignum_c_bigfloat_trunc,          1},
-    {"_bignum_c_biginteger_abs",          (DL_FUNC) &_bignum_c_biginteger_abs,          1},
-    {"_bignum_c_biginteger_add",          (DL_FUNC) &_bignum_c_biginteger_add,          2},
-    {"_bignum_c_biginteger_compare",      (DL_FUNC) &_bignum_c_biginteger_compare,      3},
-    {"_bignum_c_biginteger_cummax",       (DL_FUNC) &_bignum_c_biginteger_cummax,       1},
-    {"_bignum_c_biginteger_cummin",       (DL_FUNC) &_bignum_c_biginteger_cummin,       1},
-    {"_bignum_c_biginteger_cumprod",      (DL_FUNC) &_bignum_c_biginteger_cumprod,      1},
-    {"_bignum_c_biginteger_cumsum",       (DL_FUNC) &_bignum_c_biginteger_cumsum,       1},
-    {"_bignum_c_biginteger_format",       (DL_FUNC) &_bignum_c_biginteger_format,       1},
-    {"_bignum_c_biginteger_modulo",       (DL_FUNC) &_bignum_c_biginteger_modulo,       2},
-    {"_bignum_c_biginteger_multiply",     (DL_FUNC) &_bignum_c_biginteger_multiply,     2},
-    {"_bignum_c_biginteger_pow",          (DL_FUNC) &_bignum_c_biginteger_pow,          2},
-    {"_bignum_c_biginteger_prod",         (DL_FUNC) &_bignum_c_biginteger_prod,         2},
-    {"_bignum_c_biginteger_quotient",     (DL_FUNC) &_bignum_c_biginteger_quotient,     2},
-    {"_bignum_c_biginteger_rank",         (DL_FUNC) &_bignum_c_biginteger_rank,         1},
-    {"_bignum_c_biginteger_sign",         (DL_FUNC) &_bignum_c_biginteger_sign,         1},
-    {"_bignum_c_biginteger_subtract",     (DL_FUNC) &_bignum_c_biginteger_subtract,     2},
-    {"_bignum_c_biginteger_sum",          (DL_FUNC) &_bignum_c_biginteger_sum,          2},
-    {"_bignum_c_biginteger_to_double",    (DL_FUNC) &_bignum_c_biginteger_to_double,    1},
-    {"_bignum_c_biginteger_to_integer",   (DL_FUNC) &_bignum_c_biginteger_to_integer,   1},
-    {"_bignum_c_biginteger_to_logical",   (DL_FUNC) &_bignum_c_biginteger_to_logical,   1},
-    {"_bignum_c_character_to_bigfloat",   (DL_FUNC) &_bignum_c_character_to_bigfloat,   1},
-    {"_bignum_c_character_to_biginteger", (DL_FUNC) &_bignum_c_character_to_biginteger, 1},
-    {"_bignum_c_double_to_bigfloat",      (DL_FUNC) &_bignum_c_double_to_bigfloat,      1},
-    {"_bignum_c_double_to_biginteger",    (DL_FUNC) &_bignum_c_double_to_biginteger,    1},
-    {"_bignum_c_integer_to_bigfloat",     (DL_FUNC) &_bignum_c_integer_to_bigfloat,     1},
-    {"_bignum_c_integer_to_biginteger",   (DL_FUNC) &_bignum_c_integer_to_biginteger,   1},
+    {"_bignum_c_bigfloat_abs",          (DL_FUNC) &_bignum_c_bigfloat_abs,          1},
+    {"_bignum_c_bigfloat_acos",         (DL_FUNC) &_bignum_c_bigfloat_acos,         1},
+    {"_bignum_c_bigfloat_acosh",        (DL_FUNC) &_bignum_c_bigfloat_acosh,        1},
+    {"_bignum_c_bigfloat_add",          (DL_FUNC) &_bignum_c_bigfloat_add,          2},
+    {"_bignum_c_bigfloat_asin",         (DL_FUNC) &_bignum_c_bigfloat_asin,         1},
+    {"_bignum_c_bigfloat_asinh",        (DL_FUNC) &_bignum_c_bigfloat_asinh,        1},
+    {"_bignum_c_bigfloat_atan",         (DL_FUNC) &_bignum_c_bigfloat_atan,         1},
+    {"_bignum_c_bigfloat_atanh",        (DL_FUNC) &_bignum_c_bigfloat_atanh,        1},
+    {"_bignum_c_bigfloat_ceiling",      (DL_FUNC) &_bignum_c_bigfloat_ceiling,      1},
+    {"_bignum_c_bigfloat_compare",      (DL_FUNC) &_bignum_c_bigfloat_compare,      3},
+    {"_bignum_c_bigfloat_cos",          (DL_FUNC) &_bignum_c_bigfloat_cos,          1},
+    {"_bignum_c_bigfloat_cosh",         (DL_FUNC) &_bignum_c_bigfloat_cosh,         1},
+    {"_bignum_c_bigfloat_cummax",       (DL_FUNC) &_bignum_c_bigfloat_cummax,       1},
+    {"_bignum_c_bigfloat_cummin",       (DL_FUNC) &_bignum_c_bigfloat_cummin,       1},
+    {"_bignum_c_bigfloat_cumprod",      (DL_FUNC) &_bignum_c_bigfloat_cumprod,      1},
+    {"_bignum_c_bigfloat_cumsum",       (DL_FUNC) &_bignum_c_bigfloat_cumsum,       1},
+    {"_bignum_c_bigfloat_divide",       (DL_FUNC) &_bignum_c_bigfloat_divide,       2},
+    {"_bignum_c_bigfloat_exp",          (DL_FUNC) &_bignum_c_bigfloat_exp,          1},
+    {"_bignum_c_bigfloat_expm1",        (DL_FUNC) &_bignum_c_bigfloat_expm1,        1},
+    {"_bignum_c_bigfloat_floor",        (DL_FUNC) &_bignum_c_bigfloat_floor,        1},
+    {"_bignum_c_bigfloat_format",       (DL_FUNC) &_bignum_c_bigfloat_format,       2},
+    {"_bignum_c_bigfloat_gamma",        (DL_FUNC) &_bignum_c_bigfloat_gamma,        1},
+    {"_bignum_c_bigfloat_lgamma",       (DL_FUNC) &_bignum_c_bigfloat_lgamma,       1},
+    {"_bignum_c_bigfloat_log",          (DL_FUNC) &_bignum_c_bigfloat_log,          1},
+    {"_bignum_c_bigfloat_log10",        (DL_FUNC) &_bignum_c_bigfloat_log10,        1},
+    {"_bignum_c_bigfloat_log1p",        (DL_FUNC) &_bignum_c_bigfloat_log1p,        1},
+    {"_bignum_c_bigfloat_log2",         (DL_FUNC) &_bignum_c_bigfloat_log2,         1},
+    {"_bignum_c_bigfloat_modulo",       (DL_FUNC) &_bignum_c_bigfloat_modulo,       2},
+    {"_bignum_c_bigfloat_multiply",     (DL_FUNC) &_bignum_c_bigfloat_multiply,     2},
+    {"_bignum_c_bigfloat_pow",          (DL_FUNC) &_bignum_c_bigfloat_pow,          2},
+    {"_bignum_c_bigfloat_prod",         (DL_FUNC) &_bignum_c_bigfloat_prod,         2},
+    {"_bignum_c_bigfloat_rank",         (DL_FUNC) &_bignum_c_bigfloat_rank,         1},
+    {"_bignum_c_bigfloat_sign",         (DL_FUNC) &_bignum_c_bigfloat_sign,         1},
+    {"_bignum_c_bigfloat_sin",          (DL_FUNC) &_bignum_c_bigfloat_sin,          1},
+    {"_bignum_c_bigfloat_sinh",         (DL_FUNC) &_bignum_c_bigfloat_sinh,         1},
+    {"_bignum_c_bigfloat_sqrt",         (DL_FUNC) &_bignum_c_bigfloat_sqrt,         1},
+    {"_bignum_c_bigfloat_subtract",     (DL_FUNC) &_bignum_c_bigfloat_subtract,     2},
+    {"_bignum_c_bigfloat_sum",          (DL_FUNC) &_bignum_c_bigfloat_sum,          2},
+    {"_bignum_c_bigfloat_tan",          (DL_FUNC) &_bignum_c_bigfloat_tan,          1},
+    {"_bignum_c_bigfloat_tanh",         (DL_FUNC) &_bignum_c_bigfloat_tanh,         1},
+    {"_bignum_c_bigfloat_to_double",    (DL_FUNC) &_bignum_c_bigfloat_to_double,    1},
+    {"_bignum_c_bigfloat_to_integer",   (DL_FUNC) &_bignum_c_bigfloat_to_integer,   1},
+    {"_bignum_c_bigfloat_to_logical",   (DL_FUNC) &_bignum_c_bigfloat_to_logical,   1},
+    {"_bignum_c_bigfloat_trunc",        (DL_FUNC) &_bignum_c_bigfloat_trunc,        1},
+    {"_bignum_c_biginteger_abs",        (DL_FUNC) &_bignum_c_biginteger_abs,        1},
+    {"_bignum_c_biginteger_add",        (DL_FUNC) &_bignum_c_biginteger_add,        2},
+    {"_bignum_c_biginteger_compare",    (DL_FUNC) &_bignum_c_biginteger_compare,    3},
+    {"_bignum_c_biginteger_cummax",     (DL_FUNC) &_bignum_c_biginteger_cummax,     1},
+    {"_bignum_c_biginteger_cummin",     (DL_FUNC) &_bignum_c_biginteger_cummin,     1},
+    {"_bignum_c_biginteger_cumprod",    (DL_FUNC) &_bignum_c_biginteger_cumprod,    1},
+    {"_bignum_c_biginteger_cumsum",     (DL_FUNC) &_bignum_c_biginteger_cumsum,     1},
+    {"_bignum_c_biginteger_format",     (DL_FUNC) &_bignum_c_biginteger_format,     1},
+    {"_bignum_c_biginteger_modulo",     (DL_FUNC) &_bignum_c_biginteger_modulo,     2},
+    {"_bignum_c_biginteger_multiply",   (DL_FUNC) &_bignum_c_biginteger_multiply,   2},
+    {"_bignum_c_biginteger_pow",        (DL_FUNC) &_bignum_c_biginteger_pow,        2},
+    {"_bignum_c_biginteger_prod",       (DL_FUNC) &_bignum_c_biginteger_prod,       2},
+    {"_bignum_c_biginteger_quotient",   (DL_FUNC) &_bignum_c_biginteger_quotient,   2},
+    {"_bignum_c_biginteger_rank",       (DL_FUNC) &_bignum_c_biginteger_rank,       1},
+    {"_bignum_c_biginteger_sign",       (DL_FUNC) &_bignum_c_biginteger_sign,       1},
+    {"_bignum_c_biginteger_subtract",   (DL_FUNC) &_bignum_c_biginteger_subtract,   2},
+    {"_bignum_c_biginteger_sum",        (DL_FUNC) &_bignum_c_biginteger_sum,        2},
+    {"_bignum_c_biginteger_to_double",  (DL_FUNC) &_bignum_c_biginteger_to_double,  1},
+    {"_bignum_c_biginteger_to_integer", (DL_FUNC) &_bignum_c_biginteger_to_integer, 1},
+    {"_bignum_c_biginteger_to_logical", (DL_FUNC) &_bignum_c_biginteger_to_logical, 1},
     {NULL, NULL, 0}
 };
 }

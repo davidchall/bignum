@@ -21,13 +21,14 @@ new_bigfloat <- function(x = character()) {
 
 #' @rdname bigfloat
 #' @export
-bigfloat <- function(x = character()) {
-  as_bigfloat(x)
+bigfloat <- function(...) {
+  ellipsis::check_dots_unnamed()
+  as_bigfloat(as.character(c(...)))
 }
 
 #' @rdname bigfloat
 #' @export
-as_bigfloat <- function(x, ...) {
+as_bigfloat <- function(x) {
   UseMethod("as_bigfloat")
 }
 
@@ -83,7 +84,7 @@ vec_cast.bignum_bigfloat.bignum_bigfloat <- function(x, to, ...) {
 
 #' @export
 vec_cast.bignum_bigfloat.logical <- function(x, to, ...) {
-  c_integer_to_bigfloat(as.integer(x))
+  new_bigfloat(as.character(as.integer(x)))
 }
 
 #' @export
@@ -95,7 +96,7 @@ vec_cast.logical.bignum_bigfloat <- function(x, to, ..., x_arg = "", to_arg = ""
 
 #' @export
 vec_cast.bignum_bigfloat.integer <- function(x, to, ...) {
-  c_integer_to_bigfloat(x)
+  new_bigfloat(as.character(x))
 }
 
 #' @export
@@ -107,7 +108,7 @@ vec_cast.integer.bignum_bigfloat <- function(x, to, ..., x_arg = "", to_arg = ""
 
 #' @export
 vec_cast.bignum_bigfloat.double <- function(x, to, ...) {
-  c_double_to_bigfloat(x)
+  new_bigfloat(as.character(x))
 }
 
 #' @export
@@ -121,14 +122,14 @@ vec_cast.double.bignum_bigfloat <- function(x, to, ...,  x_arg = "", to_arg = ""
 
 #' @export
 vec_cast.bignum_bigfloat.bignum_biginteger <- function(x, to, ...) {
-  c_character_to_bigfloat(c_biginteger_format(x))
+  new_bigfloat(vec_data(x))
 }
 
 #' @export
 vec_cast.bignum_biginteger.bignum_bigfloat <- function(x, to, ..., x_arg = "", to_arg = "") {
-  floored <- c_bigfloat_floor(x)
-  out <- as_biginteger(unclass(floored))
-  lossy <- floored != x & !is.na(x)
+  rounded <- c_bigfloat_floor(x)
+  out <- new_biginteger(vec_data(rounded))
+  lossy <- rounded != x & !is.na(x)
   maybe_lossy_cast(out, x, to, lossy, x_arg = x_arg, to_arg = to_arg)
 }
 
@@ -163,13 +164,13 @@ as.character.bignum_bigfloat <- function(x, ...) {
 }
 
 #' @export
-as_bigfloat.default <- function(x, ...) {
-  vec_cast(x, bigfloat())
+as_bigfloat.default <- function(x) {
+  vec_cast(x, new_bigfloat())
 }
 
 #' @export
-as_bigfloat.character <- function(x, ...) {
-  c_character_to_bigfloat(x)
+as_bigfloat.character <- function(x) {
+  new_bigfloat(x)
 }
 
 

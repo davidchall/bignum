@@ -6,16 +6,16 @@
 \alias{is_bigfloat}
 \title{High-Precision Numeric Vectors}
 \usage{
-bigfloat(x = character())
+bigfloat(...)
 
-as_bigfloat(x, ...)
+as_bigfloat(x)
 
 is_bigfloat(x)
 }
 \arguments{
-\item{x}{Object to be coerced or tested}
+\item{...}{Numeric or character vectors.}
 
-\item{...}{Further arguments passed to or from other methods}
+\item{x}{Object to be coerced or tested.}
 }
 \description{
 Creates or tests for high-precision floating-point numeric vectors.
