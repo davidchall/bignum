@@ -36,9 +36,12 @@ remotes::install_github("davidchall/bignum")
 ```{r}
 library(bignum)
 
-biginteger(2)^100
+biginteger(2)^100L
 
 bigfloat(2.5)^100
+
+# calculate factorial 50!
+prod(biginteger(1:50))
 ```
 
 ---
