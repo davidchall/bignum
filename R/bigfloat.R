@@ -21,13 +21,14 @@ new_bigfloat <- function(x = character()) {
 
 #' @rdname bigfloat
 #' @export
-bigfloat <- function(x = character()) {
-  as_bigfloat(x)
+bigfloat <- function(...) {
+  ellipsis::check_dots_unnamed()
+  as_bigfloat(as.character(c(...)))
 }
 
 #' @rdname bigfloat
 #' @export
-as_bigfloat <- function(x, ...) {
+as_bigfloat <- function(x) {
   UseMethod("as_bigfloat")
 }
 
@@ -163,12 +164,12 @@ as.character.bignum_bigfloat <- function(x, ...) {
 }
 
 #' @export
-as_bigfloat.default <- function(x, ...) {
-  vec_cast(x, bigfloat())
+as_bigfloat.default <- function(x) {
+  vec_cast(x, new_bigfloat())
 }
 
 #' @export
-as_bigfloat.character <- function(x, ...) {
+as_bigfloat.character <- function(x) {
   c_character_to_bigfloat(x)
 }
 

@@ -3,6 +3,18 @@ test_that("zero-length input works", {
   expect_length(bigfloat(), 0)
 })
 
+test_that("data input works", {
+  expect_length(bigfloat(1L), 1)
+  expect_length(bigfloat(1L, 2.5), 2)
+  expect_length(bigfloat(c(1L, 2.5)), 2)
+  expect_length(bigfloat(1L, 2.5, "9e90"), 3)
+  expect_length(bigfloat(c(1L, 2.5), "9e90"), 3)
+})
+
+test_that("named arguments caught", {
+  expect_error(bigfloat(a = 1), class = "rlib_error_dots_named")
+})
+
 test_that("coercion works", {
   x <- bigfloat(1:10)
 

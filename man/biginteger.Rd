@@ -6,16 +6,16 @@
 \alias{is_biginteger}
 \title{Arbitrary-Precision Integer Vectors}
 \usage{
-biginteger(x = character())
+biginteger(...)
 
-as_biginteger(x, ...)
+as_biginteger(x)
 
 is_biginteger(x)
 }
 \arguments{
-\item{x}{Object to be coerced or tested}
+\item{...}{Numeric or character vectors.}
 
-\item{...}{Further arguments passed to or from other methods}
+\item{x}{Object to be coerced or tested.}
 }
 \description{
 Creates or tests for arbitrary-precision integer vectors.

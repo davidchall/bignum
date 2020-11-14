@@ -2,8 +2,8 @@
 #'
 #' Creates or tests for arbitrary-precision integer vectors.
 #'
-#' @param x Object to be coerced or tested
-#' @param ... Further arguments passed to or from other methods
+#' @param ... Numeric or character vectors.
+#' @param x Object to be coerced or tested.
 #'
 #' @seealso
 #' [`NA_biginteger_`] to represent missing values.
@@ -19,13 +19,14 @@ new_biginteger <- function(x = character()) {
 
 #' @rdname biginteger
 #' @export
-biginteger <- function(x = character()) {
-  as_biginteger(x)
+biginteger <- function(...) {
+  ellipsis::check_dots_unnamed()
+  as_biginteger(as.character(c(...)))
 }
 
 #' @rdname biginteger
 #' @export
-as_biginteger <- function(x, ...) {
+as_biginteger <- function(x) {
   UseMethod("as_biginteger")
 }
 
@@ -143,12 +144,12 @@ as.character.bignum_biginteger <- function(x, ...) {
 }
 
 #' @export
-as_biginteger.default <- function(x, ...) {
-  warn_on_lossy_cast(vec_cast(x, biginteger()))
+as_biginteger.default <- function(x) {
+  warn_on_lossy_cast(vec_cast(x, new_biginteger()))
 }
 
 #' @export
-as_biginteger.character <- function(x, ...) {
+as_biginteger.character <- function(x) {
   c_character_to_biginteger(x)
 }
 
