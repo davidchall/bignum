@@ -31,7 +31,7 @@ cpp11::strings c_double_to_biginteger(cpp11::doubles x) {
   biginteger_vector output(x.size());
 
   for (std::size_t i=0; i<x.size(); ++i) {
-    if (isnan(x[i])) {
+    if (std::isnan(x[i])) {
       output.is_na[i] = true;
     } else {
       try {

@@ -22,7 +22,7 @@ cpp11::strings bigfloat_vector::format(std::stringstream &ss) const {
   for (std::size_t i=0; i<size(); ++i) {
     if (is_na[i]) {
       output[i] = NA_STRING;
-    } else if (isnan(data[i])) {
+    } else if (boost::multiprecision::isnan(data[i])) {
       output[i] = "NaN";
     } else if (isinf(data[i])) {
       output[i] = data[i] > 0 ? "Inf" : "-Inf";

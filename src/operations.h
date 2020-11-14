@@ -75,7 +75,7 @@ Vec accumulate_operation(const Vec &x, const Vec &init, bool na_rm, const Func &
   Vec output = init;
 
   for (std::size_t i=0; i<x.size(); ++i) {
-    if (x.is_na[i] || isnan(static_cast<double>(x.data[i]))) {
+    if (x.is_na[i] || std::isnan(static_cast<double>(x.data[i]))) {
       if (na_rm) {
         continue;
       } else {
@@ -104,7 +104,7 @@ Vec partial_accumulate_operation(const Vec &x, const Func &BinaryOperation) {
   output.is_na[0] = x.is_na[0];
 
   for (std::size_t i=1; i<x.size(); ++i) {
-    if (x.is_na[i] || isnan(static_cast<double>(x.data[i])) || output.is_na[i-1]) {
+    if (x.is_na[i] || std::isnan(static_cast<double>(x.data[i])) || output.is_na[i-1]) {
       output.is_na[i] = true;
     } else {
       try {
