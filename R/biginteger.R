@@ -48,12 +48,6 @@ vec_ptype_abbr.bignum_biginteger <- function(x, ...) {
   "bigint"
 }
 
-#' @description The `NA_biginteger_` constant supports missing values.
-#' @format NULL
-#' @rdname biginteger
-#' @export
-NA_biginteger_ <- new_biginteger(NA_character_)
-
 
 # Coerce -----------------------------------------------------------------------
 

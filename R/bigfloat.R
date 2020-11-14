@@ -54,18 +54,6 @@ vec_ptype_abbr.bignum_bigfloat <- function(x, ...) {
   "bigflt"
 }
 
-#' @description The `NA_bigfloat_` constant supports missing values.
-#' @format NULL
-#' @rdname bigfloat
-#' @export
-NA_bigfloat_ <- new_bigfloat(NA_character_)
-
-#' @description The `bigpi` constant is a higher precision version of [`pi`].
-#' @format NULL
-#' @rdname bigfloat
-#' @export
-bigpi <- new_bigfloat("3.14159265358979323846264338327950288419716939937510")
-
 
 # Coerce -----------------------------------------------------------------------
 
