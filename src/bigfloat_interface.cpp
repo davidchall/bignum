@@ -4,6 +4,11 @@
 #include "bigfloat_vector.h"
 
 
+[[cpp11::register]]
+cpp11::strings c_bigfloat(cpp11::strings x) {
+  return bigfloat_vector(x).encode();
+}
+
 /*-----------*
  *  Casting  *
  *-----------*/

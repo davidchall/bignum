@@ -4,6 +4,11 @@
 #include "biginteger_vector.h"
 
 
+[[cpp11::register]]
+cpp11::strings c_biginteger(cpp11::strings x) {
+  return biginteger_vector(x).encode();
+}
+
 /*-----------*
  *  Casting  *
  *-----------*/

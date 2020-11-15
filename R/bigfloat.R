@@ -14,9 +14,20 @@
 #' @name bigfloat
 NULL
 
-new_bigfloat <- function(x = character()) {
+#' Internal constructor for bigfloat
+#'
+#' @param x Character vector for conversion
+#' @param cxx Boolean specifying whether to pass data through C++ functions.
+#'   Set to `FALSE` for namespace export of constants.
+#' @noRd
+new_bigfloat <- function(x = character(), cxx = TRUE) {
   vec_assert(x, character())
-  new_vctr(x, class = c("bignum_bigfloat", "bignum_vctr"))
+
+  if (cxx) {
+    c_bigfloat(x)
+  } else {
+    new_vctr(x, class = c("bignum_bigfloat", "bignum_vctr"))
+  }
 }
 
 #' @rdname bigfloat

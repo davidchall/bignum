@@ -18,14 +18,14 @@ NULL
 #' @format NULL
 #' @rdname bignum-constants
 #' @export
-NA_biginteger_ <- new_biginteger(NA_character_)
+NA_biginteger_ <- new_biginteger(NA_character_, cxx = FALSE)
 
 #' @format NULL
 #' @rdname bignum-constants
 #' @export
-NA_bigfloat_ <- new_bigfloat(NA_character_)
+NA_bigfloat_ <- new_bigfloat(NA_character_, cxx = FALSE)
 
 #' @format NULL
 #' @rdname bignum-constants
 #' @export
-bigpi <- new_bigfloat("3.14159265358979323846264338327950288419716939937510")
+bigpi <- new_bigfloat("3.14159265358979323846264338327950288419716939937510", cxx = FALSE)

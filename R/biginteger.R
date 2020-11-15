@@ -12,9 +12,20 @@
 #' @name biginteger
 NULL
 
-new_biginteger <- function(x = character()) {
+#' Internal constructor for biginteger
+#'
+#' @param x Character vector for conversion
+#' @param cxx Boolean specifying whether to pass data through C++ functions.
+#'   Set to `FALSE` for namespace export of constants.
+#' @noRd
+new_biginteger <- function(x = character(), cxx = TRUE) {
   vec_assert(x, character())
-  new_vctr(x, class = c("bignum_biginteger", "bignum_vctr"))
+
+  if (cxx) {
+    c_biginteger(x)
+  } else {
+    new_vctr(x, class = c("bignum_biginteger", "bignum_vctr"))
+  }
 }
 
 #' @rdname biginteger

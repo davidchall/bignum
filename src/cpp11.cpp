@@ -5,6 +5,13 @@
 #include "cpp11/declarations.hpp"
 
 // bigfloat_interface.cpp
+cpp11::strings c_bigfloat(cpp11::strings x);
+extern "C" SEXP _bignum_c_bigfloat(SEXP x) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_bigfloat(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x)));
+  END_CPP11
+}
+// bigfloat_interface.cpp
 cpp11::logicals c_bigfloat_to_logical(cpp11::strings x);
 extern "C" SEXP _bignum_c_bigfloat_to_logical(SEXP x) {
   BEGIN_CPP11
@@ -313,6 +320,13 @@ extern "C" SEXP _bignum_c_bigfloat_lgamma(SEXP lhs) {
   END_CPP11
 }
 // biginteger_interface.cpp
+cpp11::strings c_biginteger(cpp11::strings x);
+extern "C" SEXP _bignum_c_biginteger(SEXP x) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_biginteger(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x)));
+  END_CPP11
+}
+// biginteger_interface.cpp
 cpp11::logicals c_biginteger_to_logical(cpp11::strings x);
 extern "C" SEXP _bignum_c_biginteger_to_logical(SEXP x) {
   BEGIN_CPP11
@@ -455,6 +469,7 @@ extern "C" SEXP _bignum_c_biginteger_sign(SEXP lhs) {
 
 extern "C" {
 /* .Call calls */
+extern SEXP _bignum_c_bigfloat(SEXP);
 extern SEXP _bignum_c_bigfloat_abs(SEXP);
 extern SEXP _bignum_c_bigfloat_acos(SEXP);
 extern SEXP _bignum_c_bigfloat_acosh(SEXP);
@@ -499,6 +514,7 @@ extern SEXP _bignum_c_bigfloat_to_double(SEXP);
 extern SEXP _bignum_c_bigfloat_to_integer(SEXP);
 extern SEXP _bignum_c_bigfloat_to_logical(SEXP);
 extern SEXP _bignum_c_bigfloat_trunc(SEXP);
+extern SEXP _bignum_c_biginteger(SEXP);
 extern SEXP _bignum_c_biginteger_abs(SEXP);
 extern SEXP _bignum_c_biginteger_add(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_compare(SEXP, SEXP, SEXP);
@@ -521,6 +537,7 @@ extern SEXP _bignum_c_biginteger_to_integer(SEXP);
 extern SEXP _bignum_c_biginteger_to_logical(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_bignum_c_bigfloat",              (DL_FUNC) &_bignum_c_bigfloat,              1},
     {"_bignum_c_bigfloat_abs",          (DL_FUNC) &_bignum_c_bigfloat_abs,          1},
     {"_bignum_c_bigfloat_acos",         (DL_FUNC) &_bignum_c_bigfloat_acos,         1},
     {"_bignum_c_bigfloat_acosh",        (DL_FUNC) &_bignum_c_bigfloat_acosh,        1},
@@ -565,6 +582,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat_to_integer",   (DL_FUNC) &_bignum_c_bigfloat_to_integer,   1},
     {"_bignum_c_bigfloat_to_logical",   (DL_FUNC) &_bignum_c_bigfloat_to_logical,   1},
     {"_bignum_c_bigfloat_trunc",        (DL_FUNC) &_bignum_c_bigfloat_trunc,        1},
+    {"_bignum_c_biginteger",            (DL_FUNC) &_bignum_c_biginteger,            1},
     {"_bignum_c_biginteger_abs",        (DL_FUNC) &_bignum_c_biginteger_abs,        1},
     {"_bignum_c_biginteger_add",        (DL_FUNC) &_bignum_c_biginteger_add,        2},
     {"_bignum_c_biginteger_compare",    (DL_FUNC) &_bignum_c_biginteger_compare,    3},
