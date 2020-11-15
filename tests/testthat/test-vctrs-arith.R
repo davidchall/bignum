@@ -1,7 +1,7 @@
 test_that("addition works", {
   x <- 2
   y <- 3
-  ans <- 5
+  ans <- x + y
 
   expect_equal(biginteger(x) + biginteger(y), biginteger(ans))
   expect_equal(bigfloat(x) + bigfloat(y), bigfloat(ans))
@@ -18,12 +18,17 @@ test_that("addition works", {
   expect_equal(as.double(x) + biginteger(y), bigfloat(ans))
   expect_equal(bigfloat(x) + as.double(y), bigfloat(ans))
   expect_equal(as.double(x) + bigfloat(y), bigfloat(ans))
+
+  expect_error(biginteger(x) + as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) + biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) + as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) + bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("subtraction works", {
   x <- 2
   y <- 3
-  ans <- -1
+  ans <- x - y
 
   expect_equal(biginteger(x) - biginteger(y), biginteger(ans))
   expect_equal(bigfloat(x) - bigfloat(y), bigfloat(ans))
@@ -40,12 +45,17 @@ test_that("subtraction works", {
   expect_equal(as.double(x) - biginteger(y), bigfloat(ans))
   expect_equal(bigfloat(x) - as.double(y), bigfloat(ans))
   expect_equal(as.double(x) - bigfloat(y), bigfloat(ans))
+
+  expect_error(biginteger(x) - as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) - biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) - as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) - bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("multiplication works", {
   x <- 2
   y <- 3
-  ans <- 6
+  ans <- x * y
 
   expect_equal(biginteger(x) * biginteger(y), biginteger(ans))
   expect_equal(bigfloat(x) * bigfloat(y), bigfloat(ans))
@@ -62,12 +72,17 @@ test_that("multiplication works", {
   expect_equal(as.double(x) * biginteger(y), bigfloat(ans))
   expect_equal(bigfloat(x) * as.double(y), bigfloat(ans))
   expect_equal(as.double(x) * bigfloat(y), bigfloat(ans))
+
+  expect_error(biginteger(x) * as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) * biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) * as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) * bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("division works", {
   x <- 6
   y <- 3
-  ans <- 2
+  ans <- x / y
 
   expect_equal(biginteger(x) / biginteger(y), bigfloat(ans))
   expect_equal(bigfloat(x) / bigfloat(y), bigfloat(ans))
@@ -84,12 +99,17 @@ test_that("division works", {
   expect_equal(as.double(x) / biginteger(y), bigfloat(ans))
   expect_equal(bigfloat(x) / as.double(y), bigfloat(ans))
   expect_equal(as.double(x) / bigfloat(y), bigfloat(ans))
+
+  expect_error(biginteger(x) / as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) / biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) / as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) / bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("exponentiation works", {
   x <- 2
   y <- 3
-  ans <- 8
+  ans <- x^y
 
   expect_equal(biginteger(x) ^ biginteger(y), biginteger(ans))
   expect_equal(bigfloat(x) ^ bigfloat(y), bigfloat(ans))
@@ -106,12 +126,17 @@ test_that("exponentiation works", {
   expect_equal(as.double(x) ^ biginteger(y), bigfloat(ans))
   expect_equal(bigfloat(x) ^ as.double(y), bigfloat(ans))
   expect_equal(as.double(x) ^ bigfloat(y), bigfloat(ans))
+
+  expect_error(biginteger(x) ^ as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) ^ biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) ^ as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) ^ bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("modulo works", {
   x <- 5
   y <- 2
-  ans <- 1
+  ans <- x %% y
 
   expect_equal(biginteger(x) %% biginteger(y), biginteger(ans))
   expect_equal(bigfloat(x) %% bigfloat(y), bigfloat(ans))
@@ -128,12 +153,17 @@ test_that("modulo works", {
   expect_equal(as.double(x) %% biginteger(y), bigfloat(ans))
   expect_equal(bigfloat(x) %% as.double(y), bigfloat(ans))
   expect_equal(as.double(x) %% bigfloat(y), bigfloat(ans))
+
+  expect_error(biginteger(x) %% as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) %% biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) %% as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) %% bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("quotient works", {
   x <- 5
   y <- 2
-  ans <- 2
+  ans <- x %/% y
 
   expect_equal(biginteger(x) %/% biginteger(y), biginteger(ans))
   expect_equal(bigfloat(x) %/% bigfloat(y), biginteger(ans))
@@ -150,6 +180,11 @@ test_that("quotient works", {
   expect_equal(as.double(x) %/% biginteger(y), biginteger(ans))
   expect_equal(bigfloat(x) %/% as.double(y), biginteger(ans))
   expect_equal(as.double(x) %/% bigfloat(y), biginteger(ans))
+
+  expect_error(biginteger(x) %/% as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) %/% biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x) %/% as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x) %/% bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("unary operations work", {
