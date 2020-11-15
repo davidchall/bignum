@@ -41,7 +41,7 @@ cpp11::integers c_bigfloat_to_integer(cpp11::strings x) {
     } else if (input.data[i] < vmin || input.data[i] > vmax) {
       output[i] = NA_INTEGER;
     } else {
-      output[i] = input.data[i].convert_to<int>();
+      output[i] = static_cast<int>(input.data[i]);
     }
   }
 
@@ -57,7 +57,7 @@ cpp11::doubles c_bigfloat_to_double(cpp11::strings x) {
     if (input.is_na[i]) {
       output[i] = NA_REAL;
     } else {
-      output[i] = input.data[i].convert_to<double>();
+      output[i] = static_cast<double>(input.data[i]);
     }
   }
 
