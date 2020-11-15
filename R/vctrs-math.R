@@ -3,7 +3,7 @@
 #' @name bignum-math
 NULL
 
-vec_math_bignum <- function(.fn, .x, ..., na.rm = FALSE) {
+vec_math_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
   switch(
     .fn,
 
@@ -58,7 +58,7 @@ vec_math_bignum <- function(.fn, .x, ..., na.rm = FALSE) {
 
 #' @export
 vec_math.bignum_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
-  vec_math_bignum(.fn, .x, ..., na.rm = na.rm)
+  vec_math_bigfloat(.fn, .x, ..., na.rm = na.rm)
 }
 
 #' @export
@@ -87,6 +87,6 @@ vec_math.bignum_biginteger <- function(.fn, .x, ..., na.rm = FALSE) {
     is.finite = !is.na(.x),
     is.infinite = FALSE,
 
-    vec_math_bignum(.fn, .x, ..., na.rm = na.rm)
+    vec_math_bigfloat(.fn, .x, ..., na.rm = na.rm)
   )
 }
