@@ -145,17 +145,17 @@ vec_cast.character.bignum_bigfloat <- function(x, to, ..., x_arg = "", to_arg = 
 
 #' @export
 as.logical.bignum_bigfloat <- function(x, ...) {
-  vec_cast(x, logical())
+  warn_on_lossy_cast(vec_cast(x, logical()))
 }
 
 #' @export
 as.integer.bignum_bigfloat <- function(x, ...) {
-  vec_cast(x, integer())
+  warn_on_lossy_cast(vec_cast(x, integer()))
 }
 
 #' @export
 as.double.bignum_bigfloat <- function(x, ...) {
-  vec_cast(x, double())
+  warn_on_lossy_cast(vec_cast(x, double()))
 }
 
 #' @export

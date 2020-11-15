@@ -78,16 +78,36 @@ test_that("casting works", {
 })
 
 test_that("lossy casts are caught", {
-  expect_error(as.logical(as_bigfloat(2)), class = "vctrs_error_cast_lossy")
+  # bigfloat -> logical
+  lossy_val <- bigfloat(2)
+  expect_error(vec_cast(lossy_val, logical()), class = "vctrs_error_cast_lossy")
+  expect_warning(as.logical(lossy_val), class = "bignum_warning_cast_lossy")
 
-  # R integer type is a 32-bit signed integer
-  max_integer <- as_bigfloat(2)^31 - 1
-  expect_equal(as.integer(max_integer), 2147483647L)
-  expect_error(as.integer(max_integer + 1L), class = "vctrs_error_cast_lossy")
+  # bigfloat -> integer
+  lossy_val <- bigfloat(2)^31L
+  expect_equal(as.integer(lossy_val - 1L), 2147483647L)
+  expect_error(vec_cast(lossy_val, integer()), class = "vctrs_error_cast_lossy")
+  expect_warning(as.integer(lossy_val), class = "bignum_warning_cast_lossy")
 
-  min_integer <- -max_integer
-  expect_equal(as.integer(min_integer), -2147483647L)
-  expect_error(as.integer(min_integer - 1L), class = "vctrs_error_cast_lossy")
+  lossy_val <- -lossy_val
+  expect_equal(as.integer(lossy_val + 1L), -2147483647L)
+  expect_error(vec_cast(lossy_val, integer()), class = "vctrs_error_cast_lossy")
+  expect_warning(as.integer(lossy_val), class = "bignum_warning_cast_lossy")
+
+  # bigfloat -> double
+  lossy_val <- bigfloat(2)^53L + 1
+  expect_equal(as.double(lossy_val - 1L), 9007199254740992)
+  expect_error(vec_cast(lossy_val, double()), class = "vctrs_error_cast_lossy")
+  expect_warning(as.double(lossy_val), class = "bignum_warning_cast_lossy")
+
+  lossy_val <- -lossy_val
+  expect_equal(as.double(lossy_val + 1L), -9007199254740992)
+  expect_error(vec_cast(lossy_val, double()), class = "vctrs_error_cast_lossy")
+  expect_warning(as.double(lossy_val), class = "bignum_warning_cast_lossy")
+
+  lossy_val <- bigfloat(1) / 3
+  expect_error(vec_cast(lossy_val, double()), class = "vctrs_error_cast_lossy")
+  expect_warning(as.double(lossy_val), class = "bignum_warning_cast_lossy")
 })
 
 test_that("combination works", {
