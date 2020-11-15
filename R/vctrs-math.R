@@ -83,9 +83,9 @@ vec_math.bignum_biginteger <- function(.fn, .x, ..., na.rm = FALSE) {
 
     # Other
     mean = c_biginteger_sum(.x, na.rm) / sum(!is.na(.x)),
-    is.nan = FALSE,
+    is.nan = rep_len(FALSE, length(.x)),
     is.finite = !is.na(.x),
-    is.infinite = FALSE,
+    is.infinite = rep_len(FALSE, length(.x)),
 
     vec_math_bigfloat(.fn, .x, ..., na.rm = na.rm)
   )
