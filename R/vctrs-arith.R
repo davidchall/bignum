@@ -47,22 +47,6 @@ vec_arith_biginteger <- function(op, x, y) {
   )
 }
 
-# base -------------------------------------------------------------------------
-
-#' @method vec_arith integer
-#' @export
-#' @export vec_arith.integer
-#' @rdname bignum-vctrs
-vec_arith.integer <- function(op, x, y, ...) {
-  UseMethod("vec_arith.integer", y)
-}
-
-#' @method vec_arith.integer default
-#' @export
-vec_arith.integer.default <- function(op, x, y, ...) {
-  vec_arith.numeric(op, x, y)
-}
-
 
 # common -----------------------------------------------------------------------
 
@@ -132,14 +116,22 @@ vec_arith.bignum_biginteger.bignum_biginteger <- function(op, x, y, ...) {
   vec_arith_biginteger(op, x, y)
 }
 
-#' @method vec_arith.bignum_biginteger integer
+#' @method vec_arith.bignum_biginteger numeric
 #' @export
-vec_arith.bignum_biginteger.integer <- function(op, x, y, ...) {
-  vec_arith_biginteger(op, x, y)
+vec_arith.bignum_biginteger.numeric <- function(op, x, y, ...) {
+  if (is.integer(y)) {
+    vec_arith_biginteger(op, x, y)
+  } else {
+    vec_arith_bigfloat(op, x, y)
+  }
 }
 
-#' @method vec_arith.integer bignum_biginteger
+#' @method vec_arith.numeric bignum_biginteger
 #' @export
-vec_arith.integer.bignum_biginteger <- function(op, x, y, ...) {
-  vec_arith_biginteger(op, x, y)
+vec_arith.numeric.bignum_biginteger <- function(op, x, y, ...) {
+  if (is.integer(x)) {
+    vec_arith_biginteger(op, x, y)
+  } else {
+    vec_arith_bigfloat(op, x, y)
+  }
 }

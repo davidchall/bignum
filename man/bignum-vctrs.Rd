@@ -2,13 +2,10 @@
 % Please edit documentation in R/bignum-package.R, R/vctrs-arith.R
 \name{bignum-vctrs}
 \alias{bignum-vctrs}
-\alias{vec_arith.integer}
 \alias{vec_arith.bignum_vctr}
 \alias{vec_arith.bignum_biginteger}
 \title{Internal vctrs methods}
 \usage{
-\method{vec_arith}{integer}(op, x, y, ...)
-
 \method{vec_arith}{bignum_vctr}(op, x, y, ...)
 
 \method{vec_arith}{bignum_biginteger}(op, x, y, ...)
