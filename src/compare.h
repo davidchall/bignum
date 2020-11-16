@@ -6,7 +6,7 @@
 template<class Vec>
 cpp11::integers bignum_cmp(const Vec &lhs, const Vec &rhs, bool na_equal) {
   if (lhs.size() != rhs.size()) {
-    cpp11::stop("Incompatible sizes");
+    cpp11::stop("Incompatible sizes"); // # nocov
   }
 
   cpp11::writable::integers output(lhs.size());

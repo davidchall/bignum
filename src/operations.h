@@ -12,7 +12,7 @@ Vec unary_operation(const Vec &x, const Func &UnaryOperation) {
       try {
         output.data[i] = UnaryOperation(x.data[i]);
       } catch (...) {
-        output.is_na[i] = true;
+        output.is_na[i] = true; // # nocov
       }
     }
   }
@@ -23,7 +23,7 @@ Vec unary_operation(const Vec &x, const Func &UnaryOperation) {
 template<class Vec, class Func>
 Vec binary_operation(const Vec &lhs, const Vec &rhs, const Func &BinaryOperation) {
   if (lhs.size() != rhs.size()) {
-    cpp11::stop("Incompatible sizes");
+    cpp11::stop("Incompatible sizes"); // # nocov
   }
 
   Vec output(lhs.size());
@@ -35,7 +35,7 @@ Vec binary_operation(const Vec &lhs, const Vec &rhs, const Func &BinaryOperation
       try {
         output.data[i] = BinaryOperation(lhs.data[i], rhs.data[i]);
       } catch (...) {
-        output.is_na[i] = true;
+        output.is_na[i] = true; // # nocov
       }
     }
   }
@@ -46,7 +46,7 @@ Vec binary_operation(const Vec &lhs, const Vec &rhs, const Func &BinaryOperation
 template<class Vec, class Func>
 Vec binary_operation(const Vec &lhs, const cpp11::integers &rhs, const Func &BinaryOperation) {
   if (lhs.size() != rhs.size()) {
-    cpp11::stop("Incompatible sizes");
+    cpp11::stop("Incompatible sizes"); // # nocov
   }
 
   Vec output(lhs.size());
@@ -58,7 +58,7 @@ Vec binary_operation(const Vec &lhs, const cpp11::integers &rhs, const Func &Bin
       try {
         output.data[i] = BinaryOperation(lhs.data[i], rhs[i]);
       } catch (...) {
-        output.is_na[i] = true;
+        output.is_na[i] = true; // # nocov
       }
     }
   }
@@ -69,7 +69,7 @@ Vec binary_operation(const Vec &lhs, const cpp11::integers &rhs, const Func &Bin
 template<class Vec, class Func>
 Vec accumulate_operation(const Vec &x, const Vec &init, bool na_rm, const Func &BinaryOperation) {
   if (init.size() != 1) {
-    cpp11::stop("Initial value of C++ accumulate function must have 1 element");
+    cpp11::stop("Initial value of C++ accumulate function must have 1 element"); // # nocov
   }
 
   Vec output = init;
@@ -86,7 +86,7 @@ Vec accumulate_operation(const Vec &x, const Vec &init, bool na_rm, const Func &
       try {
         output.data[0] = BinaryOperation(output.data[0], x.data[i]);
       } catch (...) {
-        output.is_na[0] = true;
+        output.is_na[0] = true; // # nocov
         break;
       }
     }
@@ -110,7 +110,7 @@ Vec partial_accumulate_operation(const Vec &x, const Func &BinaryOperation) {
       try {
         output.data[i] = BinaryOperation(output.data[i-1], x.data[i]);
       } catch (...) {
-        output.is_na[i] = true;
+        output.is_na[i] = true; // # nocov
         break;
       }
     }

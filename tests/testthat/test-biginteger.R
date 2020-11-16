@@ -1,6 +1,7 @@
 test_that("zero-length input works", {
   expect_s3_class(biginteger(), "bignum_biginteger")
   expect_length(biginteger(), 0)
+  expect_true(is_biginteger(biginteger()))
 })
 
 test_that("data input works", {

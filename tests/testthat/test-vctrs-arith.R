@@ -216,4 +216,7 @@ test_that("other operations fail", {
   expect_error(as.double(x) & biginteger(y), class = "vctrs_error_incompatible_op")
   expect_error(bigfloat(x) & as.double(y), class = "vctrs_error_incompatible_op")
   expect_error(as.double(x) & bigfloat(y), class = "vctrs_error_incompatible_op")
+
+  expect_error(!biginteger(x), class = "vctrs_error_incompatible_op")
+  expect_error(!bigfloat(x), class = "vctrs_error_incompatible_op")
 })

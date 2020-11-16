@@ -26,7 +26,7 @@ new_bigfloat <- function(x = character(), cxx = TRUE) {
   if (cxx) {
     c_bigfloat(x)
   } else {
-    new_vctr(x, class = c("bignum_bigfloat", "bignum_vctr"))
+    new_vctr(x, class = c("bignum_bigfloat", "bignum_vctr")) # nocov
   }
 }
 
@@ -189,7 +189,7 @@ as_bigfloat.character <- function(x) {
 
 #' @export
 vec_proxy_compare.bignum_bigfloat <- function(x, ...) {
-  abort("vec_proxy_compare is not implemented for vectors of type <bigfloat>.")
+  stop_unsupported(x, "vec_proxy_compare") # nocov
 }
 
 vec_compare_impl.bignum_bigfloat <- function(x, y, na_equal = FALSE) {
