@@ -2,7 +2,7 @@
 % Please edit documentation in R/vctrs-math.R
 \name{bignum-math}
 \alias{bignum-math}
-\title{Mathematical operations}
+\title{Mathematical Operations}
 \description{
-Mathematical operations
+Mathematical Operations
 }

@@ -1,7 +1,47 @@
-#' Arithmetic operations
+#' Arithmetic Operations
 #'
-#' [biginteger()] and [bigfloat()] vectors support infix operators:
-#' `+`, `-`, `*`, `/`, `^`, `%%` and `%/%`.
+#' @description
+#' [`biginteger`] and [`bigfloat`] vectors support the standard
+#' [arithmetic operations][Arithmetic].
+#'
+#' ```
+#' + x
+#' - x
+#' x + y
+#' x - y
+#' x * y
+#' x / y
+#' x ^ y
+#' x %% y
+#' x %/% y
+#' ```
+#'
+#' @section Recycling rules:
+#' The two inputs have **compatible sizes** if:
+#'
+#' * Both input vectors have the same length, or
+#' * One input is a scalar (length 1) which is recycled.
+#'
+#' @return
+#' These arithmetic operations are **type-stable**, which means the output type
+#' depends only on the input types (not the input values). A biginteger vector
+#' is returned when the result must be an integer (e.g., addition of two integers).
+#' Otherwise a bigfloat vector is returned.
+#'
+#' The following table summarizes the return type for each combination, where
+#' "integer-like" refers to integer and biginteger vectors and "float-like"
+#' refers to double and bigfloat vectors.
+#'
+#' | **Input 1**  | **Operator**        | **Input 2**  |     | **Result** |
+#' | :----------- | :-----------------: | :----------- | :-: | :--------- |
+#' | Integer-like | +, -, *, ^, %%, %/% | Integer-like | ->  | biginteger |
+#' | Integer-like | /                   | Integer-like | ->  | bigfloat   |
+#' | Integer-like | +, -, *, /, ^, %%   | Float-like   | ->  | bigfloat   |
+#' | Integer-like | %/%                 | Float-like   | ->  | biginteger |
+#' | Float-like   | +, -, *, /, ^, %%   | Integer-like | ->  | bigfloat   |
+#' | Float-like   | %/%                 | Integer-like | ->  | biginteger |
+#' | Float-like   | +, -, *, /, ^, %%   | Float-like   | ->  | bigfloat   |
+#' | Float-like   | %/%                 | Float-like   | ->  | biginteger |
 #'
 #' @name bignum-arith
 NULL

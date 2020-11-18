@@ -1,4 +1,4 @@
-#' Mathematical operations
+#' Mathematical Operations
 #'
 #' @name bignum-math
 NULL
