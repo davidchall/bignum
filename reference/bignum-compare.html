@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • bignum</title>
+<title>Comparison Operations — bignum-compare • bignum</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,16 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Comparison Operations — bignum-compare" />
+<meta property="og:description" content="biginteger and bigfloat vectors support the standard
+comparison operations.x &amp;lt; y
+x &amp;gt; y
+x &amp;lt;= y
+x &amp;gt;= y
+x == y
+x != y
+
+" />
 
 
 
@@ -58,7 +67,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -100,91 +109,41 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Comparison Operations</h1>
+    
+    <div class="hidden name"><code>bignum-compare.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p><code><a href='biginteger.html'>biginteger</a></code> and <code><a href='bigfloat.html'>bigfloat</a></code> vectors support the standard
+<a href='https://rdrr.io/r/base/Comparison.html'>comparison operations</a>.</p><pre><span class='va'>x</span> <span class='op'>&lt;</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>&gt;</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>&lt;=</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>&gt;=</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>==</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>!=</span> <span class='va'>y</span>
+</pre>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    </div>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-vector-types" class="hasAnchor"><a href="#section-vector-types" class="anchor"></a>Vector types</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="biginteger.html">biginteger()</a></code> <code><a href="biginteger.html">as_biginteger()</a></code> <code><a href="biginteger.html">is_biginteger()</a></code> </p>
-        </td>
-        <td><p>Arbitrary-Precision Integer Vectors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bigfloat.html">bigfloat()</a></code> <code><a href="bigfloat.html">as_bigfloat()</a></code> <code><a href="bigfloat.html">is_bigfloat()</a></code> </p>
-        </td>
-        <td><p>High-Precision Numeric Vectors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bignum-constants.html">NA_biginteger_</a></code> <code><a href="bignum-constants.html">NA_bigfloat_</a></code> <code><a href="bignum-constants.html">bigpi</a></code> </p>
-        </td>
-        <td><p>Constants</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-operations" class="hasAnchor"><a href="#section-operations" class="anchor"></a>Operations</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="bignum-format.html">format(<i>&lt;bignum_biginteger&gt;</i>)</a></code> <code><a href="bignum-format.html">format(<i>&lt;bignum_bigfloat&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Formatting</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bignum-compare.html">bignum-compare</a></code> </p>
-        </td>
-        <td><p>Comparison Operations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bignum-arith.html">bignum-arith</a></code> </p>
-        </td>
-        <td><p>Arithmetic Operations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bignum-math.html">bignum-math</a></code> </p>
-        </td>
-        <td><p>Mathematical Operations</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A logical vector.</p>
+    <h2 class="hasAnchor" id="recycling-rules"><a class="anchor" href="#recycling-rules"></a>Recycling rules</h2>
+
+    
+
+<p>The two inputs have <strong>compatible sizes</strong> if:</p><ul>
+<li><p>Both input vectors have the same length, or</p></li>
+<li><p>One input is a scalar (length 1) which is recycled.</p></li>
+</ul>
+
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
