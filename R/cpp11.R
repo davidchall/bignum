@@ -16,8 +16,8 @@ c_bigfloat_to_double <- function(x) {
   .Call("_bignum_c_bigfloat_to_double", x, PACKAGE = "bignum")
 }
 
-c_bigfloat_format <- function(x, scientific) {
-  .Call("_bignum_c_bigfloat_format", x, scientific, PACKAGE = "bignum")
+c_bigfloat_format <- function(x) {
+  .Call("_bignum_c_bigfloat_format", x, PACKAGE = "bignum")
 }
 
 c_bigfloat_compare <- function(lhs, rhs, na_equal) {

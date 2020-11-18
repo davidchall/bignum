@@ -1,7 +1,6 @@
 #' Formatting
 #'
 #' @param x A [`biginteger`] or [`bigfloat`] vector.
-#' @param scientific Logical specifying whether to use scientific format.
 #' @param ... These dots are for future extensions and must be empty.
 #'
 #' @name bignum-format
@@ -15,10 +14,6 @@ format.bignum_biginteger <- function(x, ...) {
 
 #' @rdname bignum-format
 #' @export
-format.bignum_bigfloat <- function(x, scientific = FALSE, ...) {
-  if (!is_bool(scientific)) {
-    abort("`scientific` must be TRUE or FALSE.")
-  }
-
-  c_bigfloat_format(x, scientific)
+format.bignum_bigfloat <- function(x, ...) {
+  c_bigfloat_format(x)
 }

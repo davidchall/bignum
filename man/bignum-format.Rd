@@ -8,14 +8,12 @@
 \usage{
 \method{format}{bignum_biginteger}(x, ...)
 
-\method{format}{bignum_bigfloat}(x, scientific = FALSE, ...)
+\method{format}{bignum_bigfloat}(x, ...)
 }
 \arguments{
 \item{x}{A \code{\link{biginteger}} or \code{\link{bigfloat}} vector.}
 
 \item{...}{These dots are for future extensions and must be empty.}
-
-\item{scientific}{Logical specifying whether to use scientific format.}
 }
 \description{
 Formatting

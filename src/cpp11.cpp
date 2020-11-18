@@ -33,10 +33,10 @@ extern "C" SEXP _bignum_c_bigfloat_to_double(SEXP x) {
   END_CPP11
 }
 // bigfloat_interface.cpp
-cpp11::strings c_bigfloat_format(cpp11::strings x, bool scientific);
-extern "C" SEXP _bignum_c_bigfloat_format(SEXP x, SEXP scientific) {
+cpp11::strings c_bigfloat_format(cpp11::strings x);
+extern "C" SEXP _bignum_c_bigfloat_format(SEXP x) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_bigfloat_format(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x), cpp11::as_cpp<cpp11::decay_t<bool>>(scientific)));
+    return cpp11::as_sexp(c_bigfloat_format(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x)));
   END_CPP11
 }
 // bigfloat_interface.cpp
@@ -490,7 +490,7 @@ extern SEXP _bignum_c_bigfloat_divide(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_exp(SEXP);
 extern SEXP _bignum_c_bigfloat_expm1(SEXP);
 extern SEXP _bignum_c_bigfloat_floor(SEXP);
-extern SEXP _bignum_c_bigfloat_format(SEXP, SEXP);
+extern SEXP _bignum_c_bigfloat_format(SEXP);
 extern SEXP _bignum_c_bigfloat_gamma(SEXP);
 extern SEXP _bignum_c_bigfloat_lgamma(SEXP);
 extern SEXP _bignum_c_bigfloat_log(SEXP);
@@ -558,7 +558,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat_exp",          (DL_FUNC) &_bignum_c_bigfloat_exp,          1},
     {"_bignum_c_bigfloat_expm1",        (DL_FUNC) &_bignum_c_bigfloat_expm1,        1},
     {"_bignum_c_bigfloat_floor",        (DL_FUNC) &_bignum_c_bigfloat_floor,        1},
-    {"_bignum_c_bigfloat_format",       (DL_FUNC) &_bignum_c_bigfloat_format,       2},
+    {"_bignum_c_bigfloat_format",       (DL_FUNC) &_bignum_c_bigfloat_format,       1},
     {"_bignum_c_bigfloat_gamma",        (DL_FUNC) &_bignum_c_bigfloat_gamma,        1},
     {"_bignum_c_bigfloat_lgamma",       (DL_FUNC) &_bignum_c_bigfloat_lgamma,       1},
     {"_bignum_c_bigfloat_log",          (DL_FUNC) &_bignum_c_bigfloat_log,          1},

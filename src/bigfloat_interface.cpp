@@ -74,13 +74,9 @@ cpp11::doubles c_bigfloat_to_double(cpp11::strings x) {
  *  Other  *
  *---------*/
 [[cpp11::register]]
-cpp11::strings c_bigfloat_format(cpp11::strings x, bool scientific) {
+cpp11::strings c_bigfloat_format(cpp11::strings x) {
   std::stringstream ss;
   ss.precision(std::numeric_limits<bigfloat_type>::digits10);
-
-  if (scientific) {
-    ss << std::scientific;
-  }
 
   return bigfloat_vector(x).format(ss);
 }
