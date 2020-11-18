@@ -184,23 +184,6 @@ as_bigfloat.character <- function(x) {
   new_bigfloat(x)
 }
 
-
-# Comparison operations --------------------------------------------------------
-
-#' @export
-vec_proxy_compare.bignum_bigfloat <- function(x, ...) {
-  stop_unsupported(x, "vec_proxy_compare") # nocov
-}
-
-vec_compare_impl.bignum_bigfloat <- function(x, y, na_equal = FALSE) {
-  c_bigfloat_compare(x, y, na_equal)
-}
-
-#' @export
-vec_proxy_order.bignum_bigfloat <- function(x, ...) {
-  c_bigfloat_rank(x)
-}
-
 #' @export
 is.na.bignum_bigfloat <- function(x) {
   is.na(c_bigfloat_to_double(x))

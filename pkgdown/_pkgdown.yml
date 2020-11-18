@@ -7,5 +7,6 @@ reference:
   - title: "Operations"
     contents:
     - bignum-format
+    - bignum-compare
     - bignum-arith
     - bignum-math

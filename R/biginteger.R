@@ -163,20 +163,3 @@ as_biginteger.default <- function(x) {
 as_biginteger.character <- function(x) {
   new_biginteger(x)
 }
-
-
-# Comparison operations --------------------------------------------------------
-
-#' @export
-vec_proxy_compare.bignum_biginteger <- function(x, ...) {
-  stop_unsupported(x, "vec_proxy_compare") # nocov
-}
-
-vec_compare_impl.bignum_biginteger <- function(x, y, na_equal = FALSE) {
-  c_biginteger_compare(x, y, na_equal)
-}
-
-#' @export
-vec_proxy_order.bignum_biginteger <- function(x, ...) {
-  c_biginteger_rank(x)
-}
