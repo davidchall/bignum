@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Arithmetic operations — bignum-arith • bignum</title>
+<title>Arithmetic Operations — bignum-arith • bignum</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,19 @@
 
 
 
-<meta property="og:title" content="Arithmetic operations — bignum-arith" />
-<meta property="og:description" content="biginteger() and bigfloat() vectors support infix operators:
-+, -, *, /, ^, %% and %/%." />
+<meta property="og:title" content="Arithmetic Operations — bignum-arith" />
+<meta property="og:description" content="biginteger and bigfloat vectors support the standard
+arithmetic operations.+ x
+- x
+x + y
+x - y
+x * y
+x / y
+x ^ y
+x %% y
+x %/% y
+
+" />
 
 
 
@@ -104,17 +114,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Arithmetic operations</h1>
+    <h1>Arithmetic Operations</h1>
     
     <div class="hidden name"><code>bignum-arith.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code><a href='biginteger.html'>biginteger()</a></code> and <code><a href='bigfloat.html'>bigfloat()</a></code> vectors support infix operators:
-<code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code>, <code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>, <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code>, <code><a href='https://rdrr.io/r/base/Arithmetic.html'>/</a></code>, <code><a href='https://rdrr.io/r/base/Arithmetic.html'>^</a></code>, <code><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></code> and <code><a href='https://rdrr.io/r/base/Arithmetic.html'>%/%</a></code>.</p>
+    <p><code><a href='biginteger.html'>biginteger</a></code> and <code><a href='bigfloat.html'>bigfloat</a></code> vectors support the standard
+<a href='https://rdrr.io/r/base/Arithmetic.html'>arithmetic operations</a>.</p><pre><span class='op'>+</span> <span class='va'>x</span>
+<span class='op'>-</span> <span class='va'>x</span>
+<span class='va'>x</span> <span class='op'>+</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>-</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>*</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>/</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>^</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>%%</span> <span class='va'>y</span>
+<span class='va'>x</span> <span class='op'>%/%</span> <span class='va'>y</span>
+</pre>
+
     </div>
 
 
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>These arithmetic operations are <strong>type-stable</strong>, which means the output type
+depends only on the input types (not the input values). A biginteger vector
+is returned when the result must be an integer (e.g., addition of two integers).
+Otherwise a bigfloat vector is returned.</p>
+<p>The following table summarizes the return type for each combination, where
+"integer-like" refers to integer and biginteger vectors and "float-like"
+refers to double and bigfloat vectors.</p><table class='table'>
+<tr><td><strong>Input 1</strong></td><td><strong>Operator</strong></td><td><strong>Input 2</strong></td><td></td><td><strong>Result</strong></td></tr>
+<tr><td>Integer-like</td><td>+, -, *, ^, %%, %/%</td><td>Integer-like</td><td>-&gt;</td><td>biginteger</td></tr>
+<tr><td>Integer-like</td><td>/</td><td>Integer-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Integer-like</td><td>+, -, *, /, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Integer-like</td><td>%/%</td><td>Float-like</td><td>-&gt;</td><td>biginteger</td></tr>
+<tr><td>Float-like</td><td>+, -, *, /, ^, %%</td><td>Integer-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Float-like</td><td>%/%</td><td>Integer-like</td><td>-&gt;</td><td>biginteger</td></tr>
+<tr><td>Float-like</td><td>+, -, *, /, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Float-like</td><td>%/%</td><td>Float-like</td><td>-&gt;</td><td>biginteger</td></tr>
+</table>
+
+
+    <h2 class="hasAnchor" id="recycling-rules"><a class="anchor" href="#recycling-rules"></a>Recycling rules</h2>
+
+    
+
+<p>The two inputs have <strong>compatible sizes</strong> if:</p><ul>
+<li><p>Both input vectors have the same length, or</p></li>
+<li><p>One input is a scalar (length 1) which is recycled.</p></li>
+</ul>
 
 
   </div>
