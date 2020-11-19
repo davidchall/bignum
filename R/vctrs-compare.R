@@ -64,7 +64,7 @@ vec_compare_bignum2 <- function(x, y, na_equal = FALSE) {
 }
 
 vec_compare_bignum2.default <- function(x, y, na_equal = FALSE) {
-  stop_unsupported(x, "vec_compare_bignum2")
+  stop_unsupported(x, "vec_compare_bignum2") # nocov
 }
 
 

@@ -27,4 +27,20 @@ test_that("inequality comparisons work", {
     vec_compare_bignum(bigfloat(x), 0, na_equal = TRUE),
     vec_compare(x, 0, na_equal = TRUE)
   )
+  expect_equal(
+    vec_compare_bignum(0, bigfloat(x), na_equal = FALSE),
+    vec_compare(0, x, na_equal = FALSE)
+  )
+  expect_equal(
+    vec_compare_bignum(0, bigfloat(x), na_equal = TRUE),
+    vec_compare(0, x, na_equal = TRUE)
+  )
+  expect_equal(
+    vec_compare_bignum(bigfloat(x), NA, na_equal = FALSE),
+    vec_compare(x, NA, na_equal = FALSE)
+  )
+  expect_equal(
+    vec_compare_bignum(bigfloat(x), NA, na_equal = TRUE),
+    vec_compare(x, NA, na_equal = TRUE)
+  )
 })
