@@ -24,4 +24,7 @@ Creates or tests for arbitrary-precision integer vectors.
 \code{\link{NA_biginteger_}} to represent missing values.
 
 \code{\link[=format.bignum_biginteger]{format()}} for pretty printing.
+
+Operations supported by biginteger vectors: \link{bignum-compare}, \link{bignum-arith},
+\link{bignum-math}.
 }

@@ -11,6 +11,9 @@
 #' [`NA_bigfloat_`] to represent missing values.
 #'
 #' [`format()`][format.bignum_bigfloat()] for pretty printing.
+#'
+#' Operations supported by bigfloat vectors: [bignum-compare], [bignum-arith],
+#' [bignum-math].
 #' @name bigfloat
 NULL
 

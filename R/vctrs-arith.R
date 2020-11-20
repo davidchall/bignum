@@ -43,6 +43,7 @@
 #' | Float-like   | +, -, *, /, ^, %%   | Float-like   | ->  | bigfloat   |
 #' | Float-like   | %/%                 | Float-like   | ->  | biginteger |
 #'
+#' @seealso Base R [arithmetic operations][Arithmetic].
 #' @name bignum-arith
 NULL
 

@@ -25,3 +25,6 @@ The two inputs have \strong{compatible sizes} if:
 }
 }
 
+\seealso{
+Base R \link[=Comparison]{comparison operations}.
+}

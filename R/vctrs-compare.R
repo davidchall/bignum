@@ -15,6 +15,7 @@
 #'
 #' @inheritSection bignum-arith Recycling rules
 #' @return A logical vector.
+#' @seealso Base R [comparison operations][Comparison].
 #' @name bignum-compare
 NULL
 

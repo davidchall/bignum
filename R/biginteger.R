@@ -9,6 +9,9 @@
 #' [`NA_biginteger_`] to represent missing values.
 #'
 #' [`format()`][format.bignum_biginteger()] for pretty printing.
+#'
+#' Operations supported by biginteger vectors: [bignum-compare], [bignum-arith],
+#' [bignum-math].
 #' @name biginteger
 NULL
 
@@ -106,7 +109,7 @@ vec_cast.bignum_biginteger.integer <- function(x, to, ...) {
 #' @export
 vec_cast.integer.bignum_biginteger <- function(x, to, ..., x_arg = "", to_arg = "") {
   out <- c_biginteger_to_integer(x)
-  lossy <- abs(x) >= biginteger(2)^31L & !is.na(x)
+  lossy <- abs(x) >= biginteger(2^31) & !is.na(x)
   maybe_lossy_cast(out, x, to, lossy, x_arg = x_arg, to_arg = to_arg)
 }
 

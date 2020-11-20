@@ -45,3 +45,6 @@ The two inputs have \strong{compatible sizes} if:
 }
 }
 
+\seealso{
+Base R \link[=Arithmetic]{arithmetic operations}.
+}
