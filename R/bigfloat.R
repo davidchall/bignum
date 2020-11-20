@@ -126,7 +126,7 @@ vec_cast.bignum_bigfloat.double <- function(x, to, ...) {
 }
 
 #' @export
-vec_cast.double.bignum_bigfloat <- function(x, to, ...,  x_arg = "", to_arg = "") {
+vec_cast.double.bignum_bigfloat <- function(x, to, ..., x_arg = "", to_arg = "") {
   out <- c_bigfloat_to_double(x)
   out_compare <- vec_cast(out, bigfloat())
   x_na <- is.na(x)

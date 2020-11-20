@@ -111,26 +111,26 @@ test_that("exponentiation works", {
   y <- 3
   ans <- x^y
 
-  expect_equal(biginteger(x) ^ biginteger(y), biginteger(ans))
-  expect_equal(bigfloat(x) ^ bigfloat(y), bigfloat(ans))
+  expect_equal(biginteger(x)^biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x)^bigfloat(y), bigfloat(ans))
 
-  expect_equal(biginteger(x) ^ bigfloat(y), bigfloat(ans))
-  expect_equal(bigfloat(x) ^ biginteger(y), bigfloat(ans))
+  expect_equal(biginteger(x)^bigfloat(y), bigfloat(ans))
+  expect_equal(bigfloat(x)^biginteger(y), bigfloat(ans))
 
-  expect_equal(biginteger(x) ^ as.integer(y), biginteger(ans))
-  expect_equal(as.integer(x) ^ biginteger(y), biginteger(ans))
-  expect_equal(bigfloat(x) ^ as.integer(y), bigfloat(ans))
-  expect_equal(as.integer(x) ^ bigfloat(y), bigfloat(ans))
+  expect_equal(biginteger(x)^as.integer(y), biginteger(ans))
+  expect_equal(as.integer(x)^biginteger(y), biginteger(ans))
+  expect_equal(bigfloat(x)^as.integer(y), bigfloat(ans))
+  expect_equal(as.integer(x)^bigfloat(y), bigfloat(ans))
 
-  expect_equal(biginteger(x) ^ as.double(y), bigfloat(ans))
-  expect_equal(as.double(x) ^ biginteger(y), bigfloat(ans))
-  expect_equal(bigfloat(x) ^ as.double(y), bigfloat(ans))
-  expect_equal(as.double(x) ^ bigfloat(y), bigfloat(ans))
+  expect_equal(biginteger(x)^as.double(y), bigfloat(ans))
+  expect_equal(as.double(x)^biginteger(y), bigfloat(ans))
+  expect_equal(bigfloat(x)^as.double(y), bigfloat(ans))
+  expect_equal(as.double(x)^bigfloat(y), bigfloat(ans))
 
-  expect_error(biginteger(x) ^ as.character(y), class = "vctrs_error_incompatible_op")
-  expect_error(as.character(x) ^ biginteger(y), class = "vctrs_error_incompatible_op")
-  expect_error(bigfloat(x) ^ as.character(y), class = "vctrs_error_incompatible_op")
-  expect_error(as.character(x) ^ bigfloat(y), class = "vctrs_error_incompatible_op")
+  expect_error(biginteger(x)^as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x)^biginteger(y), class = "vctrs_error_incompatible_op")
+  expect_error(bigfloat(x)^as.character(y), class = "vctrs_error_incompatible_op")
+  expect_error(as.character(x)^bigfloat(y), class = "vctrs_error_incompatible_op")
 })
 
 test_that("modulo works", {
