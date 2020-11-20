@@ -1,5 +1,5 @@
 test_that("addition works", {
-  x <- 2
+  x <- c(2, NA)
   y <- 3
   ans <- x + y
 
@@ -26,7 +26,7 @@ test_that("addition works", {
 })
 
 test_that("subtraction works", {
-  x <- 2
+  x <- c(2, NA)
   y <- 3
   ans <- x - y
 
@@ -53,7 +53,7 @@ test_that("subtraction works", {
 })
 
 test_that("multiplication works", {
-  x <- 2
+  x <- c(2, NA)
   y <- 3
   ans <- x * y
 
@@ -80,7 +80,7 @@ test_that("multiplication works", {
 })
 
 test_that("division works", {
-  x <- 6
+  x <- c(6, NA)
   y <- 3
   ans <- x / y
 
@@ -107,7 +107,7 @@ test_that("division works", {
 })
 
 test_that("exponentiation works", {
-  x <- 2
+  x <- c(2, NA)
   y <- 3
   ans <- x^y
 
@@ -134,7 +134,7 @@ test_that("exponentiation works", {
 })
 
 test_that("modulo works", {
-  x <- 5
+  x <- c(5, NA)
   y <- 2
   ans <- x %% y
 
@@ -161,7 +161,7 @@ test_that("modulo works", {
 })
 
 test_that("quotient works", {
-  x <- 5
+  x <- c(5, NA)
   y <- 2
   ans <- x %/% y
 
@@ -188,7 +188,7 @@ test_that("quotient works", {
 })
 
 test_that("unary operations work", {
-  x <- 2
+  x <- c(2, NA)
 
   expect_equal(+biginteger(x), biginteger(x))
   expect_equal(+bigfloat(x), bigfloat(x))
@@ -198,7 +198,7 @@ test_that("unary operations work", {
 })
 
 test_that("other operations fail", {
-  x <- 2
+  x <- c(2, NA)
   y <- 3
 
   expect_error(biginteger(x) & biginteger(y), class = "vctrs_error_incompatible_op")

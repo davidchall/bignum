@@ -80,7 +80,7 @@ vec_arith_biginteger <- function(op, x, y) {
     "+" = c_biginteger_add(x2, y2),
     "-" = c_biginteger_subtract(x2, y2),
     "*" = c_biginteger_multiply(x2, y2),
-    "^" = c_biginteger_pow(x2, vec_cast(y, integer())),
+    "^" = c_biginteger_pow(x2, vec_cast(y2, integer())),
     "%%" = c_biginteger_modulo(x2, y2),
     "%/%" = c_biginteger_quotient(x2, y2),
     vec_arith_bigfloat(op, x, y)
