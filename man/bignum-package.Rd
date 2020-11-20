@@ -4,9 +4,14 @@
 \name{bignum-package}
 \alias{bignum}
 \alias{bignum-package}
-\title{bignum: What the Package Does (One Line, Title Case)}
+\title{bignum: Arbitrary-Precision Integer and Floating-Point Mathematics}
 \description{
-What the package does (one paragraph).
+S3 classes for storing and manipulating
+    arbitrary-precision integer and floating-point vectors, utilizing the
+    'Boost.Multiprecision' C++ library.  These extend the range and
+    precision of the fixed-precision 'integer' and 'double' types.  It is
+    specifically designed to work well with the 'tidyverse' collection of
+    R packages.
 }
 \author{
 \strong{Maintainer}: David Hall \email{david.hall.physics@gmail.com} (\href{https://orcid.org/0000-0002-2193-0480}{ORCID})
