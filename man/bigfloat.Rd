@@ -28,7 +28,4 @@ bigfloat(1) / 3
 \code{\link{NA_bigfloat_}} to represent missing values.
 
 \code{\link[=format.bignum_bigfloat]{format()}} for pretty printing.
-
-Operations supported by bigfloat vectors: \link{bignum-compare}, \link{bignum-arith},
-\link{bignum-math}.
 }

@@ -9,9 +9,6 @@
 #' [`NA_biginteger_`] to represent missing values.
 #'
 #' [`format()`][format.bignum_biginteger()] for pretty printing.
-#'
-#' Operations supported by biginteger vectors: [bignum-compare], [bignum-arith],
-#' [bignum-math].
 #' @name biginteger
 NULL
 
