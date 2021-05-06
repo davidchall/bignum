@@ -25,6 +25,5 @@ Creates or tests for arbitrary-precision integer vectors.
 
 \code{\link[=format.bignum_biginteger]{format()}} for pretty printing.
 
-Operations supported by biginteger vectors: \link{bignum-compare}, \link{bignum-arith},
-\link{bignum-math}.
+\code{vignette("operations")} for supported operations.
 }

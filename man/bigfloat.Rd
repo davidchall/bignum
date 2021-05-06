@@ -29,6 +29,5 @@ bigfloat(1) / 3
 
 \code{\link[=format.bignum_bigfloat]{format()}} for pretty printing.
 
-Operations supported by bigfloat vectors: \link{bignum-compare}, \link{bignum-arith},
-\link{bignum-math}.
+\code{vignette("operations")} for supported operations.
 }

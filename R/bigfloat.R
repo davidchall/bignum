@@ -12,8 +12,7 @@
 #'
 #' [`format()`][format.bignum_bigfloat()] for pretty printing.
 #'
-#' Operations supported by bigfloat vectors: [bignum-compare], [bignum-arith],
-#' [bignum-math].
+#' `vignette("operations")` for supported operations.
 #' @name bigfloat
 NULL
 

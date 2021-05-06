@@ -4,9 +4,6 @@ reference:
     - biginteger
     - bigfloat
     - bignum-constants
-  - title: "Operations"
+  - title: "Formatting"
     contents:
     - bignum-format
-    - bignum-compare
-    - bignum-arith
-    - bignum-math

@@ -10,8 +10,7 @@
 #'
 #' [`format()`][format.bignum_biginteger()] for pretty printing.
 #'
-#' Operations supported by biginteger vectors: [bignum-compare], [bignum-arith],
-#' [bignum-math].
+#' `vignette("operations")` for supported operations.
 #' @name biginteger
 NULL
 

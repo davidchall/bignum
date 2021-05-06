@@ -1,0 +1,74 @@
+---
+title: "Operations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Operations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bignum)
+```
+
+## Recycling rules
+
+The two inputs have compatible sizes if:
+
+* Both input vectors have the same length, or
+* One input is a scalar (length 1) which is recycled.
+
+## Comparison Operations
+
+`biginteger()` and `bigfloat()` vectors support the standard comparison operations. The base R documentation for these can be found via `help("Comparison")`.
+
+```{r, eval=FALSE}
+x < y
+x > y
+x <= y
+x >= y
+x == y
+x != y
+```
+
+These operations always return a logical vector.
+
+## Arithmetic Operations
+
+`biginteger()` and `bigfloat()` vectors support the standard arithmetic operations. The base R documentation for these can be found via `help("Arithmetic")`.
+
+```{r, eval=FALSE}
++ x
+- x
+x + y
+x - y
+x * y
+x / y
+x ^ y
+x %% y
+x %/% y
+```
+
+These arithmetic operations are **type-stable**, which means the output type depends only on the input types (not the input values). A biginteger vector is returned when the result must be an integer (e.g., addition of two integers). Otherwise a bigfloat vector is returned.
+
+The following table summarizes the return type for each combination, where "integer-like" refers to integer and biginteger vectors and "float-like" refers to double and bigfloat vectors.
+
+| **Input 1**  |     **Operator**      | **Input 2**  |     | **Result** |
+|:-------------|:---------------------:|:-------------|:---:|:-----------|
+| Integer-like | +, -, \*, \^, %%, %/% | Integer-like | -\> | biginteger |
+| Integer-like |           /           | Integer-like | -\> | bigfloat   |
+| Integer-like |  +, -, \*, /, \^, %%  | Float-like   | -\> | bigfloat   |
+| Integer-like |          %/%          | Float-like   | -\> | biginteger |
+| Float-like   |  +, -, \*, /, \^, %%  | Integer-like | -\> | bigfloat   |
+| Float-like   |          %/%          | Integer-like | -\> | biginteger |
+| Float-like   |  +, -, \*, /, \^, %%  | Float-like   | -\> | bigfloat   |
+| Float-like   |          %/%          | Float-like   | -\> | biginteger |
+
+## Mathematical Operations
