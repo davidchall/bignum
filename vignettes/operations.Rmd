@@ -60,15 +60,13 @@ These arithmetic operations are **type-stable**, which means the output type dep
 
 The following table summarizes the return type for each combination, where "integer-like" refers to integer and biginteger vectors and "float-like" refers to double and bigfloat vectors.
 
-| **Input 1**  |     **Operator**      | **Input 2**  |     | **Result** |
-|:-------------|:---------------------:|:-------------|:---:|:-----------|
-| Integer-like | +, -, \*, \^, %%, %/% | Integer-like | -\> | biginteger |
-| Integer-like |           /           | Integer-like | -\> | bigfloat   |
-| Integer-like |  +, -, \*, /, \^, %%  | Float-like   | -\> | bigfloat   |
-| Integer-like |          %/%          | Float-like   | -\> | biginteger |
-| Float-like   |  +, -, \*, /, \^, %%  | Integer-like | -\> | bigfloat   |
-| Float-like   |          %/%          | Integer-like | -\> | biginteger |
-| Float-like   |  +, -, \*, /, \^, %%  | Float-like   | -\> | bigfloat   |
-| Float-like   |          %/%          | Float-like   | -\> | biginteger |
+| **Input 1**  | **Operator**      | **Input 2**  |     | **Result** |
+|:-------------|:-----------------:|:-------------|:---:|:-----------|
+| Integer-like | +, -, \*, \^, %%  | Integer-like | -\> | biginteger |
+| Integer-like | +, -, \*, \^, %%  | Float-like   | -\> | bigfloat   |
+| Float-like   | +, -, \*, \^, %%  | Integer-like | -\> | bigfloat   |
+| Float-like   | +, -, \*, \^, %%  | Float-like   | -\> | bigfloat   |
+| Any          | /                 | Any          | -\> | bigfloat   |
+| Any          | %/%               | Any          | -\> | biginteger |
 
 ## Mathematical Operations
