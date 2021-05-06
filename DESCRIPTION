@@ -20,6 +20,8 @@ Imports:
     rlang,
     vctrs (>= 0.3.0)
 Suggests: 
+    rmarkdown,
+    knitr,
     testthat
 LinkingTo: 
     BH,
@@ -30,3 +32,4 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 SystemRequirements: C++11
+VignetteBuilder: knitr

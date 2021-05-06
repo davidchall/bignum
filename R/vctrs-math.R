@@ -1,8 +1,3 @@
-#' Mathematical Operations
-#'
-#' @name bignum-math
-NULL
-
 vec_math_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
   switch(
     .fn,

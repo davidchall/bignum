@@ -1,24 +1,3 @@
-#' Comparison Operations
-#'
-#' @description
-#' [`biginteger`] and [`bigfloat`] vectors support the standard
-#' [comparison operations][Comparison].
-#'
-#' ```
-#' x < y
-#' x > y
-#' x <= y
-#' x >= y
-#' x == y
-#' x != y
-#' ```
-#'
-#' @inheritSection bignum-arith Recycling rules
-#' @return A logical vector.
-#' @seealso Base R [comparison operations][Comparison].
-#' @name bignum-compare
-NULL
-
 # comparison operations --------------------------------------------------------
 
 #' @export
