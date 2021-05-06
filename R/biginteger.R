@@ -9,6 +9,8 @@
 #' [`NA_biginteger_`] to represent missing values.
 #'
 #' [`format()`][format.bignum_biginteger()] for pretty printing.
+#'
+#' `vignette("operations")` for supported operations.
 #' @name biginteger
 NULL
 

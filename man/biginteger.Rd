@@ -24,4 +24,6 @@ Creates or tests for arbitrary-precision integer vectors.
 \code{\link{NA_biginteger_}} to represent missing values.
 
 \code{\link[=format.bignum_biginteger]{format()}} for pretty printing.
+
+\code{vignette("operations")} for supported operations.
 }

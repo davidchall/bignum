@@ -11,6 +11,8 @@
 #' [`NA_bigfloat_`] to represent missing values.
 #'
 #' [`format()`][format.bignum_bigfloat()] for pretty printing.
+#'
+#' `vignette("operations")` for supported operations.
 #' @name bigfloat
 NULL
 
