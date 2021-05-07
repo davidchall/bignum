@@ -82,9 +82,12 @@ is.finite(x)
 is.infinite(x)
 is.nan(x)
 
-# summary statistics
+# summary
 sum(x)
 prod(x)
+max(x)
+min(x)
+range(x)
 mean(x)
 
 # cumulative
