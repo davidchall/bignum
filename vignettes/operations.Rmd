@@ -25,6 +25,7 @@ The two inputs have compatible sizes if:
 * Both input vectors have the same length, or
 * One input is a scalar (length 1) which is recycled.
 
+
 ## Comparison Operations
 
 `biginteger()` and `bigfloat()` vectors support the standard comparison operations. The base R documentation for these can be found via `help("Comparison")`.
@@ -39,6 +40,7 @@ x != y
 ```
 
 These operations always return a logical vector.
+
 
 ## Arithmetic Operations
 
@@ -69,4 +71,67 @@ The following table summarizes the return type for each combination, where "inte
 | Any          | /                 | Any          | -\> | bigfloat   |
 | Any          | %/%               | Any          | -\> | biginteger |
 
+
 ## Mathematical Operations
+
+`biginteger()` and `bigfloat()` vectors support the following mathematical operations:
+
+```{r, eval=FALSE}
+# special values
+is.finite(x)
+is.infinite(x)
+is.nan(x)
+
+# summary statistics
+sum(x)
+prod(x)
+mean(x)
+
+# cumulative
+cumsum(x)
+cumprod(x)
+cummax(x)
+cummin(x)
+
+# rounding
+floor(x)
+ceiling(x)
+trunc(x)
+
+# miscellaneous
+abs(x)
+sign(x)
+sqrt(x)
+
+# logarithms and exponentials
+log(x)
+log10(x)
+log2(x)
+log1p(x)
+exp(x)
+expm1(x)
+
+# trigonometric
+cos(x)
+sin(x)
+tan(x)
+acos(x)
+asin(x)
+atan(x)
+cospi(x)
+sinpi(x)
+tanpi(x)
+
+# hyperbolic
+cosh(x)
+sinh(x)
+tanh(x)
+acosh(x)
+asinh(x)
+atanh(x)
+
+# special functions
+gamma(x)
+lgamma(x)
+```
+
