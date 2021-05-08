@@ -1,8 +1,8 @@
 ---
-title: "Operations"
+title: "Supported Operations"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Operations}
+  %\VignetteIndexEntry{Supported Operations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,19 +14,38 @@ knitr::opts_chunk$set(
 )
 ```
 
+This document lists the numeric operations supported by `biginteger()` and `bigfloat()` vectors.
+We recommend reading the base R documentation to understand the function of each operation.
+
 ```{r setup}
 library(bignum)
 ```
 
-## Recycling rules
 
-The two inputs have compatible sizes if:
+## Check for special values
 
-* Both input vectors have the same length, or
-* One input is a scalar (length 1) which is recycled.
+`biginteger()` and `bigfloat()` support missing values (via `NA_biginteger_` and `NA_bigfloat_` respectively).
+
+`bigfloat()` supports positive and negative infinity and 'Not a Number' values.
+Usually these are the result of a calculation, but they can also be created manually:
+
+```{r inf_and_nan}
+bigfloat(1, -1, 0) / 0
+
+bigfloat(Inf, -Inf, NaN)
+```
+
+You can check for these special values using:
+
+```{r, eval=FALSE}
+is.na(x)
+is.finite(x)
+is.infinite(x)
+is.nan(x)
+```
 
 
-## Comparison Operations
+## Comparison operations
 
 `biginteger()` and `bigfloat()` vectors support the standard comparison operations. The base R documentation for these can be found via `help("Comparison")`.
 
@@ -42,7 +61,7 @@ x != y
 These operations always return a logical vector.
 
 
-## Arithmetic Operations
+## Arithmetic operations
 
 `biginteger()` and `bigfloat()` vectors support the standard arithmetic operations. The base R documentation for these can be found via `help("Arithmetic")`.
 
@@ -72,16 +91,11 @@ The following table summarizes the return type for each combination, where "inte
 | Any          | %/%               | Any          | -\> | biginteger |
 
 
-## Mathematical Operations
+## Mathematical operations
 
 `biginteger()` and `bigfloat()` vectors support the following mathematical operations:
 
 ```{r, eval=FALSE}
-# special values
-is.finite(x)
-is.infinite(x)
-is.nan(x)
-
 # summary
 sum(x)
 prod(x)
