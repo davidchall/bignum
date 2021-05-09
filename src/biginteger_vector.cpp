@@ -3,6 +3,10 @@
 
 biginteger_vector::biginteger_vector(cpp11::strings x) : biginteger_vector(x.size()) {
   for (std::size_t i=0; i<x.size(); ++i) {
+    if (i % 10000 == 0) {
+      cpp11::check_user_interrupt();
+    }
+
     if (x[i] == NA_STRING) {
       is_na[i] = true;
     } else {
@@ -27,6 +31,10 @@ cpp11::strings biginteger_vector::format() const {
   cpp11::writable::strings output(size());
 
   for (std::size_t i=0; i<size(); ++i) {
+    if (i % 10000 == 0) {
+      cpp11::check_user_interrupt();
+    }
+
     if (is_na[i]) {
       output[i] = NA_STRING;
     } else {
