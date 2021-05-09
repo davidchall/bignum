@@ -6,12 +6,12 @@
 \alias{bignum-package}
 \title{bignum: Arbitrary-Precision Integer and Floating-Point Mathematics}
 \description{
-S3 classes for storing and manipulating
-    arbitrary-precision integer and floating-point vectors, utilizing the
-    'Boost.Multiprecision' C++ library.  These extend the range and
-    precision of the fixed-precision 'integer' and 'double' types.  It is
-    specifically designed to work well with the 'tidyverse' collection of
-    R packages.
+S3 classes for storing and manipulating arbitrary-precision
+    integer vectors and high-precision floating-point vectors. These
+    extend the range and precision of the fixed-precision 'integer' and
+    'double' data types found in R. This package utilizes the
+    'Boost.Multiprecision' C++ library. It is specifically designed to
+    work well with the 'tidyverse' collection of R packages.
 }
 \author{
 \strong{Maintainer}: David Hall \email{david.hall.physics@gmail.com} (\href{https://orcid.org/0000-0002-2193-0480}{ORCID})

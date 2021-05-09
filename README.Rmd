@@ -22,6 +22,12 @@ knitr::opts_chunk$set(
 [![Coverage status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](https://codecov.io/gh/davidchall/bignum?branch=master)
 <!-- badges: end -->
 
+bignum provides numeric vectors with greater precision than the basic numeric vectors.
+
+* `biginteger()` can store any integer (i.e. arbitrary precision).
+* `bigfloat()` store 50 decimal digits of precision.
+
+They prioritize precision over performance, so computations are slower than those using `integer()` or `double()`.
 
 
 ## Installation

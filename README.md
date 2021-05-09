@@ -15,6 +15,15 @@ status](https://github.com/davidchall/bignum/workflows/R-CMD-check/badge.svg)](h
 status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](https://codecov.io/gh/davidchall/bignum?branch=master)
 <!-- badges: end -->
 
+bignum provides numeric vectors with greater precision than the basic
+numeric vectors.
+
+-   `biginteger()` can store any integer (i.e. arbitrary precision).
+-   `bigfloat()` store 50 decimal digits of precision.
+
+They prioritize precision over performance, so computations are slower
+than those using `integer()` or `double()`.
+
 ## Installation
 
 You can install the development version from GitHub:
@@ -43,7 +52,7 @@ prod(biginteger(1:50))
 #> [1] 30414093201713378043612608166064768844377641568960512000000000000
 ```
 
------
+------------------------------------------------------------------------
 
 Please note that the bignum project is released with a [Contributor Code
 of
