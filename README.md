@@ -15,11 +15,11 @@ status](https://github.com/davidchall/bignum/workflows/R-CMD-check/badge.svg)](h
 status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](https://codecov.io/gh/davidchall/bignum?branch=master)
 <!-- badges: end -->
 
-bignum provides numeric vectors with greater precision than the basic
+bignum provides numeric vectors with greater precision than R atomic
 numeric vectors.
 
--   `biginteger()` can store any integer (i.e. arbitrary precision).
--   `bigfloat()` store 50 decimal digits of precision.
+-   `biginteger()` stores any integer (i.e. arbitrary precision).
+-   `bigfloat()` stores 50 decimal digits of precision.
 
 They prioritize precision over performance, so computations are slower
 than those using `integer()` or `double()`.
@@ -35,21 +35,46 @@ remotes::install_github("davidchall/bignum")
 
 ## Usage
 
+### Arbitrary-precision integer vector
+
+The limited precision of atomic vectors introduces errors when working
+with very large integers. As an example, let’s calculate the factorial
+of 23. In base R, we’d calculate:
+
 ``` r
-library(bignum)
+options(digits = 20)
+factorial(23)
+#> [1] 25852016738884978212864
+```
 
-biginteger(2)^100L
+The factorial of 23 includes a factor of 10, and so the final digit
+*must* be zero. Using `biginteger()` yields the correct result:
+
+``` r
+prod(biginteger(1:23))
 #> <biginteger[1]>
-#> [1] 1267650600228229401496703205376
+#> [1] 25852016738884976640000
+```
 
-bigfloat(2.5)^100
+### High-precision floating-point vector
+
+`bigfloat()` vectors support much higher precision than `double()`
+vectors:
+
+``` r
+1 / 3
+#> [1] 0.33333333333333331483
+bigfloat(1) / 3
 #> <bigfloat[1]>
-#> [1] 6223015277861141707144064053780124240590.2521687212
+#> [1] 0.33333333333333333333333333333333333333333333333333
+```
 
-# calculate factorial 50!
-prod(biginteger(1:50))
-#> <biginteger[1]>
-#> [1] 30414093201713378043612608166064768844377641568960512000000000000
+However, you need to be careful not to limit the precision accidentally:
+
+``` r
+bigfloat(1 / 3)
+#> <bigfloat[1]>
+#> [1] 0.333333333333333
 ```
 
 ------------------------------------------------------------------------

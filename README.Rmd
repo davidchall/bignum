@@ -22,10 +22,10 @@ knitr::opts_chunk$set(
 [![Coverage status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](https://codecov.io/gh/davidchall/bignum?branch=master)
 <!-- badges: end -->
 
-bignum provides numeric vectors with greater precision than the basic numeric vectors.
+bignum provides numeric vectors with greater precision than R atomic numeric vectors.
 
-* `biginteger()` can store any integer (i.e. arbitrary precision).
-* `bigfloat()` store 50 decimal digits of precision.
+* `biginteger()` stores any integer (i.e. arbitrary precision).
+* `bigfloat()` stores 50 decimal digits of precision.
 
 They prioritize precision over performance, so computations are slower than those using `integer()` or `double()`.
 
@@ -41,16 +41,44 @@ remotes::install_github("davidchall/bignum")
 
 ## Usage
 
-```{r}
+```{r, echo = FALSE}
 library(bignum)
-
-biginteger(2)^100L
-
-bigfloat(2.5)^100
-
-# calculate factorial 50!
-prod(biginteger(1:50))
 ```
+
+### Arbitrary-precision integer vector
+
+The limited precision of atomic vectors introduces errors when working with very large integers.
+As an example, let's calculate the factorial of 23.
+In base R, we'd calculate:
+
+```{r}
+options(digits = 20)
+factorial(23)
+```
+
+The factorial of 23 includes a factor of 10, and so the final digit _must_ be zero.
+Using `biginteger()` yields the correct result:
+
+```{r}
+prod(biginteger(1:23))
+```
+
+### High-precision floating-point vector
+
+`bigfloat()` vectors support much higher precision than `double()` vectors:
+
+```{r}
+1 / 3
+bigfloat(1) / 3
+```
+
+However, you need to be careful not to limit the precision accidentally:
+
+```{r}
+bigfloat(1 / 3)
+```
+
+
 
 ---
 
