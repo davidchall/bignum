@@ -20,13 +20,6 @@ biginteger_vector::biginteger_vector(cpp11::strings x) : biginteger_vector(x.siz
 }
 
 
-cpp11::strings biginteger_vector::encode() const {
-  cpp11::writable::strings result = format();
-  result.attr("class") = {"bignum_biginteger", "bignum_vctr", "vctrs_vctr"};
-  return result;
-}
-
-
 cpp11::strings biginteger_vector::format() const {
   cpp11::writable::strings output(size());
 
@@ -43,4 +36,11 @@ cpp11::strings biginteger_vector::format() const {
   }
 
   return output;
+}
+
+
+cpp11::strings biginteger_vector::encode() const {
+  cpp11::writable::strings result = format();
+  result.attr("class") = {"bignum_biginteger", "bignum_vctr", "vctrs_vctr"};
+  return result;
 }
