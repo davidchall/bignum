@@ -6,15 +6,13 @@
 \alias{is_biginteger}
 \title{Arbitrary-Precision Integer Vectors}
 \usage{
-biginteger(...)
+biginteger(x = character())
 
 as_biginteger(x)
 
 is_biginteger(x)
 }
 \arguments{
-\item{...}{Numeric or character vectors.}
-
 \item{x}{Object to be coerced or tested.}
 }
 \value{

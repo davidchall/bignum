@@ -30,9 +30,9 @@ library(bignum)
 Usually these are the result of a calculation, but they can also be created manually:
 
 ```{r inf_and_nan}
-bigfloat(1, -1, 0) / 0
+bigfloat(c(1, -1, 0)) / 0
 
-bigfloat(Inf, -Inf, NaN)
+bigfloat(c(Inf, -Inf, NaN))
 ```
 
 You can check for these special values using:

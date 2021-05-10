@@ -39,9 +39,8 @@ new_bigfloat <- function(x = character(), cxx = TRUE) {
 
 #' @rdname bigfloat
 #' @export
-bigfloat <- function(...) {
-  ellipsis::check_dots_unnamed()
-  as_bigfloat(as.character(c(...)))
+bigfloat <- function(x = character()) {
+  as_bigfloat(x)
 }
 
 #' @rdname bigfloat

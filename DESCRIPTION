@@ -15,7 +15,6 @@ Description: S3 classes for storing and manipulating arbitrary-precision
     work well with the 'tidyverse' collection of R packages.
 License: MIT + file LICENSE
 Imports: 
-    ellipsis,
     glue,
     rlang,
     vctrs (>= 0.3.0)
