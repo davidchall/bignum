@@ -14,6 +14,11 @@ Description: S3 classes for storing and manipulating arbitrary-precision
     'Boost.Multiprecision' C++ library. It is specifically designed to
     work well with the 'tidyverse' collection of R packages.
 License: MIT + file LICENSE
+URL: https://davidchall.github.io/bignum/,
+    https://github.com/davidchall/bignum
+BugReports: https://github.com/davidchall/bignum/issues
+Depends: 
+    R (>= 3.3.0)
 Imports: 
     glue,
     rlang,

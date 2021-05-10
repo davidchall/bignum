@@ -13,6 +13,15 @@ S3 classes for storing and manipulating arbitrary-precision
     'Boost.Multiprecision' C++ library. It is specifically designed to
     work well with the 'tidyverse' collection of R packages.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://davidchall.github.io/bignum/}
+  \item \url{https://github.com/davidchall/bignum}
+  \item Report bugs at \url{https://github.com/davidchall/bignum/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: David Hall \email{david.hall.physics@gmail.com} (\href{https://orcid.org/0000-0002-2193-0480}{ORCID})
 
