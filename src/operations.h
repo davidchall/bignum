@@ -120,7 +120,7 @@ Vec partial_accumulate_operation(const Vec &x, const Func &BinaryOperation) {
   output.is_na[0] = x.is_na[0];
 
   for (std::size_t i=1; i<x.size(); ++i) {
-    if (i % 10000 == 0) {
+    if ((i-1) % 10000 == 0) {
       cpp11::check_user_interrupt();
     }
 
