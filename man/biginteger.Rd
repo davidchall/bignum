@@ -17,8 +17,26 @@ is_biginteger(x)
 
 \item{x}{Object to be coerced or tested.}
 }
+\value{
+An S3 vector of class \code{bignum_biginteger}.
+}
 \description{
-Creates or tests for arbitrary-precision integer vectors.
+\code{biginteger()} and \code{as_biginteger()} construct a vector designed to store
+\emph{any} integer.
+
+\code{is_biginteger()} checks if an object is of class \code{bignum_biginteger}.
+}
+\examples{
+biginteger(1:5)^10L
+
+# lossy casts raise a warning
+biginteger(c(2, 2.5, 3))
+
+# suppress warnings if they are expected
+vctrs::allow_lossy_cast(biginteger(c(2, 2.5, 3)))
+
+# unsigned integers can be specified as hexadecimal
+biginteger("0xffffffff")
 }
 \seealso{
 \code{\link{NA_biginteger_}} to represent missing values.

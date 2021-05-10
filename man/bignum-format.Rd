@@ -15,6 +15,9 @@
 
 \item{...}{These dots are for future extensions and must be empty.}
 }
+\value{
+Character vector
+}
 \description{
-Formatting
+Format a bignum vector for pretty printing.
 }

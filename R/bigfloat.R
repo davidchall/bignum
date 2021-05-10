@@ -1,8 +1,13 @@
 #' High-Precision Numeric Vectors
 #'
-#' Creates or tests for high-precision floating-point numeric vectors.
+#' @description
+#' `bigfloat()` and `as_bigfloat()` construct a vector designed to store numbers
+#' with 50 decimal digits of precision.
+#'
+#' `is_bigfloat()` checks if an object is of class `bignum_bigfloat`.
 #'
 #' @inheritParams biginteger
+#' @return An S3 vector of class `bignum_bigfloat`.
 #'
 #' @examples
 #' bigfloat(1 / 3)

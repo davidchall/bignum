@@ -17,8 +17,14 @@ is_bigfloat(x)
 
 \item{x}{Object to be coerced or tested.}
 }
+\value{
+An S3 vector of class \code{bignum_bigfloat}.
+}
 \description{
-Creates or tests for high-precision floating-point numeric vectors.
+\code{bigfloat()} and \code{as_bigfloat()} construct a vector designed to store numbers
+with 50 decimal digits of precision.
+
+\code{is_bigfloat()} checks if an object is of class \code{bignum_bigfloat}.
 }
 \examples{
 bigfloat(1 / 3)

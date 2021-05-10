@@ -1,7 +1,10 @@
 #' Formatting
 #'
+#' Format a bignum vector for pretty printing.
+#'
 #' @param x A [`biginteger`] or [`bigfloat`] vector.
 #' @param ... These dots are for future extensions and must be empty.
+#' @return Character vector
 #'
 #' @name bignum-format
 NULL

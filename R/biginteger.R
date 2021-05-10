@@ -1,10 +1,26 @@
 #' Arbitrary-Precision Integer Vectors
 #'
-#' Creates or tests for arbitrary-precision integer vectors.
+#' @description
+#' `biginteger()` and `as_biginteger()` construct a vector designed to store
+#' _any_ integer.
+#'
+#' `is_biginteger()` checks if an object is of class `bignum_biginteger`.
 #'
 #' @param ... Numeric or character vectors.
 #' @param x Object to be coerced or tested.
+#' @return An S3 vector of class `bignum_biginteger`.
 #'
+#' @examples
+#' biginteger(1:5)^10L
+#'
+#' # lossy casts raise a warning
+#' biginteger(c(2, 2.5, 3))
+#'
+#' # suppress warnings if they are expected
+#' vctrs::allow_lossy_cast(biginteger(c(2, 2.5, 3)))
+#'
+#' # unsigned integers can be specified as hexadecimal
+#' biginteger("0xffffffff")
 #' @seealso
 #' [`NA_biginteger_`] to represent missing values.
 #'
