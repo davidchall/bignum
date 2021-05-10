@@ -6,7 +6,6 @@
 #'
 #' `is_biginteger()` checks if an object is of class `bignum_biginteger`.
 #'
-#' @param ... Numeric or character vectors.
 #' @param x Object to be coerced or tested.
 #' @return An S3 vector of class `bignum_biginteger`.
 #'
@@ -48,9 +47,8 @@ new_biginteger <- function(x = character(), cxx = TRUE) {
 
 #' @rdname biginteger
 #' @export
-biginteger <- function(...) {
-  ellipsis::check_dots_unnamed()
-  as_biginteger(as.character(c(...)))
+biginteger <- function(x = character()) {
+  as_biginteger(x)
 }
 
 #' @rdname biginteger

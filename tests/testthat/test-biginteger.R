@@ -6,14 +6,7 @@ test_that("zero-length input works", {
 
 test_that("data input works", {
   expect_length(biginteger(1L), 1)
-  expect_length(biginteger(1L, 2), 2)
   expect_length(biginteger(c(1L, 2)), 2)
-  expect_length(biginteger(1L, 2, "9e90"), 3)
-  expect_length(biginteger(c(1L, 2), "9e90"), 3)
-})
-
-test_that("named arguments caught", {
-  expect_error(biginteger(a = 1), class = "rlib_error_dots_named")
 })
 
 test_that("coercion works", {
