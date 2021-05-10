@@ -91,11 +91,11 @@
 <p><code><a href="../reference/biginteger.html">biginteger()</a></code> and <code><a href="../reference/bigfloat.html">bigfloat()</a></code> support missing values (via <code>NA_biginteger_</code> and <code>NA_bigfloat_</code> respectively).</p>
 <p><code><a href="../reference/bigfloat.html">bigfloat()</a></code> supports positive and negative infinity and ‘Not a Number’ values. Usually these are the result of a calculation, but they can also be created manually:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span> <span class="op">/</span> <span class="fl">0</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fl">0</span>
 <span class="co">#&gt; &lt;bigfloat[3]&gt;</span>
 <span class="co">#&gt; [1] Inf  -Inf NaN</span>
 
-<span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="op">-</span><span class="cn">Inf</span>, <span class="cn">NaN</span><span class="op">)</span>
+<span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="op">-</span><span class="cn">Inf</span>, <span class="cn">NaN</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; &lt;bigfloat[3]&gt;</span>
 <span class="co">#&gt; [1] Inf  -Inf NaN</span></code></pre></div>
 <p>You can check for these special values using:</p>
