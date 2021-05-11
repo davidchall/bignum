@@ -4,15 +4,15 @@ Version: 0.0.0.9000
 Authors@R: 
     person(given = "David",
            family = "Hall",
-           role = c("aut", "cre"),
+           role = c("aut", "cre", "cph"),
            email = "david.hall.physics@gmail.com",
            comment = c(ORCID = "0000-0002-2193-0480"))
-Description: S3 classes for storing and manipulating arbitrary-precision
+Description: Classes for storing and manipulating arbitrary-precision
     integer vectors and high-precision floating-point vectors. These
-    extend the range and precision of the fixed-precision 'integer' and
-    'double' data types found in R. This package utilizes the
-    'Boost.Multiprecision' C++ library. It is specifically designed to
-    work well with the 'tidyverse' collection of R packages.
+    extend the range and precision of the 'integer' and 'double' data
+    types found in R. This package utilizes the 'Boost.Multiprecision' C++
+    library. It is specifically designed to work well with the 'tidyverse'
+    collection of R packages.
 License: MIT + file LICENSE
 URL: https://davidchall.github.io/bignum/,
     https://github.com/davidchall/bignum
