@@ -1,5 +1,5 @@
 stop_unsupported <- function(x, method) {
-  msg <- glue::glue("`{method}.{class(x)[[1]]}()` not supported.")
+  msg <- paste0("`", method, ".", class(x)[[1]], "()` not supported.")
   abort(msg, class = "bignum_error_unsupported")
 }
 
@@ -28,7 +28,10 @@ cnd_header.bignum_warning_cast_lossy <- function(cnd, ...) {
   x_label <- format_arg_label(vec_ptype_full(cnd$x), cnd$x_arg)
   to_label <- format_arg_label(vec_ptype_full(cnd$to), cnd$to_arg)
   loss_type <- loss_type(cnd$loss_type)
-  glue::glue("Loss of {loss_type} while converting from {x_label} to {to_label}.")
+  paste0(
+    "Loss of ", loss_type, " while converting from ",
+    x_label, " to ", to_label, "."
+  )
 }
 
 

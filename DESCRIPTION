@@ -20,7 +20,6 @@ BugReports: https://github.com/davidchall/bignum/issues
 Depends: 
     R (>= 3.3.0)
 Imports: 
-    glue,
     rlang,
     vctrs (>= 0.3.0)
 Suggests: 
