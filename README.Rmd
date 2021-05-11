@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # bignum
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/bignum)](https://CRAN.R-project.org/package=bignum)
 [![R build status](https://github.com/davidchall/bignum/workflows/R-CMD-check/badge.svg)](https://github.com/davidchall/bignum/actions)
 [![Coverage status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](https://codecov.io/gh/davidchall/bignum?branch=master)
