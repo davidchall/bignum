@@ -53,7 +53,7 @@ Vec binary_operation(const Vec &lhs, const Vec &rhs, const Func &BinaryOperation
 
 template<class Vec, class Func>
 Vec binary_operation(const Vec &lhs, const cpp11::integers &rhs, const Func &BinaryOperation) {
-  if (lhs.size() != rhs.size()) {
+  if (lhs.size() != static_cast<std::size_t>(rhs.size())) {
     cpp11::stop("Incompatible sizes"); // # nocov
   }
 

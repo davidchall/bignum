@@ -2,7 +2,8 @@
 
 
 biginteger_vector::biginteger_vector(cpp11::strings x) : biginteger_vector(x.size()) {
-  for (std::size_t i=0; i<x.size(); ++i) {
+  std::size_t vsize = x.size();
+  for (std::size_t i=0; i<vsize; ++i) {
     if (i % 10000 == 0) {
       cpp11::check_user_interrupt();
     }
