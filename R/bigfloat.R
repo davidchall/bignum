@@ -10,7 +10,6 @@
 #' @return An S3 vector of class `bignum_bigfloat`.
 #'
 #' @examples
-#' bigfloat(1 / 3)
 #' bigfloat(1) / 3
 #' @seealso
 #' [`NA_bigfloat_`] to represent missing values.

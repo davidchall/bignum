@@ -21,3 +21,9 @@ Character vector
 \description{
 Format a bignum vector for pretty printing.
 }
+\examples{
+x <- biginteger(2)^100L
+
+# default shows maximum precision
+format(x)
+}

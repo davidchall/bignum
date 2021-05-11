@@ -25,7 +25,6 @@ with 50 decimal digits of precision.
 \code{is_bigfloat()} checks if an object is of class \code{bignum_bigfloat}.
 }
 \examples{
-bigfloat(1 / 3)
 bigfloat(1) / 3
 }
 \seealso{

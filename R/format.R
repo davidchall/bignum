@@ -6,6 +6,11 @@
 #' @param ... These dots are for future extensions and must be empty.
 #' @return Character vector
 #'
+#' @examples
+#' x <- biginteger(2)^100L
+#'
+#' # default shows maximum precision
+#' format(x)
 #' @name bignum-format
 NULL
 

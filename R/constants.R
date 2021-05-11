@@ -5,6 +5,7 @@
 #'
 #' `bigpi` is a higher precision version of [`pi`].
 #'
+#' @return A [`biginteger`] or [`bigfloat`] vector of length 1.
 #' @seealso [`NA`] and [`pi`] are the base constants.
 #' @examples
 #' NA_biginteger_

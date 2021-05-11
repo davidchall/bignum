@@ -14,6 +14,9 @@ NA_bigfloat_
 
 bigpi
 }
+\value{
+A \code{\link{biginteger}} or \code{\link{bigfloat}} vector of length 1.
+}
 \description{
 \code{NA_biginteger_} and \code{NA_bigfloat_} support missing values.
 
