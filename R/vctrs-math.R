@@ -1,6 +1,5 @@
 vec_math_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
-  switch(
-    .fn,
+  switch(.fn,
 
     # Summary group
     sum = c_bigfloat_sum(.x, na.rm),
@@ -47,6 +46,7 @@ vec_math_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
     is.infinite = is.infinite(allow_lossy_cast(vec_cast(.x, double()))),
     is.finite = is.finite(allow_lossy_cast(vec_cast(.x, double()))),
 
+    # else
     stop_unsupported(.x, .fn)
   )
 }
@@ -58,8 +58,7 @@ vec_math.bignum_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
 
 #' @export
 vec_math.bignum_biginteger <- function(.fn, .x, ..., na.rm = FALSE) {
-  switch(
-    .fn,
+  switch(.fn,
 
     # Summary group
     sum = c_biginteger_sum(.x, na.rm),
@@ -82,6 +81,7 @@ vec_math.bignum_biginteger <- function(.fn, .x, ..., na.rm = FALSE) {
     is.finite = !is.na(.x),
     is.infinite = rep_len(FALSE, length(.x)),
 
+    # else
     vec_math_bigfloat(.fn, .x, ..., na.rm = na.rm)
   )
 }

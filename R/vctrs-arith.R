@@ -6,8 +6,7 @@ vec_arith_bigfloat <- function(op, x, y) {
   x2 <- args[[1L]]
   y2 <- args[[2L]]
 
-  switch(
-    op,
+  switch(op,
     "+" = c_bigfloat_add(x2, y2),
     "-" = c_bigfloat_subtract(x2, y2),
     "*" = c_bigfloat_multiply(x2, y2),
@@ -27,8 +26,7 @@ vec_arith_biginteger <- function(op, x, y) {
   x2 <- args[[1L]]
   y2 <- args[[2L]]
 
-  switch(
-    op,
+  switch(op,
     "+" = c_biginteger_add(x2, y2),
     "-" = c_biginteger_subtract(x2, y2),
     "*" = c_biginteger_multiply(x2, y2),
@@ -77,8 +75,7 @@ vec_arith.numeric.bignum_vctr <- function(op, x, y, ...) {
 #' @method vec_arith.bignum_vctr MISSING
 #' @export
 vec_arith.bignum_vctr.MISSING <- function(op, x, y, ...) {
-  switch(
-    op,
+  switch(op,
     "-" = x * -1L,
     "+" = x,
     stop_incompatible_op(op, x, y)
