@@ -10,6 +10,11 @@
 
 \method{vec_arith}{bignum_biginteger}(op, x, y, ...)
 }
+\value{
+\code{vec_arith.bignum_vctr()} returns a \code{\link{bigfloat}} vector.
+
+\code{vec_arith.bignum_biginteger()} returns a \code{\link{biginteger}} vector.
+}
 \description{
 Internal vctrs methods
 }

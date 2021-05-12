@@ -1,3 +1,10 @@
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* Added `\value` to bignum-vctrs.Rd
+* **Note:** there are no references for the package
+
 ## Test environments
 
 * macOS 10.15 (local): 4.0

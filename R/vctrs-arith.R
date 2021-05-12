@@ -40,6 +40,7 @@ vec_arith_biginteger <- function(op, x, y) {
 
 # common -----------------------------------------------------------------------
 
+#' @return `vec_arith.bignum_vctr()` returns a [`bigfloat`] vector.
 #' @method vec_arith bignum_vctr
 #' @export
 #' @export vec_arith.bignum_vctr
@@ -85,6 +86,7 @@ vec_arith.bignum_vctr.MISSING <- function(op, x, y, ...) {
 
 # biginteger -------------------------------------------------------------------
 
+#' @return `vec_arith.bignum_biginteger()` returns a [`biginteger`] vector.
 #' @method vec_arith bignum_biginteger
 #' @export
 #' @export vec_arith.bignum_biginteger
