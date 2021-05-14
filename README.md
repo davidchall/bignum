@@ -26,7 +26,14 @@ than those using `integer()` or `double()`.
 
 ## Installation
 
-You can install the development version from GitHub:
+You can install the released version of bignum from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("bignum")
+```
+
+Or you can install the development version from GitHub:
 
 ``` r
 # install.packages("remotes")
