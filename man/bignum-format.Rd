@@ -6,14 +6,33 @@
 \alias{format.bignum_bigfloat}
 \title{Formatting}
 \usage{
-\method{format}{bignum_biginteger}(x, ...)
+\method{format}{bignum_biginteger}(x, ..., sigfig = NULL, digits = NULL, notation = c("dec", "sci", "hex"))
 
-\method{format}{bignum_bigfloat}(x, ...)
+\method{format}{bignum_bigfloat}(x, ..., sigfig = NULL, digits = NULL, notation = c("dec", "sci"))
 }
 \arguments{
 \item{x}{A \code{\link{biginteger}} or \code{\link{bigfloat}} vector.}
 
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{sigfig}{Number of significant figures to show. Must be positive.
+Cannot be combined with \code{digits}.
+
+If both \code{sigfig} and \code{digits} are unspecified, then the \code{"bignum.sigfig"}
+option is consulted (which has a default value of 7).}
+
+\item{digits}{Number of digits to show after the decimal point.
+Positive values indicate the exact number of digits to show.
+Negative values indicate the maximum number of digits to show (terminal
+zeros are hidden if there are no subsequent non-zero digits).
+Cannot be combined with \code{sigfig}.}
+
+\item{notation}{How should the vector be displayed? Choices:
+\itemize{
+\item \code{"dec"}: Use decimal notation, regardless of width.
+\item \code{"sci"}: Use scientific notation.
+\item \code{"hex"}: Use hexadecimal notation (\code{\link{biginteger}} only).
+}}
 }
 \value{
 Character vector

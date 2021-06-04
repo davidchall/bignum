@@ -130,15 +130,19 @@ vec_cast.bignum_bigfloat.double <- function(x, to, ...) {
 #' @export
 vec_cast.double.bignum_bigfloat <- function(x, to, ..., x_arg = "", to_arg = "") {
   out <- c_bigfloat_to_double(x)
-  out_compare <- vec_cast(out, bigfloat())
+  x_loopback <- vec_cast(out, bigfloat())
   x_na <- is.na(x)
-  lossy <- (out_compare != x & !x_na) | xor(x_na, is.na(out))
+  lossy <- (x_loopback != x & !x_na) | xor(x_na, is.na(x_loopback))
   maybe_lossy_cast(out, x, to, lossy, x_arg = x_arg, to_arg = to_arg)
 }
 
 #' @export
-vec_cast.bignum_bigfloat.bignum_biginteger <- function(x, to, ...) {
-  new_bigfloat(vec_data(x))
+vec_cast.bignum_bigfloat.bignum_biginteger <- function(x, to, ..., x_arg = "", to_arg = "") {
+  out <- new_bigfloat(vec_data(x))
+  x_loopback <- vec_cast(out, biginteger())
+  x_na <- is.na(x)
+  lossy <- (x_loopback != x & !x_na) | xor(x_na, is.na(x_loopback))
+  maybe_lossy_cast(out, x, to, lossy, x_arg = x_arg, to_arg = to_arg)
 }
 
 #' @export

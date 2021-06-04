@@ -1,5 +1,7 @@
 # bignum (development version)
 
+* Fixed identification of lossy casts when converting between `biginteger()` and `bigfloat()` vectors.
+
 # bignum 0.1.0
 
 First CRAN release.
