@@ -16,6 +16,9 @@
 #'   Cannot be combined with `sigfig`.
 #' @param notation How should the vector be displayed? Choices:
 #'
+#'   * `"fit"`: Use decimal notation if it fits, otherwise use scientific
+#'     notation. This consults the `"bignum.max_dec_width"` option, which has a
+#'     default value of 13.
 #'   * `"dec"`: Use decimal notation, regardless of width.
 #'   * `"sci"`: Use scientific notation.
 #'   * `"hex"`: Use hexadecimal notation ([`biginteger`] only).
@@ -32,36 +35,49 @@ NULL
 #' @rdname bignum-format
 #' @export
 format.bignum_biginteger <- function(x, ..., sigfig = NULL, digits = NULL,
-                                     notation = c("dec", "sci", "hex")) {
+                                     notation = c("fit", "dec", "sci", "hex")) {
   notation <- arg_match(notation)
 
-  if (notation == "sci") {
-    format(
+  switch(notation,
+    fit = format_fit(x, sigfig = sigfig, digits = digits),
+    sci = format(
       vec_cast(x, new_bigfloat()),
       ...,
       sigfig = sigfig,
       digits = digits,
       notation = notation
-    )
-  } else {
+    ),
     c_biginteger_format(x, notation = notation)
-  }
+  )
 }
 
 #' @rdname bignum-format
 #' @export
 format.bignum_bigfloat <- function(x, ..., sigfig = NULL, digits = NULL,
-                                   notation = c("dec", "sci")) {
+                                   notation = c("fit", "dec", "sci")) {
   notation <- arg_match(notation)
 
   digits_args <- parse_digits(sigfig, digits)
 
-  c_bigfloat_format(
-    x,
-    notation = notation,
-    digits = digits_args$digits,
-    is_sigfig = digits_args$is_sigfig
+  switch(notation,
+    fit = format_fit(x, sigfig = sigfig, digits = digits),
+    c_bigfloat_format(
+      x,
+      notation = notation,
+      digits = digits_args$digits,
+      is_sigfig = digits_args$is_sigfig
+    )
   )
+}
+
+format_fit <- function(x, ...) {
+  max_dec_width <- getOption("bignum.max_dec_width", 13L)
+
+  out <- format(x, notation = "dec")
+  if (any(nchar(out) > max_dec_width, na.rm = TRUE)) {
+    out <- format(x, ..., notation = "sci")
+  }
+  out
 }
 
 parse_digits <- function(sigfig, digits) {

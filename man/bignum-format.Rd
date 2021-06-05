@@ -6,9 +6,15 @@
 \alias{format.bignum_bigfloat}
 \title{Formatting}
 \usage{
-\method{format}{bignum_biginteger}(x, ..., sigfig = NULL, digits = NULL, notation = c("dec", "sci", "hex"))
+\method{format}{bignum_biginteger}(
+  x,
+  ...,
+  sigfig = NULL,
+  digits = NULL,
+  notation = c("fit", "dec", "sci", "hex")
+)
 
-\method{format}{bignum_bigfloat}(x, ..., sigfig = NULL, digits = NULL, notation = c("dec", "sci"))
+\method{format}{bignum_bigfloat}(x, ..., sigfig = NULL, digits = NULL, notation = c("fit", "dec", "sci"))
 }
 \arguments{
 \item{x}{A \code{\link{biginteger}} or \code{\link{bigfloat}} vector.}
@@ -29,6 +35,9 @@ Cannot be combined with \code{sigfig}.}
 
 \item{notation}{How should the vector be displayed? Choices:
 \itemize{
+\item \code{"fit"}: Use decimal notation if it fits, otherwise use scientific
+notation. This consults the \code{"bignum.max_dec_width"} option, which has a
+default value of 13.
 \item \code{"dec"}: Use decimal notation, regardless of width.
 \item \code{"sci"}: Use scientific notation.
 \item \code{"hex"}: Use hexadecimal notation (\code{\link{biginteger}} only).

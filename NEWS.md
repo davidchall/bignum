@@ -1,5 +1,9 @@
 # bignum (development version)
 
+* `format()` functions now support customized output.
+    * New `sigfig` and `digits` arguments control the displayed precision.
+    * New `notation` argument chooses decimal, scientific or hexadecimal output.
+    * New options `"bignum.sigfig"` and `"bignum.max_dec_width"` determine the default formatting.
 * Fixed identification of lossy casts when converting between `biginteger()` and `bigfloat()` vectors.
 
 # bignum 0.1.0
