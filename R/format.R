@@ -1,14 +1,21 @@
-#' Formatting
+#' Format a bignum vector
 #'
-#' Format a bignum vector for pretty printing.
+#' @description
+#' Customize how a [`biginteger`] or [`bigfloat`] vector is displayed.
+#' The precision can be controlled with a number of significant figures, or with
+#' a maximum or fixed number of digits after the decimal point. You can also
+#' choose between decimal, scientific and hexadecimal notations.
+#'
+#' The formatting is applied when the vector is printed or formatted, and also
+#' in a tibble column.
 #'
 #' @param x A [`biginteger`] or [`bigfloat`] vector.
 #' @param ... These dots are for future extensions and must be empty.
 #' @param sigfig Number of significant figures to show. Must be positive.
 #'   Cannot be combined with `digits`.
 #'
-#'   If both `sigfig` and `digits` are unspecified, then the `"bignum.sigfig"`
-#'   option is consulted (which has a default value of 7).
+#'   If both `sigfig` and `digits` are unspecified, then consults the
+#'   `"bignum.sigfig"` option (default: 7).
 #' @param digits Number of digits to show after the decimal point.
 #'   Positive values indicate the exact number of digits to show.
 #'   Negative values indicate the maximum number of digits to show (terminal
@@ -17,18 +24,30 @@
 #' @param notation How should the vector be displayed? Choices:
 #'
 #'   * `"fit"`: Use decimal notation if it fits, otherwise use scientific
-#'     notation. This consults the `"bignum.max_dec_width"` option, which has a
-#'     default value of 13.
+#'     notation. Consults the `"bignum.max_dec_width"` option (default: 13).
 #'   * `"dec"`: Use decimal notation, regardless of width.
 #'   * `"sci"`: Use scientific notation.
-#'   * `"hex"`: Use hexadecimal notation ([`biginteger`] only).
+#'   * `"hex"`: Use hexadecimal notation (positive [`biginteger`] only).
 #' @return Character vector
 #'
 #' @examples
-#' x <- biginteger(2)^100L
+#' # default uses decimal notation
+#' format(bigfloat(1e12))
 #'
-#' # default shows maximum precision
-#' format(x)
+#' # until it becomes too wide, then it uses scientific notation
+#' format(bigfloat(1e13))
+#'
+#' # hexadecimal notation is supported for positive integers
+#' format(biginteger(255), notation = "hex")
+#'
+#' # significant figures
+#' format(bigfloat(12.5), sigfig = 2)
+#'
+#' # fixed digits after decimal point
+#' format(bigfloat(12.5), digits = 2)
+#'
+#' # maximum digits after decimal point
+#' format(bigfloat(12.5), digits = -2)
 #' @name bignum-format
 NULL
 
@@ -73,7 +92,7 @@ format.bignum_bigfloat <- function(x, ..., sigfig = NULL, digits = NULL,
 format_fit <- function(x, ...) {
   max_dec_width <- getOption("bignum.max_dec_width", 13L)
 
-  out <- format(x, notation = "dec")
+  out <- format(x, ..., notation = "dec")
   if (any(nchar(out) > max_dec_width, na.rm = TRUE)) {
     out <- format(x, ..., notation = "sci")
   }
