@@ -92,6 +92,8 @@ format.bignum_bigfloat <- function(x, ..., sigfig = NULL, digits = NULL,
 
 format_fit <- function(x, ...) {
   max_dec_width <- getOption("bignum.max_dec_width", 13L)
+  max_dec_width <- vec_cast(max_dec_width, integer(), x_arg = "bignum.max_dec_width")
+  vec_assert(max_dec_width, ptype = integer(), size = 1, arg = "bignum.max_dec_width")
 
   out <- format(x, ..., notation = "dec")
   if (any(nchar(out) > max_dec_width, na.rm = TRUE)) {
@@ -119,7 +121,14 @@ parse_digits_args <- function(sigfig, digits) {
     display_digits <- digits
     display_sigfig <- FALSE
   } else {
-    display_digits <- getOption("bignum.sigfig", 7L)
+    sigfig <- getOption("bignum.sigfig", 7L)
+    sigfig <- vec_cast(sigfig, integer(), x_arg = "bignum.sigfig")
+    vec_assert(sigfig, ptype = integer(), size = 1, arg = "bignum.sigfig")
+    if (sigfig < 1) {
+      abort("`bignum.sigfig` must be 1 or greater.")
+    }
+
+    display_digits <- sigfig
     display_sigfig <- TRUE
   }
 
