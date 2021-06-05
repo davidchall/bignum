@@ -76,17 +76,18 @@ format.bignum_bigfloat <- function(x, ..., sigfig = NULL, digits = NULL,
                                    notation = c("fit", "dec", "sci")) {
   notation <- arg_match(notation)
 
-  digits_args <- parse_digits(sigfig, digits)
+  if (notation == "fit") {
+    format_fit(x, sigfig = sigfig, digits = digits)
+  } else {
+    digits_args <- parse_digits_args(sigfig, digits)
 
-  switch(notation,
-    fit = format_fit(x, sigfig = sigfig, digits = digits),
     c_bigfloat_format(
       x,
       notation = notation,
       digits = digits_args$digits,
       is_sigfig = digits_args$is_sigfig
     )
-  )
+  }
 }
 
 format_fit <- function(x, ...) {
@@ -99,14 +100,14 @@ format_fit <- function(x, ...) {
   out
 }
 
-parse_digits <- function(sigfig, digits) {
+parse_digits_args <- function(sigfig, digits) {
   if (!is.null(sigfig) && !is.null(digits)) {
     abort("The `sigfig` or `digits` arguments are mutually exclusive.")
   } else if (!is.null(sigfig)) {
     sigfig <- vec_cast(sigfig, integer(), x_arg = "sigfig")
     vec_assert(sigfig, ptype = integer(), size = 1)
     if (sigfig < 1) {
-      abort("Must show at least one significant figure.")
+      abort("`sigfig` must be 1 or greater.")
     }
 
     display_digits <- sigfig
