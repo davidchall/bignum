@@ -1,8 +1,8 @@
 #include <cpp11.hpp>
+#include "bigfloat_vector.h"
 #include "operations.h"
 #include "compare.h"
 #include "format.h"
-#include "bigfloat_vector.h"
 
 
 [[cpp11::register]]
@@ -91,8 +91,11 @@ cpp11::strings c_bigfloat_format(cpp11::strings x,
                                  cpp11::strings notation,
                                  cpp11::integers digits,
                                  bool is_sigfig) {
+  if (notation.size() != 1) {
+    cpp11::stop("`notation` must be a scalar."); // # nocov
+  }
   if (digits.size() != 1) {
-    cpp11::stop("`digits` must be a scalar.");
+    cpp11::stop("`digits` must be a scalar."); // # nocov
   }
 
   return format_bigfloat_vector(

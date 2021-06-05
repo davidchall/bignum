@@ -23,7 +23,12 @@ bigfloat_vector::bigfloat_vector(cpp11::strings x) : bigfloat_vector(x.size()) {
 
 
 cpp11::strings bigfloat_vector::encode() const {
-  cpp11::writable::strings output = format_bigfloat_vector(*this, bignum_format_encode);
+  cpp11::writable::strings output = format_bigfloat_vector(
+    *this,
+    bignum_format_dec,
+    std::numeric_limits<bigfloat_type>::max_digits10,
+    true
+  );
 
   output.attr("class") = {"bignum_bigfloat", "bignum_vctr", "vctrs_vctr"};
   return output;

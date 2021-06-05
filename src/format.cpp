@@ -1,6 +1,13 @@
 #include "format.h"
 
 
+enum bignum_format_notation format_notation(const std::string &input) {
+  if (input == "dec") return bignum_format_dec;
+  if (input == "sci") return bignum_format_sci;
+  if (input == "hex") return bignum_format_hex;
+  else cpp11::stop("Found unexpected formatting notation."); // # nocov
+};
+
 cpp11::strings format_biginteger_vector(const biginteger_vector &x,
                                         enum bignum_format_notation notation) {
   cpp11::writable::strings output(x.size());
@@ -30,16 +37,9 @@ cpp11::strings format_biginteger_vector(const biginteger_vector &x,
 
 cpp11::strings format_bigfloat_vector(const bigfloat_vector &x,
                                       enum bignum_format_notation notation,
-                                      int digits,
-                                      bool is_sigfig) {
+                                      int digits, bool is_sigfig) {
   cpp11::writable::strings output(x.size());
   std::stringstream ss;
-
-  if (notation == bignum_format_encode) {
-    notation = bignum_format_dec;
-    digits = std::numeric_limits<bigfloat_type>::max_digits10;
-    is_sigfig = true;
-  }
 
   for (std::size_t i=0; i<x.size(); ++i) {
     if (i % 10000 == 0) {
@@ -62,8 +62,7 @@ cpp11::strings format_bigfloat_vector(const bigfloat_vector &x,
 
 std::string format_bigfloat(const bigfloat_type &x,
                             enum bignum_format_notation notation,
-                            int digits,
-                            bool is_sigfig) {
+                            int digits, bool is_sigfig) {
   std::stringstream ss;
 
   bool hide_terminal_zeros = is_sigfig || digits < 0;
@@ -79,7 +78,7 @@ std::string format_bigfloat(const bigfloat_type &x,
     ss.precision(is_sigfig ? std::max(digits - predecimal_digits(x), 0) : digits);
     break;
   default:
-    cpp11::stop("Found unexpected formatting notation.");
+    cpp11::stop("Found unexpected formatting notation."); // # nocov
   }
 
   std::string output;
@@ -92,7 +91,6 @@ std::string format_bigfloat(const bigfloat_type &x,
     ss << x;
     output = ss.str();
   }
-  ss.str("");
 
   if (hide_terminal_zeros && !has_nonzero_hidden_digits(x, output)) {
     output = trim_terminal_zeros(output, true);

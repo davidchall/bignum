@@ -1,8 +1,8 @@
 #include <cpp11.hpp>
+#include "biginteger_vector.h"
 #include "operations.h"
 #include "compare.h"
 #include "format.h"
-#include "biginteger_vector.h"
 
 
 [[cpp11::register]]
@@ -84,6 +84,10 @@ cpp11::doubles c_biginteger_to_double(cpp11::strings x) {
  *---------*/
 [[cpp11::register]]
 cpp11::strings c_biginteger_format(cpp11::strings x, cpp11::strings notation) {
+  if (notation.size() != 1) {
+    cpp11::stop("`notation` must be a scalar."); // # nocov
+  }
+
   return format_biginteger_vector(
     biginteger_vector(x),
     format_notation(notation[0])
