@@ -13,9 +13,15 @@ cpp11::strings format_biginteger_vector(const biginteger_vector &x,
   cpp11::writable::strings output(x.size());
   std::stringstream ss;
 
-  if (notation == bignum_format_hex) {
+  switch (notation) {
+  case bignum_format_hex:
     ss.setf(std::ios::hex, std::ios::basefield);
     ss.setf(std::ios::showbase);
+    break;
+  case bignum_format_dec:
+    break;
+  default:
+    cpp11::stop("Found unexpected formatting notation."); // # nocov
   }
 
   for (std::size_t i=0; i<x.size(); ++i) {
@@ -39,7 +45,6 @@ cpp11::strings format_bigfloat_vector(const bigfloat_vector &x,
                                       enum bignum_format_notation notation,
                                       int digits, bool is_sigfig) {
   cpp11::writable::strings output(x.size());
-  std::stringstream ss;
 
   for (std::size_t i=0; i<x.size(); ++i) {
     if (i % 10000 == 0) {
@@ -68,10 +73,10 @@ std::string format_bigfloat(const bigfloat_type &x,
   bool hide_terminal_zeros = is_sigfig || digits < 0;
   digits = abs(digits);
 
-  switch(notation) {
+  switch (notation) {
   case bignum_format_sci:
     ss.setf(std::ios::scientific, std::ios::floatfield);
-    ss.precision(is_sigfig ? digits - 1 : digits);
+    ss.precision(is_sigfig ? std::max(digits - 1, 0) : digits);
     break;
   case bignum_format_dec:
     ss.setf(std::ios::fixed, std::ios::floatfield);
@@ -102,13 +107,10 @@ std::string format_bigfloat(const bigfloat_type &x,
 int predecimal_digits(const bigfloat_type &x) {
   if (x == 0) {
     return 1;
-  } else {
-    return static_cast<int>(
-      1 + boost::multiprecision::floor(
-        boost::multiprecision::log10(
-          boost::multiprecision::abs(x)
-    )));
   }
+
+  bigfloat_type pre = 1 + boost::multiprecision::floor(boost::multiprecision::log10(boost::multiprecision::abs(x)));
+  return static_cast<int>(pre);
 };
 
 bool has_nonzero_hidden_digits(const bigfloat_type &x, const std::string &visible) {
