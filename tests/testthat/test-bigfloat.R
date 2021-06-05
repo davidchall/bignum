@@ -102,6 +102,18 @@ test_that("lossy casts are caught", {
   lossy_val <- bigfloat(1) / 3
   expect_error(vec_cast(lossy_val, double()), class = "vctrs_error_cast_lossy")
   expect_warning(as.double(lossy_val), class = "bignum_warning_cast_lossy")
+
+  # bigfloat -> biginteger
+  lossy_val <- bigfloat(1.5)
+  expect_equal(as_biginteger(lossy_val - 0.5), biginteger(1))
+  expect_error(vec_cast(lossy_val, new_biginteger()), class = "vctrs_error_cast_lossy")
+  expect_warning(as_biginteger(lossy_val), class = "bignum_warning_cast_lossy")
+
+  # biginteger -> bigfloat
+  lossy_val <- biginteger(10)^51L + 1L
+  expect_equal(as_bigfloat(lossy_val - 1L), bigfloat(1e51))
+  expect_error(vec_cast(lossy_val, new_bigfloat()), class = "vctrs_error_cast_lossy")
+  expect_warning(as_bigfloat(lossy_val), class = "bignum_warning_cast_lossy")
 })
 
 test_that("combination works", {

@@ -185,7 +185,7 @@ as.character.bignum_bigfloat <- function(x, ...) {
 
 #' @export
 as_bigfloat.default <- function(x) {
-  vec_cast(x, new_bigfloat())
+  warn_on_lossy_cast(vec_cast(x, new_bigfloat()))
 }
 
 #' @export
