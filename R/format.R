@@ -37,7 +37,7 @@ format.bignum_biginteger <- function(x, ..., sigfig = NULL, digits = NULL,
 
   if (notation == "sci") {
     format(
-      vec_cast(x, bigfloat()),
+      vec_cast(x, new_bigfloat()),
       ...,
       sigfig = sigfig,
       digits = digits,

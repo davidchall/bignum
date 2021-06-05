@@ -42,31 +42,31 @@ test_that("coercion works", {
 test_that("casting works", {
   x <- bigfloat(1:10)
 
-  expect_equal(vec_cast(x, bigfloat()), x)
+  expect_equal(vec_cast(x, new_bigfloat()), x)
   expect_equal(as_bigfloat(x), x)
 
   expect_equal(vec_cast(bigfloat(c(1, 0)), logical()), c(TRUE, FALSE))
-  expect_equal(vec_cast(c(TRUE, FALSE), bigfloat()), bigfloat(c(1, 0)))
+  expect_equal(vec_cast(c(TRUE, FALSE), new_bigfloat()), bigfloat(c(1, 0)))
   expect_equal(as.logical(bigfloat(c(1, 0))), c(TRUE, FALSE))
   expect_equal(as_bigfloat(c(TRUE, FALSE)), bigfloat(c(1, 0)))
 
   expect_equal(vec_cast(x, integer()), 1:10)
-  expect_equal(vec_cast(1:10, bigfloat()), x)
+  expect_equal(vec_cast(1:10, new_bigfloat()), x)
   expect_equal(as.integer(x), 1:10)
   expect_equal(as_bigfloat(1:10), x)
 
   expect_equal(vec_cast(x, double()), as.double(1:10))
-  expect_equal(vec_cast(as.double(1:10), bigfloat()), x)
+  expect_equal(vec_cast(as.double(1:10), new_bigfloat()), x)
   expect_equal(as.double(x), as.double(1:10))
   expect_equal(as_bigfloat(as.double(1:10)), x)
 
-  expect_equal(vec_cast(x, biginteger()), as_biginteger(1:10))
-  expect_equal(vec_cast(as_biginteger(1:10), bigfloat()), x)
+  expect_equal(vec_cast(x, new_biginteger()), as_biginteger(1:10))
+  expect_equal(vec_cast(as_biginteger(1:10), new_bigfloat()), x)
   expect_equal(as_biginteger(x), as_biginteger(1:10))
   expect_equal(as_bigfloat(as_biginteger(1:10)), x)
 
   expect_error(vec_cast(x, character()), class = "vctrs_error_incompatible_type")
-  expect_error(vec_cast(as.character(1:10), bigfloat()), class = "vctrs_error_incompatible_type")
+  expect_error(vec_cast(as.character(1:10), new_bigfloat()), class = "vctrs_error_incompatible_type")
   expect_equal(as.character(x), as.character(1:10))
   expect_equal(as_bigfloat(as.character(1:10)), x)
 })
