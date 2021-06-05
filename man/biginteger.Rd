@@ -25,7 +25,11 @@ An S3 vector of class \code{bignum_biginteger}.
 \code{is_biginteger()} checks if an object is of class \code{bignum_biginteger}.
 }
 \examples{
-biginteger(1:5)^10L
+# default options limit displayed precision
+biginteger(2)^50L
+
+# display full precision
+format(biginteger(2)^50L, notation = "dec")
 
 # lossy casts raise a warning
 biginteger(c(2, 2.5, 3))

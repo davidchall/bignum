@@ -125,7 +125,7 @@ parse_digits_args <- function(sigfig, digits) {
     sigfig <- vec_cast(sigfig, integer(), x_arg = "bignum.sigfig")
     vec_assert(sigfig, ptype = integer(), size = 1, arg = "bignum.sigfig")
     if (sigfig < 1) {
-      abort("`bignum.sigfig` must be 1 or greater.")
+      abort("\"bignum.sigfig\" option must be 1 or greater.")
     }
 
     display_digits <- sigfig

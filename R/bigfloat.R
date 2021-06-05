@@ -10,7 +10,11 @@
 #' @return An S3 vector of class `bignum_bigfloat`.
 #'
 #' @examples
+#' # default options limit displayed precision
 #' bigfloat(1) / 3
+#'
+#' # display full precision
+#' format(bigfloat(1) / 3, sigfig = 50, notation = "dec")
 #' @seealso
 #' [`NA_bigfloat_`] to represent missing values.
 #'
