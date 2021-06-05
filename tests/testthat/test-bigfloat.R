@@ -9,6 +9,10 @@ test_that("data input works", {
   expect_length(bigfloat(c(1L, 2.5)), 2)
 })
 
+test_that("input validation works", {
+  expect_equal(bigfloat("hello"), NA_bigfloat_)
+})
+
 test_that("coercion works", {
   x <- bigfloat(1:10)
 

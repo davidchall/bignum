@@ -2,17 +2,38 @@ test_that("trailing zeros dropped", {
   expect_equal(format(bigfloat(0.2)), "0.2")
 })
 
-test_that("input validation", {
-  expect_error(format(bigfloat(1), sigfig = 1, digits = 1))
+test_that("bigfloat: input validation", {
+  mwe <- function(...) format(bigfloat(1), ...)
 
-  expect_error(format(bigfloat(1), sigfig = 1.5), class = "vctrs_error_cast_lossy")
-  expect_error(format(bigfloat(1), sigfig = "1"), class = "vctrs_error_incompatible_type")
-  expect_error(format(bigfloat(1), sigfig = c(1, 2)), class = "vctrs_error_assert_size")
-  expect_error(format(bigfloat(1), sigfig = 0))
+  expect_error(mwe(sigfig = 1, digits = 1))
 
-  expect_error(format(bigfloat(1), digits = 1.5), class = "vctrs_error_cast_lossy")
-  expect_error(format(bigfloat(1), digits = "1"), class = "vctrs_error_incompatible_type")
-  expect_error(format(bigfloat(1), digits = c(1, 2)), class = "vctrs_error_assert_size")
+  expect_error(mwe(sigfig = 1.5), class = "vctrs_error_cast_lossy")
+  expect_error(mwe(sigfig = "1"), class = "vctrs_error_incompatible_type")
+  expect_error(mwe(sigfig = c(1, 2)), class = "vctrs_error_assert_size")
+  expect_error(mwe(sigfig = 0))
+
+  expect_error(mwe(digits = 1.5), class = "vctrs_error_cast_lossy")
+  expect_error(mwe(digits = "1"), class = "vctrs_error_incompatible_type")
+  expect_error(mwe(digits = c(1, 2)), class = "vctrs_error_assert_size")
+
+  expect_error(mwe(notation = "unknown"))
+})
+
+test_that("biginteger: input validation", {
+  mwe <- function(..., notation = "sci") format(biginteger(1), ..., notation = notation)
+
+  expect_error(mwe(sigfig = 1, digits = 1))
+
+  expect_error(mwe(sigfig = 1.5), class = "vctrs_error_cast_lossy")
+  expect_error(mwe(sigfig = "1"), class = "vctrs_error_incompatible_type")
+  expect_error(mwe(sigfig = c(1, 2)), class = "vctrs_error_assert_size")
+  expect_error(mwe(sigfig = 0))
+
+  expect_error(mwe(digits = 1.5), class = "vctrs_error_cast_lossy")
+  expect_error(mwe(digits = "1"), class = "vctrs_error_incompatible_type")
+  expect_error(mwe(digits = c(1, 2)), class = "vctrs_error_assert_size")
+
+  expect_error(mwe(notation = "unknown"))
 })
 
 test_that("sigfig works", {
