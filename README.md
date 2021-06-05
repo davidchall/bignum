@@ -42,6 +42,15 @@ remotes::install_github("davidchall/bignum")
 
 ## Usage
 
+Before starting, we’ll increase the displayed precision so we can see
+the benefits of bignum.
+
+``` r
+options(digits = 20)
+options(bignum.sigfig = 50)
+options(bignum.max_dec_width = 52)
+```
+
 ### Arbitrary-precision integer vector
 
 The limited precision of atomic vectors introduces errors when working
@@ -49,7 +58,6 @@ with very large integers. As an example, let’s calculate the factorial
 of 23. In base R, we’d calculate:
 
 ``` r
-options(digits = 20)
 factorial(23)
 #> [1] 25852016738884978212864
 ```
