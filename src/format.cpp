@@ -31,6 +31,8 @@ cpp11::strings format_biginteger_vector(const biginteger_vector &x,
 
     if (x.is_na[i]) {
       output[i] = NA_STRING;
+    } else if (notation == bignum_format_hex && x.data[i] < 0) {
+      output[i] = NA_STRING;
     } else {
       ss << x.data[i];
       output[i] = ss.str();

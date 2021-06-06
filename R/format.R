@@ -94,6 +94,9 @@ format_fit <- function(x, ...) {
   max_dec_width <- getOption("bignum.max_dec_width", 13L)
   max_dec_width <- vec_cast(max_dec_width, integer(), x_arg = "bignum.max_dec_width")
   vec_assert(max_dec_width, ptype = integer(), size = 1, arg = "bignum.max_dec_width")
+  if (max_dec_width < 1) {
+    abort("\"bignum.max_dec_width\" option must be 1 or greater.")
+  }
 
   out <- format(x, ..., notation = "dec")
   if (any(nchar(out) > max_dec_width, na.rm = TRUE)) {
