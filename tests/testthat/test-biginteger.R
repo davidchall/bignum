@@ -132,3 +132,7 @@ test_that("missing value works", {
   expect_equal(as_biginteger(NA_character_), NA_biginteger_)
   expect_equal(as.character(NA_biginteger_), NA_character_)
 })
+
+test_that("difficult cases work", {
+  expect_equal(biginteger(c(1, 1e10)), biginteger(c("1", "10000000000")))
+})

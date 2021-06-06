@@ -4,7 +4,9 @@
     * New `sigfig` and `digits` arguments control the displayed precision.
     * New `notation` argument chooses decimal, scientific or hexadecimal output.
     * New options `"bignum.sigfig"` and `"bignum.max_dec_width"` determine the default formatting.
-* Fixed identification of lossy casts when converting between `biginteger()` and `bigfloat()` vectors.
+* Fixed how `biginteger()` vectors are created from large `double()` vectors (e.g. `biginteger(1e10)`). This would previously return `NA`.
+* Fixed identification of lossy casts when converting between `biginteger()` and `bigfloat()` vectors. This would previously return `NA` silently, but now it raises a warning.
+
 
 # bignum 0.1.0
 
