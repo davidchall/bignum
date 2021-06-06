@@ -1,7 +1,8 @@
 #include <cpp11.hpp>
+#include "bigfloat_vector.h"
 #include "operations.h"
 #include "compare.h"
-#include "bigfloat_vector.h"
+#include "format.h"
 
 
 [[cpp11::register]]
@@ -86,11 +87,23 @@ cpp11::doubles c_bigfloat_to_double(cpp11::strings x) {
  *  Other  *
  *---------*/
 [[cpp11::register]]
-cpp11::strings c_bigfloat_format(cpp11::strings x) {
-  std::stringstream ss;
-  ss.precision(std::numeric_limits<bigfloat_type>::digits10);
+cpp11::strings c_bigfloat_format(cpp11::strings x,
+                                 cpp11::strings notation,
+                                 cpp11::integers digits,
+                                 bool is_sigfig) {
+  if (notation.size() != 1) {
+    cpp11::stop("`notation` must be a scalar."); // # nocov
+  }
+  if (digits.size() != 1) {
+    cpp11::stop("`digits` must be a scalar."); // # nocov
+  }
 
-  return bigfloat_vector(x).format(ss);
+  return format_bigfloat_vector(
+    bigfloat_vector(x),
+    format_notation(notation[0]),
+    digits[0],
+    is_sigfig
+  );
 }
 
 

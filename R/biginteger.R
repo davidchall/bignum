@@ -10,7 +10,11 @@
 #' @return An S3 vector of class `bignum_biginteger`.
 #'
 #' @examples
-#' biginteger(1:5)^10L
+#' # default options limit displayed precision
+#' biginteger(2)^50L
+#'
+#' # display full precision
+#' format(biginteger(2)^50L, notation = "dec")
 #'
 #' # lossy casts raise a warning
 #' biginteger(c(2, 2.5, 3))

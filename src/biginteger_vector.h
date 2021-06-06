@@ -20,7 +20,6 @@ public:
 
   biginteger_vector(cpp11::strings x);
 
-  cpp11::strings format() const;
   cpp11::strings encode() const;
 };
 

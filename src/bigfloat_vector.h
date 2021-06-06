@@ -20,7 +20,6 @@ public:
 
   bigfloat_vector(cpp11::strings x);
 
-  cpp11::strings format(std::stringstream &ss) const;
   cpp11::strings encode() const;
 };
 

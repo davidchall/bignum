@@ -25,7 +25,11 @@ with 50 decimal digits of precision.
 \code{is_bigfloat()} checks if an object is of class \code{bignum_bigfloat}.
 }
 \examples{
+# default options limit displayed precision
 bigfloat(1) / 3
+
+# display full precision
+format(bigfloat(1) / 3, sigfig = 50, notation = "dec")
 }
 \seealso{
 \code{\link{NA_bigfloat_}} to represent missing values.

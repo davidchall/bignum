@@ -9,6 +9,10 @@ test_that("data input works", {
   expect_length(biginteger(c(1L, 2)), 2)
 })
 
+test_that("input validation works", {
+  expect_equal(biginteger("hello"), NA_biginteger_)
+})
+
 test_that("coercion works", {
   x <- biginteger(1:10)
 
@@ -39,26 +43,26 @@ test_that("coercion works", {
 test_that("casting works", {
   x <- biginteger(1:10)
 
-  expect_equal(vec_cast(x, biginteger()), x)
+  expect_equal(vec_cast(x, new_biginteger()), x)
   expect_equal(as_biginteger(x), x)
 
   expect_equal(vec_cast(biginteger(c(1, 0)), logical()), c(TRUE, FALSE))
-  expect_equal(vec_cast(c(TRUE, FALSE), biginteger()), biginteger(c(1, 0)))
+  expect_equal(vec_cast(c(TRUE, FALSE), new_biginteger()), biginteger(c(1, 0)))
   expect_equal(as.logical(biginteger(c(1, 0))), c(TRUE, FALSE))
   expect_equal(as_biginteger(c(TRUE, FALSE)), biginteger(c(1, 0)))
 
   expect_equal(vec_cast(x, integer()), 1:10)
-  expect_equal(vec_cast(1:10, biginteger()), x)
+  expect_equal(vec_cast(1:10, new_biginteger()), x)
   expect_equal(as.integer(x), 1:10)
   expect_equal(as_biginteger(1:10), x)
 
   expect_equal(vec_cast(x, double()), as.double(1:10))
-  expect_equal(vec_cast(as.double(1:10), biginteger()), x)
+  expect_equal(vec_cast(as.double(1:10), new_biginteger()), x)
   expect_equal(as.double(x), as.double(1:10))
   expect_equal(as_biginteger(as.double(1:10)), x)
 
   expect_error(vec_cast(x, character()), class = "vctrs_error_incompatible_type")
-  expect_error(vec_cast(as.character(1:10), biginteger()), class = "vctrs_error_incompatible_type")
+  expect_error(vec_cast(as.character(1:10), new_biginteger()), class = "vctrs_error_incompatible_type")
   expect_equal(as.character(x), as.character(1:10))
   expect_equal(as_biginteger(as.character(1:10)), x)
 })
@@ -93,7 +97,7 @@ test_that("lossy casts are caught", {
 
   # double -> biginteger
   lossy_val <- 1.5
-  expect_error(vec_cast(lossy_val, biginteger()), class = "vctrs_error_cast_lossy")
+  expect_error(vec_cast(lossy_val, new_biginteger()), class = "vctrs_error_cast_lossy")
   expect_warning(as_biginteger(lossy_val), class = "bignum_warning_cast_lossy")
 })
 

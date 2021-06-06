@@ -27,7 +27,11 @@ NA_biginteger_
 
 NA_bigfloat_
 
+# default options limit displayed precision
 bigpi
+
+# display full precision
+format(bigpi, sigfig = 50, notation = "dec")
 }
 \seealso{
 \code{\link{NA}} and \code{\link{pi}} are the base constants.

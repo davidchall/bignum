@@ -1,7 +1,7 @@
 vec_arith_bigfloat <- function(op, x, y) {
   args <- vec_recycle_common(
-    vec_cast(x, bigfloat()),
-    vec_cast(y, bigfloat())
+    vec_cast(x, new_bigfloat()),
+    vec_cast(y, new_bigfloat())
   )
   x2 <- args[[1L]]
   y2 <- args[[2L]]
@@ -13,15 +13,15 @@ vec_arith_bigfloat <- function(op, x, y) {
     "/" = c_bigfloat_divide(x2, y2),
     "^" = c_bigfloat_pow(x2, y2),
     "%%" = c_bigfloat_modulo(x2, y2),
-    "%/%" = vec_cast(trunc(x2 / y2), biginteger()),
+    "%/%" = vec_cast(trunc(x2 / y2), new_biginteger()),
     stop_incompatible_op(op, x, y)
   )
 }
 
 vec_arith_biginteger <- function(op, x, y) {
   args <- vec_recycle_common(
-    vec_cast(x, biginteger()),
-    vec_cast(y, biginteger())
+    vec_cast(x, new_biginteger()),
+    vec_cast(y, new_biginteger())
   )
   x2 <- args[[1L]]
   y2 <- args[[2L]]

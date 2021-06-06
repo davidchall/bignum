@@ -4,26 +4,72 @@
 \alias{bignum-format}
 \alias{format.bignum_biginteger}
 \alias{format.bignum_bigfloat}
-\title{Formatting}
+\title{Format a bignum vector}
 \usage{
-\method{format}{bignum_biginteger}(x, ...)
+\method{format}{bignum_biginteger}(
+  x,
+  ...,
+  sigfig = NULL,
+  digits = NULL,
+  notation = c("fit", "dec", "sci", "hex")
+)
 
-\method{format}{bignum_bigfloat}(x, ...)
+\method{format}{bignum_bigfloat}(x, ..., sigfig = NULL, digits = NULL, notation = c("fit", "dec", "sci"))
 }
 \arguments{
 \item{x}{A \code{\link{biginteger}} or \code{\link{bigfloat}} vector.}
 
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{sigfig}{Number of significant figures to show. Must be positive.
+Cannot be combined with \code{digits}.
+
+If both \code{sigfig} and \code{digits} are unspecified, then consults the
+\code{"bignum.sigfig"} option (default: 7).}
+
+\item{digits}{Number of digits to show after the decimal point.
+Positive values indicate the exact number of digits to show.
+Negative values indicate the maximum number of digits to show (terminal
+zeros are hidden if there are no subsequent non-zero digits).
+Cannot be combined with \code{sigfig}.}
+
+\item{notation}{How should the vector be displayed? Choices:
+\itemize{
+\item \code{"fit"}: Use decimal notation if it fits, otherwise use scientific
+notation. Consults the \code{"bignum.max_dec_width"} option (default: 13).
+\item \code{"dec"}: Use decimal notation, regardless of width.
+\item \code{"sci"}: Use scientific notation.
+\item \code{"hex"}: Use hexadecimal notation (positive \code{\link{biginteger}} only).
+}}
 }
 \value{
 Character vector
 }
 \description{
-Format a bignum vector for pretty printing.
+Customize how a \code{\link{biginteger}} or \code{\link{bigfloat}} vector is displayed.
+The precision can be controlled with a number of significant figures, or with
+a maximum or fixed number of digits after the decimal point. You can also
+choose between decimal, scientific and hexadecimal notations.
+
+The formatting is applied when the vector is printed or formatted, and also
+in a tibble column.
 }
 \examples{
-x <- biginteger(2)^100L
+# default uses decimal notation
+format(bigfloat(1e12))
 
-# default shows maximum precision
-format(x)
+# until it becomes too wide, then it uses scientific notation
+format(bigfloat(1e13))
+
+# hexadecimal notation is supported for positive integers
+format(biginteger(255), notation = "hex")
+
+# significant figures
+format(bigfloat(12.5), sigfig = 2)
+
+# fixed digits after decimal point
+format(bigfloat(12.5), digits = 2)
+
+# maximum digits after decimal point
+format(bigfloat(12.5), digits = -2)
 }

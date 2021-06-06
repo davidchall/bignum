@@ -1,4 +1,5 @@
 #include "biginteger_vector.h"
+#include "format.h"
 
 
 biginteger_vector::biginteger_vector(cpp11::strings x) : biginteger_vector(x.size()) {
@@ -21,27 +22,9 @@ biginteger_vector::biginteger_vector(cpp11::strings x) : biginteger_vector(x.siz
 }
 
 
-cpp11::strings biginteger_vector::format() const {
-  cpp11::writable::strings output(size());
-
-  for (std::size_t i=0; i<size(); ++i) {
-    if (i % 10000 == 0) {
-      cpp11::check_user_interrupt();
-    }
-
-    if (is_na[i]) {
-      output[i] = NA_STRING;
-    } else {
-      output[i] = data[i].str();
-    }
-  }
-
-  return output;
-}
-
-
 cpp11::strings biginteger_vector::encode() const {
-  cpp11::writable::strings result = format();
-  result.attr("class") = {"bignum_biginteger", "bignum_vctr", "vctrs_vctr"};
-  return result;
+  cpp11::writable::strings output = format_biginteger_vector(*this, bignum_format_dec);
+
+  output.attr("class") = {"bignum_biginteger", "bignum_vctr", "vctrs_vctr"};
+  return output;
 }

@@ -33,10 +33,10 @@ extern "C" SEXP _bignum_c_bigfloat_to_double(SEXP x) {
   END_CPP11
 }
 // bigfloat_interface.cpp
-cpp11::strings c_bigfloat_format(cpp11::strings x);
-extern "C" SEXP _bignum_c_bigfloat_format(SEXP x) {
+cpp11::strings c_bigfloat_format(cpp11::strings x, cpp11::strings notation, cpp11::integers digits, bool is_sigfig);
+extern "C" SEXP _bignum_c_bigfloat_format(SEXP x, SEXP notation, SEXP digits, SEXP is_sigfig) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_bigfloat_format(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x)));
+    return cpp11::as_sexp(c_bigfloat_format(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(notation), cpp11::as_cpp<cpp11::decay_t<cpp11::integers>>(digits), cpp11::as_cpp<cpp11::decay_t<bool>>(is_sigfig)));
   END_CPP11
 }
 // bigfloat_interface.cpp
@@ -348,10 +348,10 @@ extern "C" SEXP _bignum_c_biginteger_to_double(SEXP x) {
   END_CPP11
 }
 // biginteger_interface.cpp
-cpp11::strings c_biginteger_format(cpp11::strings x);
-extern "C" SEXP _bignum_c_biginteger_format(SEXP x) {
+cpp11::strings c_biginteger_format(cpp11::strings x, cpp11::strings notation);
+extern "C" SEXP _bignum_c_biginteger_format(SEXP x, SEXP notation) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_biginteger_format(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x)));
+    return cpp11::as_sexp(c_biginteger_format(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(x), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(notation)));
   END_CPP11
 }
 // biginteger_interface.cpp
@@ -490,7 +490,7 @@ extern SEXP _bignum_c_bigfloat_divide(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_exp(SEXP);
 extern SEXP _bignum_c_bigfloat_expm1(SEXP);
 extern SEXP _bignum_c_bigfloat_floor(SEXP);
-extern SEXP _bignum_c_bigfloat_format(SEXP);
+extern SEXP _bignum_c_bigfloat_format(SEXP, SEXP, SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_gamma(SEXP);
 extern SEXP _bignum_c_bigfloat_lgamma(SEXP);
 extern SEXP _bignum_c_bigfloat_log(SEXP);
@@ -522,7 +522,7 @@ extern SEXP _bignum_c_biginteger_cummax(SEXP);
 extern SEXP _bignum_c_biginteger_cummin(SEXP);
 extern SEXP _bignum_c_biginteger_cumprod(SEXP);
 extern SEXP _bignum_c_biginteger_cumsum(SEXP);
-extern SEXP _bignum_c_biginteger_format(SEXP);
+extern SEXP _bignum_c_biginteger_format(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_modulo(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_multiply(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_pow(SEXP, SEXP);
@@ -558,7 +558,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat_exp",          (DL_FUNC) &_bignum_c_bigfloat_exp,          1},
     {"_bignum_c_bigfloat_expm1",        (DL_FUNC) &_bignum_c_bigfloat_expm1,        1},
     {"_bignum_c_bigfloat_floor",        (DL_FUNC) &_bignum_c_bigfloat_floor,        1},
-    {"_bignum_c_bigfloat_format",       (DL_FUNC) &_bignum_c_bigfloat_format,       1},
+    {"_bignum_c_bigfloat_format",       (DL_FUNC) &_bignum_c_bigfloat_format,       4},
     {"_bignum_c_bigfloat_gamma",        (DL_FUNC) &_bignum_c_bigfloat_gamma,        1},
     {"_bignum_c_bigfloat_lgamma",       (DL_FUNC) &_bignum_c_bigfloat_lgamma,       1},
     {"_bignum_c_bigfloat_log",          (DL_FUNC) &_bignum_c_bigfloat_log,          1},
@@ -590,7 +590,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_biginteger_cummin",     (DL_FUNC) &_bignum_c_biginteger_cummin,     1},
     {"_bignum_c_biginteger_cumprod",    (DL_FUNC) &_bignum_c_biginteger_cumprod,    1},
     {"_bignum_c_biginteger_cumsum",     (DL_FUNC) &_bignum_c_biginteger_cumsum,     1},
-    {"_bignum_c_biginteger_format",     (DL_FUNC) &_bignum_c_biginteger_format,     1},
+    {"_bignum_c_biginteger_format",     (DL_FUNC) &_bignum_c_biginteger_format,     2},
     {"_bignum_c_biginteger_modulo",     (DL_FUNC) &_bignum_c_biginteger_modulo,     2},
     {"_bignum_c_biginteger_multiply",   (DL_FUNC) &_bignum_c_biginteger_multiply,   2},
     {"_bignum_c_biginteger_pow",        (DL_FUNC) &_bignum_c_biginteger_pow,        2},
