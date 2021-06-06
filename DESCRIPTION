@@ -25,8 +25,7 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    testthat,
-    withr
+    testthat
 LinkingTo: 
     BH,
     cpp11
