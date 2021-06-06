@@ -113,16 +113,20 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
+<p>Before starting, we’ll increase the displayed precision so we can see the benefits of bignum.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>bignum.sigfig <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>bignum.max_dec_width <span class="op">=</span> <span class="fl">52</span><span class="op">)</span></code></pre></div>
 <div id="arbitrary-precision-integer-vector" class="section level3">
 <h3 class="hasAnchor">
 <a href="#arbitrary-precision-integer-vector" class="anchor"></a>Arbitrary-precision integer vector</h3>
 <p>The limited precision of atomic vectors introduces errors when working with very large integers. As an example, let’s calculate the factorial of 23. In base R, we’d calculate:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="fl">23</span><span class="op">)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="fl">23</span><span class="op">)</span>
 <span class="co">#&gt; [1] 25852016738884978212864</span></code></pre></div>
 <p>The factorial of 23 includes a factor of 10, and so the final digit <em>must</em> be zero. Using <code><a href="reference/biginteger.html">biginteger()</a></code> yields the correct result:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/prod.html">prod</a></span><span class="op">(</span><span class="fu"><a href="reference/biginteger.html">biginteger</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">23</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; &lt;biginteger[1]&gt;</span>
 <span class="co">#&gt; [1] 25852016738884976640000</span></code></pre></div>
@@ -131,14 +135,14 @@
 <h3 class="hasAnchor">
 <a href="#high-precision-floating-point-vector" class="anchor"></a>High-precision floating-point vector</h3>
 <p><code><a href="reference/bigfloat.html">bigfloat()</a></code> vectors support much higher precision than <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> vectors:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span>
 <span class="co">#&gt; [1] 0.33333333333333331483</span>
 <span class="fu"><a href="reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span>
 <span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
 <span class="co">#&gt; [1] 0.33333333333333333333333333333333333333333333333333</span></code></pre></div>
 <p>However, you need to be careful not to limit the precision accidentally:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
 <span class="co">#&gt; [1] 0.333333333333333</span></code></pre></div>

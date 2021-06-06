@@ -130,6 +130,17 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#bignum-development-version" class="anchor"></a>bignum (development version)<small> Unreleased </small>
 </h1>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/format.html">format()</a></code> functions now support customized output.
+<ul>
+<li>New <code>sigfig</code> and <code>digits</code> arguments control the displayed precision.</li>
+<li>New <code>notation</code> argument chooses decimal, scientific or hexadecimal output.</li>
+<li>New options <code>"bignum.sigfig"</code> and <code>"bignum.max_dec_width"</code> determine the default formatting.</li>
+</ul>
+</li>
+<li>Fixed identification of lossy casts when converting between <code><a href="../reference/biginteger.html">biginteger()</a></code> and <code><a href="../reference/bigfloat.html">bigfloat()</a></code> vectors.</li>
+</ul>
 </div>
     <div id="bignum-010" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.0">
