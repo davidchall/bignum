@@ -51,8 +51,11 @@ The precision can be controlled with a number of significant figures, or with
 a maximum or fixed number of digits after the decimal point. You can also
 choose between decimal, scientific and hexadecimal notations.
 
-The formatting is applied when the vector is printed or formatted, and also
-in a tibble column.
+The default formatting applied when printing depends on the type of object:
+\itemize{
+\item \strong{standalone vector:} consults \code{"bignum.sigfig"} and \code{"bignum.max_dec_width"}
+\item \strong{tibble column:} consults \code{"pillar.sigfig"} and \code{"pillar.max_dec_width"}
+}
 }
 \examples{
 # default uses decimal notation
