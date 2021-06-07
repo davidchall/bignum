@@ -132,14 +132,15 @@
 </h1>
 <ul>
 <li>
-<code><a href="https://rdrr.io/r/base/format.html">format()</a></code> functions now support customized output (<a href='https://github.com/davidchall/bignum/issues/15'>#15</a>).
+<code><a href="https://rdrr.io/r/base/format.html">format()</a></code> functions now support customized output.
 <ul>
 <li>New <code>sigfig</code> and <code>digits</code> arguments control the displayed precision.</li>
 <li>New <code>notation</code> argument chooses decimal, scientific or hexadecimal output.</li>
 <li>New options <code>"bignum.sigfig"</code> and <code>"bignum.max_dec_width"</code> determine the default formatting.</li>
+<li>When a bignum vector is stored in a <a href="https://tibble.tidyverse.org">tibble</a> column, the default formatting instead consults <code>"pillar.sigfig"</code> and <code>"pillar.max_dec_width"</code>. See <code><a href="https://pillar.r-lib.org/articles/digits.html">vignette("digits", package = "pillar")</a></code>.</li>
 </ul>
 </li>
-<li>Fixed how <code><a href="../reference/biginteger.html">biginteger()</a></code> vectors are created from large <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> vectors (e.g. <code><a href="../reference/biginteger.html">biginteger(1e10)</a></code>). This would previously return <code>NA</code> (<a href='https://github.com/davidchall/bignum/issues/16'>#16</a>).</li>
+<li>Fixed how <code><a href="../reference/biginteger.html">biginteger()</a></code> vectors are created from large <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> vectors (e.g. <code><a href="../reference/biginteger.html">biginteger(1e10)</a></code>). This would previously return <code>NA</code>.</li>
 <li>Fixed identification of lossy casts when converting between <code><a href="../reference/biginteger.html">biginteger()</a></code> and <code><a href="../reference/bigfloat.html">bigfloat()</a></code> vectors. This would previously return <code>NA</code> silently, but now it raises a warning.</li>
 </ul>
 </div>

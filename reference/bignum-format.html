@@ -44,8 +44,11 @@
 The precision can be controlled with a number of significant figures, or with
 a maximum or fixed number of digits after the decimal point. You can also
 choose between decimal, scientific and hexadecimal notations.
-The formatting is applied when the vector is printed or formatted, and also
-in a tibble column." />
+The default formatting applied when printing depends on the type of object:
+standalone vector: consults &quot;bignum.sigfig&quot; and &quot;bignum.max_dec_width&quot;
+tibble column: consults &quot;pillar.sigfig&quot; and &quot;pillar.max_dec_width&quot;
+
+" />
 
 
 
@@ -138,8 +141,11 @@ in a tibble column." />
 The precision can be controlled with a number of significant figures, or with
 a maximum or fixed number of digits after the decimal point. You can also
 choose between decimal, scientific and hexadecimal notations.</p>
-<p>The formatting is applied when the vector is printed or formatted, and also
-in a tibble column.</p>
+<p>The default formatting applied when printing depends on the type of object:</p><ul>
+<li><p><strong>standalone vector:</strong> consults <code>"bignum.sigfig"</code> and <code>"bignum.max_dec_width"</code></p></li>
+<li><p><strong>tibble column:</strong> consults <code>"pillar.sigfig"</code> and <code>"pillar.max_dec_width"</code></p></li>
+</ul>
+
     </div>
 
     <pre class="usage"><span class='co'># S3 method for bignum_biginteger</span>
