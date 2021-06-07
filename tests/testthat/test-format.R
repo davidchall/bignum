@@ -1,48 +1,57 @@
 test_that("bigfloat: input validation", {
-  expect_snapshot({
-    format(bigfloat(1), sigfig = 1, digits = 1)
+  expect_snapshot(
+    {
+      format(bigfloat(1), sigfig = 1, digits = 1)
 
-    format(bigfloat(1), sigfig = 1.5)
-    format(bigfloat(1), sigfig = "1")
-    format(bigfloat(1), sigfig = c(1, 2))
-    format(bigfloat(1), sigfig = 0)
+      format(bigfloat(1), sigfig = 1.5)
+      format(bigfloat(1), sigfig = "1")
+      format(bigfloat(1), sigfig = c(1, 2))
+      format(bigfloat(1), sigfig = 0)
 
-    format(bigfloat(1), digits = 1.5)
-    format(bigfloat(1), digits = "1")
-    format(bigfloat(1), digits = c(1, 2))
+      format(bigfloat(1), digits = 1.5)
+      format(bigfloat(1), digits = "1")
+      format(bigfloat(1), digits = c(1, 2))
 
-    format(bigfloat(1), notation = "hex")
-  }, error = TRUE)
+      format(bigfloat(1), notation = "hex")
+    },
+    error = TRUE
+  )
 })
 
 test_that("biginteger: input validation", {
-  expect_snapshot({
-    format(biginteger(1), notation = "sci", sigfig = 1, digits = 1)
+  expect_snapshot(
+    {
+      format(biginteger(1), notation = "sci", sigfig = 1, digits = 1)
 
-    format(biginteger(1), notation = "sci", sigfig = 1.5)
-    format(biginteger(1), notation = "sci", sigfig = "1")
-    format(biginteger(1), notation = "sci", sigfig = c(1, 2))
-    format(biginteger(1), notation = "sci", sigfig = 0)
+      format(biginteger(1), notation = "sci", sigfig = 1.5)
+      format(biginteger(1), notation = "sci", sigfig = "1")
+      format(biginteger(1), notation = "sci", sigfig = c(1, 2))
+      format(biginteger(1), notation = "sci", sigfig = 0)
 
-    format(biginteger(1), notation = "sci", digits = 1.5)
-    format(biginteger(1), notation = "sci", digits = "1")
-    format(biginteger(1), notation = "sci", digits = c(1, 2))
+      format(biginteger(1), notation = "sci", digits = 1.5)
+      format(biginteger(1), notation = "sci", digits = "1")
+      format(biginteger(1), notation = "sci", digits = c(1, 2))
 
-    format(biginteger(1), notation = "unknown")
-  }, error = TRUE)
+      format(biginteger(1), notation = "unknown")
+    },
+    error = TRUE
+  )
 })
 
 test_that("options: input validation", {
-  expect_snapshot({
-    with_options(bignum.sigfig = 1.5, format(bigfloat(1)))
-    with_options(bignum.sigfig = "1", format(bigfloat(1)))
-    with_options(bignum.sigfig = c(1, 2), format(bigfloat(1)))
-    with_options(bignum.sigfig = 0, format(bigfloat(1)))
+  expect_snapshot(
+    {
+      with_options(bignum.sigfig = 1.5, format(bigfloat(1)))
+      with_options(bignum.sigfig = "1", format(bigfloat(1)))
+      with_options(bignum.sigfig = c(1, 2), format(bigfloat(1)))
+      with_options(bignum.sigfig = 0, format(bigfloat(1)))
 
-    with_options(bignum.max_dec_width = 1.5, format(bigfloat(1)))
-    with_options(bignum.max_dec_width = "1", format(bigfloat(1)))
-    with_options(bignum.max_dec_width = c(1, 2), format(bigfloat(1)))
-  }, error = TRUE)
+      with_options(bignum.max_dec_width = 1.5, format(bigfloat(1)))
+      with_options(bignum.max_dec_width = "1", format(bigfloat(1)))
+      with_options(bignum.max_dec_width = c(1, 2), format(bigfloat(1)))
+    },
+    error = TRUE
+  )
 })
 
 test_that("bigfloat: dec notation works", {

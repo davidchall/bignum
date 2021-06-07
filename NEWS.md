@@ -1,10 +1,11 @@
 # bignum (development version)
 
-* `format()` functions now support customized output (#15).
+* `format()` functions now support customized output.
     * New `sigfig` and `digits` arguments control the displayed precision.
     * New `notation` argument chooses decimal, scientific or hexadecimal output.
     * New options `"bignum.sigfig"` and `"bignum.max_dec_width"` determine the default formatting.
-* Fixed how `biginteger()` vectors are created from large `double()` vectors (e.g. `biginteger(1e10)`). This would previously return `NA` (#16).
+    * When a bignum vector is stored in a [tibble](https://tibble.tidyverse.org) column, the default formatting instead consults `"pillar.sigfig"` and `"pillar.max_dec_width"`. See `vignette("digits", package = "pillar")`.
+* Fixed how `biginteger()` vectors are created from large `double()` vectors (e.g. `biginteger(1e10)`). This would previously return `NA`.
 * Fixed identification of lossy casts when converting between `biginteger()` and `bigfloat()` vectors. This would previously return `NA` silently, but now it raises a warning.
 
 

@@ -6,8 +6,10 @@
 #' a maximum or fixed number of digits after the decimal point. You can also
 #' choose between decimal, scientific and hexadecimal notations.
 #'
-#' The formatting is applied when the vector is printed or formatted, and also
-#' in a tibble column.
+#' The default formatting applied when printing depends on the type of object:
+#'
+#' * **standalone vector:** consults `"bignum.sigfig"` and `"bignum.max_dec_width"`
+#' * **tibble column:** consults `"pillar.sigfig"` and `"pillar.max_dec_width"`
 #'
 #' @param x A [`biginteger`] or [`bigfloat`] vector.
 #' @param ... These dots are for future extensions and must be empty.
