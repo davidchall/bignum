@@ -59,11 +59,11 @@ test_that("trunc() works", {
 
 test_that("special value math works", {
   x <- c(1, NA, NaN, Inf, -Inf)
-  expect_equal(is.nan(biginteger(x)), is.nan(suppressWarnings(as.integer(x))))
+  expect_equal(is.nan(suppressWarnings(biginteger(x))), is.nan(suppressWarnings(as.integer(x))))
   expect_equal(is.nan(bigfloat(x)), is.nan(x))
-  expect_equal(is.finite(biginteger(x)), is.finite(suppressWarnings(as.integer(x))))
+  expect_equal(is.finite(suppressWarnings(biginteger(x))), is.finite(suppressWarnings(as.integer(x))))
   expect_equal(is.finite(bigfloat(x)), is.finite(x))
-  expect_equal(is.infinite(biginteger(x)), is.infinite(suppressWarnings(as.integer(x))))
+  expect_equal(is.infinite(suppressWarnings(biginteger(x))), is.infinite(suppressWarnings(as.integer(x))))
   expect_equal(is.infinite(bigfloat(x)), is.infinite(x))
 })
 

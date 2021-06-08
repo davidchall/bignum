@@ -132,8 +132,10 @@ vec_cast.integer.bignum_biginteger <- function(x, to, ..., x_arg = "", to_arg = 
 
 #' @export
 vec_cast.bignum_biginteger.double <- function(x, to, ..., x_arg = "", to_arg = "") {
-  out <- new_biginteger(format(x, trim = TRUE, scientific = FALSE))
-  lossy <- floor(x) != x & !is.na(x)
+  x <- vec_cast(x, new_bigfloat())
+  x_int <- trunc(x)
+  out <- new_biginteger(format(x_int, notation = "dec"))
+  lossy <- (x_int != x & !is.na(x)) | is.infinite(x)
   maybe_lossy_cast(out, x, to, lossy, x_arg = x_arg, to_arg = to_arg)
 }
 

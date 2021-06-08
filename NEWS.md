@@ -5,8 +5,13 @@
     * New `notation` argument chooses decimal, scientific or hexadecimal output.
     * New options `"bignum.sigfig"` and `"bignum.max_dec_width"` determine the default formatting.
     * When a bignum vector is stored in a [tibble](https://tibble.tidyverse.org) column, the default formatting instead consults `"pillar.sigfig"` and `"pillar.max_dec_width"`. See `vignette("digits", package = "pillar")`.
-* Fixed how `biginteger()` vectors are created from large `double()` vectors (e.g. `biginteger(1e10)`). This would previously return `NA`.
-* Fixed identification of lossy casts when converting between `biginteger()` and `bigfloat()` vectors. This would previously return `NA` silently, but now it raises a warning.
+    
+## Bug Fixes
+
+* Casting a non-integer `double()` to `biginteger()` now returns the truncated integer, consistent with base vectors. Previously it would return `NA`. A lossy cast warning is still raised.
+* Casting a large `double()` to `biginteger()` now works correctly. Previously it might return `NA`, depending on the value of `options("scipen")`.
+* Casting `Inf` to `biginteger()` now raises a lossy cast warning.
+* Casting a large `biginteger()` to `bigfloat()` now raises a lossy cast warning when the `bigfloat()` precision is exceeded.
 
 
 # bignum 0.1.0
