@@ -150,14 +150,6 @@ vec_cast.bignum_bigfloat.bignum_biginteger <- function(x, to, ..., x_arg = "", t
 }
 
 #' @export
-vec_cast.bignum_biginteger.bignum_bigfloat <- function(x, to, ..., x_arg = "", to_arg = "") {
-  rounded <- c_bigfloat_floor(x)
-  out <- new_biginteger(vec_data(rounded))
-  lossy <- rounded != x & !is.na(x)
-  maybe_lossy_cast(out, x, to, lossy, x_arg = x_arg, to_arg = to_arg)
-}
-
-#' @export
 vec_cast.bignum_bigfloat.character <- function(x, to, ..., x_arg = "", to_arg = "") {
   stop_incompatible_cast(x, to, x_arg = x_arg, to_arg = to_arg)
 }
