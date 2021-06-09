@@ -62,7 +62,7 @@ format.bignum_biginteger <- function(x, ..., sigfig = NULL, digits = NULL,
   switch(notation,
     fit = format_fit(x, sigfig = sigfig, digits = digits),
     sci = format(
-      vec_cast(x, new_bigfloat()),
+      warn_on_lossy_cast(vec_cast(x, new_bigfloat())),
       ...,
       sigfig = sigfig,
       digits = digits,

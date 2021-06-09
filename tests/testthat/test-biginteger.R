@@ -99,6 +99,20 @@ test_that("lossy casts are caught", {
   lossy_val <- 1.5
   expect_error(vec_cast(lossy_val, new_biginteger()), class = "vctrs_error_cast_lossy")
   expect_warning(as_biginteger(lossy_val), class = "bignum_warning_cast_lossy")
+
+  lossy_val <- Inf
+  expect_error(vec_cast(lossy_val, new_biginteger()), class = "vctrs_error_cast_lossy")
+  expect_warning(as_biginteger(lossy_val), class = "bignum_warning_cast_lossy")
+
+  # bigfloat -> biginteger
+  lossy_val <- bigfloat(1.5)
+  expect_equal(as_biginteger(lossy_val - 0.5), biginteger(1))
+  expect_error(vec_cast(lossy_val, new_biginteger()), class = "vctrs_error_cast_lossy")
+  expect_warning(as_biginteger(lossy_val), class = "bignum_warning_cast_lossy")
+
+  lossy_val <- bigfloat(Inf)
+  expect_error(vec_cast(lossy_val, new_biginteger()), class = "vctrs_error_cast_lossy")
+  expect_warning(as_biginteger(lossy_val), class = "bignum_warning_cast_lossy")
 })
 
 test_that("combination works", {
@@ -135,4 +149,9 @@ test_that("missing value works", {
 
 test_that("difficult cases work", {
   expect_equal(biginteger(c(1, 1e10)), biginteger(c("1", "10000000000")))
+  expect_equal(biginteger(c(1, 1e23)), biginteger(c("1", "100000000000000000000000")))
+  expect_equal(
+    expect_warning(biginteger(c(1, 1e-10)), class = "bignum_warning_cast_lossy"),
+    biginteger(c("1", "0"))
+  )
 })
