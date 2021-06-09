@@ -65,6 +65,10 @@ test_that("special value math works", {
   expect_equal(is.finite(bigfloat(x)), is.finite(x))
   expect_equal(is.infinite(suppressWarnings(biginteger(x))), is.infinite(suppressWarnings(as.integer(x))))
   expect_equal(is.infinite(bigfloat(x)), is.infinite(x))
+
+  x <- bigfloat("1e1000")
+  expect_true(is.finite(x))
+  expect_false(is.infinite(x))
 })
 
 test_that("math returning same type works", {

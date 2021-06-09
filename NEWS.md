@@ -12,6 +12,7 @@
 * Casting a large `double()` to `biginteger()` now works correctly. Previously it might return `NA`, depending on the value of `options("scipen")`.
 * Casting `Inf` to `biginteger()` now raises a lossy cast warning.
 * Casting a large `biginteger()` to `bigfloat()` now raises a lossy cast warning when the `bigfloat()` precision is exceeded.
+* `is.finite()` and `is.infinite()` now correctly handle large `bigfloat()` values. Previously, such large values were considered to be infinite.
 
 
 # bignum 0.1.0
