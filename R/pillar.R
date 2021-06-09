@@ -28,13 +28,13 @@ split_decimal <- function(x, sigfig, notation) {
   rhs[dec] <- vapply(lhs_rhs[dec], getElement, "", 2)
 
   out <- list(
-    num = num,  # lgl
-    neg = neg,  # lgl
-    other = other,  # chr
-    lhs = lhs,  # chr
-    dec = dec,  # lgl
-    rhs = rhs,  # chr
-    exp = exp   # int
+    num = num, # lgl
+    neg = neg, # lgl
+    other = other, # chr
+    lhs = lhs, # chr
+    dec = dec, # lgl
+    rhs = rhs, # chr
+    exp = exp # int
   )
 
   attr(out, "width") <- get_decimal_width(out)
@@ -95,7 +95,7 @@ style_mantissa <- function(x) {
 style_exponent <- function(x) {
   num <- !is.na(x)
   if (!any(num)) {
-    return (rep_along(x, ""))
+    return(rep_along(x, ""))
   }
 
   neg <- num & x < 0

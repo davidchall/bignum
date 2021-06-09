@@ -1,22 +1,16 @@
 test_that("options validation", {
-  expect_snapshot(
-    {
-      with_options(pillar.sigfig = 1.5, pillar::pillar_shaft(bigfloat(1)))
-      with_options(pillar.sigfig = "1", pillar::pillar_shaft(bigfloat(1)))
-      with_options(pillar.sigfig = c(1, 2), pillar::pillar_shaft(bigfloat(1)))
-      with_options(pillar.sigfig = 0, pillar::pillar_shaft(bigfloat(1)))
-    },
-    error = TRUE
-  )
+  expect_snapshot(error = TRUE, {
+    with_options(pillar.sigfig = 1.5, pillar::pillar_shaft(bigfloat(1)))
+    with_options(pillar.sigfig = "1", pillar::pillar_shaft(bigfloat(1)))
+    with_options(pillar.sigfig = c(1, 2), pillar::pillar_shaft(bigfloat(1)))
+    with_options(pillar.sigfig = 0, pillar::pillar_shaft(bigfloat(1)))
+  })
 
-  expect_snapshot(
-    {
-      with_options(pillar.max_dec_width = 1.5, pillar::pillar_shaft(bigfloat(1)))
-      with_options(pillar.max_dec_width = "1", pillar::pillar_shaft(bigfloat(1)))
-      with_options(pillar.max_dec_width = c(1, 2), pillar::pillar_shaft(bigfloat(1)))
-    },
-    error = TRUE
-  )
+  expect_snapshot(error = TRUE, {
+    with_options(pillar.max_dec_width = 1.5, pillar::pillar_shaft(bigfloat(1)))
+    with_options(pillar.max_dec_width = "1", pillar::pillar_shaft(bigfloat(1)))
+    with_options(pillar.max_dec_width = c(1, 2), pillar::pillar_shaft(bigfloat(1)))
+  })
 })
 
 test_that("biginteger formats correctly", {
