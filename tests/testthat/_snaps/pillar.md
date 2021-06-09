@@ -48,19 +48,19 @@
       print(pillar::pillar_shaft(x), width = 8)
     Output
       <pillar_ornament>
-         2e+00
-      2.05e+03
-      2.10e+06
-      2.15e+09
+        2   e0
+        2.05e3
+        2.10e6
+        2.15e9
             NA
     Code
       print(pillar::pillar_shaft(x), width = 9)
     Output
       <pillar_ornament>
-          2e+00
-       2.05e+03
-       2.10e+06
-       2.15e+09
+         2   e0
+         2.05e3
+         2.10e6
+         2.15e9
              NA
 
 ---
@@ -70,18 +70,18 @@
       with_options(pillar.sigfig = 4, print(pillar::pillar_shaft(x), width = 9))
     Output
       <pillar_ornament>
-          2e+00
-      2.048e+03
-      2.097e+06
-      2.147e+09
+        2    e0
+        2.048e3
+        2.097e6
+        2.147e9
              NA
     Code
       with_options(pillar.max_dec_width = 8, pillar::pillar_shaft(x))
     Output
       <pillar_ornament>
-         2e+00
-      2.05e+03
-      2.10e+06
-      2.15e+09
-            NA
+      2   e0
+      2.05e3
+      2.10e6
+      2.15e9
+          NA
 
