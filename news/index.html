@@ -130,6 +130,9 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#bignum-development-version" class="anchor"></a>bignum (development version)<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
 <li>
 <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> functions now support customized output.
@@ -137,13 +140,20 @@
 <li>New <code>sigfig</code> and <code>digits</code> arguments control the displayed precision.</li>
 <li>New <code>notation</code> argument chooses decimal, scientific or hexadecimal output.</li>
 <li>New options <code>"bignum.sigfig"</code> and <code>"bignum.max_dec_width"</code> determine the default formatting.</li>
-<li>When a bignum vector is stored in a <a href="https://tibble.tidyverse.org">tibble</a> column, the default formatting instead consults <code>"pillar.sigfig"</code> and <code>"pillar.max_dec_width"</code>. See <code><a href="https://pillar.r-lib.org/articles/digits.html">vignette("digits", package = "pillar")</a></code>.</li>
+</ul>
+</li>
+<li>When a bignum vector is stored in a <a href="https://tibble.tidyverse.org">tibble</a> column, the formatting is adjusted to aid reading data vertically.
+<ul>
+<li>The decimal point and exponent are aligned across rows and negative numbers are colored red.</li>
+<li>The options <code>"pillar.sigfig"</code> and <code>"pillar.max_dec_width"</code> determine tibble formatting.</li>
+<li>See <code><a href="https://pillar.r-lib.org/articles/digits.html">vignette("digits", package = "pillar")</a></code> for details.</li>
 </ul>
 </li>
 </ul>
+</div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Casting a non-integer <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> to <code><a href="../reference/biginteger.html">biginteger()</a></code> now returns the truncated integer, consistent with base vectors. Previously it would return <code>NA</code>. A lossy cast warning is still raised.</li>
 <li>Casting a large <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> to <code><a href="../reference/biginteger.html">biginteger()</a></code> now works correctly. Previously it might return <code>NA</code>, depending on the value of <code><a href="https://rdrr.io/r/base/options.html">options("scipen")</a></code>.</li>
