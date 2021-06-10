@@ -35,10 +35,10 @@ vec_compare_bignum <- function(x, y, na_equal = FALSE) {
 
   args <- vec_recycle_common(x, y)
 
-  # biginteger and double are not technically type-compatible
-  # we don't want to deal with lossy casts during comparisons so cast to bigfloat
+  # biginteger and double are not type-compatible (lossy casts occur both ways)
+  # but for comparisons it is sufficient to cast to bigfloat
   if ((is_biginteger(x) && is.double(y)) || (is_biginteger(y) && is.double(x))) {
-    args <- vec_cast_common(!!!args, .to = new_bigfloat())
+    args <- allow_lossy_cast(vec_cast_common(!!!args, .to = new_bigfloat()))
   } else {
     args <- vec_cast_common(!!!args)
   }

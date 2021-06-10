@@ -6,20 +6,14 @@ test_that("inequality comparisons work", {
   expect_equal(biginteger(x) >= 0, x >= 0)
   expect_equal(biginteger(x) <= 0, x <= 0)
 
-  expect_equal(biginteger(x) < 0.5, x < 0.5)
-  expect_equal(biginteger(x) > 0.5, x > 0.5)
-  expect_equal(biginteger(x) >= 0.5, x >= 0.5)
-  expect_equal(biginteger(x) <= 0.5, x <= 0.5)
-
   expect_equal(bigfloat(x) < 0, x < 0)
   expect_equal(bigfloat(x) > 0, x > 0)
   expect_equal(bigfloat(x) >= 0, x >= 0)
   expect_equal(bigfloat(x) <= 0, x <= 0)
 
-  expect_equal(bigfloat(x) < 0.5, x < 0.5)
-  expect_equal(bigfloat(x) > 0.5, x > 0.5)
-  expect_equal(bigfloat(x) >= 0.5, x >= 0.5)
-  expect_equal(bigfloat(x) <= 0.5, x <= 0.5)
+  # difficult cases
+  expect_equal(biginteger(x) < 0.5, x < 0.5)
+  expect_equal(biginteger(10)^100L < 0.5, FALSE)
 
   expect_equal(
     vec_compare_bignum(biginteger(x), 0, na_equal = FALSE),
