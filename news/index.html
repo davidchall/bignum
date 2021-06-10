@@ -155,12 +155,13 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Casting a non-integer <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> to <code><a href="../reference/biginteger.html">biginteger()</a></code> now returns the truncated integer, consistent with base vectors. Previously it would return <code>NA</code>. A lossy cast warning is still raised.</li>
-<li>Casting a large <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> to <code><a href="../reference/biginteger.html">biginteger()</a></code> now works correctly. Previously it might return <code>NA</code>, depending on the value of <code><a href="https://rdrr.io/r/base/options.html">options("scipen")</a></code>.</li>
+<li>Casting a non-integer <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> to <code><a href="../reference/biginteger.html">biginteger()</a></code> now returns the truncated integer, consistent with base vectors. Previously <code>NA</code> was returned. A lossy cast warning is still raised.</li>
+<li>Casting a large <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> to <code><a href="../reference/biginteger.html">biginteger()</a></code> now works correctly. Previously <code>NA</code> was returned, depending on the value of <code><a href="https://rdrr.io/r/base/options.html">options("scipen")</a></code>.</li>
 <li>Casting <code>Inf</code> to <code><a href="../reference/biginteger.html">biginteger()</a></code> now raises a lossy cast warning.</li>
 <li>Casting a large <code><a href="../reference/biginteger.html">biginteger()</a></code> to <code><a href="../reference/bigfloat.html">bigfloat()</a></code> now raises a lossy cast warning when the <code><a href="../reference/bigfloat.html">bigfloat()</a></code> precision is exceeded.</li>
 <li>
-<code><a href="https://rdrr.io/r/base/is.finite.html">is.finite()</a></code> and <code><a href="https://rdrr.io/r/base/is.finite.html">is.infinite()</a></code> now correctly handle large <code><a href="../reference/bigfloat.html">bigfloat()</a></code> values. Previously, such large values were considered to be infinite.</li>
+<code><a href="https://rdrr.io/r/base/is.finite.html">is.finite()</a></code> and <code><a href="https://rdrr.io/r/base/is.finite.html">is.infinite()</a></code> now correctly handle large <code><a href="../reference/bigfloat.html">bigfloat()</a></code> values. Previously large values were considered infinite.</li>
+<li>Comparisons between <code><a href="../reference/biginteger.html">biginteger()</a></code> and <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> vectors are now possible (e.g. <code>biginteger(2) &gt; 1.5</code>). Previously a lossy cast error was raised.</li>
 </ul>
 </div>
 </div>
