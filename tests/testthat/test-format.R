@@ -12,6 +12,8 @@ test_that("bigfloat: input validation", {
     format(bigfloat(1), digits = c(1, 2))
 
     format(bigfloat(1), notation = "hex")
+
+    format(bigfloat(1), notatoin = "sci")
   })
 })
 
@@ -29,6 +31,8 @@ test_that("biginteger: input validation", {
     format(biginteger(1), notation = "sci", digits = c(1, 2))
 
     format(biginteger(1), notation = "unknown")
+
+    format(biginteger(1), notatoin = "sci")
   })
 })
 

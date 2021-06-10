@@ -36,6 +36,16 @@
       format(bigfloat(1), notation = "hex")
     Error <rlang_error>
       `notation` must be one of "fit", "dec", or "sci".
+    Code
+      format(bigfloat(1), notatoin = "sci")
+    Error <rlib_error_dots_nonempty>
+      `...` is not empty.
+      
+      We detected these problematic arguments:
+      * `notatoin`
+      
+      These dots only exist to allow future extensions and should be empty.
+      Did you misspecify an argument?
 
 # biginteger: input validation
 
@@ -75,6 +85,16 @@
       format(biginteger(1), notation = "unknown")
     Error <rlang_error>
       `notation` must be one of "fit", "dec", "sci", or "hex".
+    Code
+      format(biginteger(1), notatoin = "sci")
+    Error <rlib_error_dots_nonempty>
+      `...` is not empty.
+      
+      We detected these problematic arguments:
+      * `notatoin`
+      
+      These dots only exist to allow future extensions and should be empty.
+      Did you misspecify an argument?
 
 # options: input validation
 
