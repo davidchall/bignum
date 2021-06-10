@@ -10,7 +10,8 @@
     * The decimal point and exponent are aligned across rows and negative numbers are colored red.
     * The options `"pillar.sigfig"` and `"pillar.max_dec_width"` determine tibble formatting.
     * See `vignette("digits", package = "pillar")` for details.
-    
+* Added support for `digamma()` and `trigamma()` operations.
+
 ## Bug fixes
 
 * Casting a non-integer `double()` to `biginteger()` now returns the truncated integer, consistent with base vectors. Previously `NA` was returned. A lossy cast warning is still raised.

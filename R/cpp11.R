@@ -180,6 +180,14 @@ c_bigfloat_lgamma <- function(lhs) {
   .Call(`_bignum_c_bigfloat_lgamma`, lhs)
 }
 
+c_bigfloat_digamma <- function(lhs) {
+  .Call(`_bignum_c_bigfloat_digamma`, lhs)
+}
+
+c_bigfloat_trigamma <- function(lhs) {
+  .Call(`_bignum_c_bigfloat_trigamma`, lhs)
+}
+
 c_biginteger <- function(x) {
   .Call(`_bignum_c_biginteger`, x)
 }

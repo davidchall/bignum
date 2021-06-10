@@ -39,6 +39,8 @@ vec_math_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
     atanh = c_bigfloat_atanh(.x),
     gamma = c_bigfloat_gamma(.x),
     lgamma = c_bigfloat_lgamma(.x),
+    digamma = c_bigfloat_digamma(.x),
+    trigamma = c_bigfloat_trigamma(.x),
 
     # Other
     mean = c_bigfloat_sum(.x, na.rm) / sum(!is.na(.x)),

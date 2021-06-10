@@ -431,3 +431,19 @@ cpp11::strings c_bigfloat_lgamma(cpp11::strings lhs) {
     [](const bigfloat_type &x) { return boost::multiprecision::lgamma(x); }
   ).encode();
 }
+
+[[cpp11::register]]
+cpp11::strings c_bigfloat_digamma(cpp11::strings lhs) {
+  return unary_operation(
+    bigfloat_vector(lhs),
+    [](const bigfloat_type &x) { return boost::math::digamma(x); }
+  ).encode();
+}
+
+[[cpp11::register]]
+cpp11::strings c_bigfloat_trigamma(cpp11::strings lhs) {
+  return unary_operation(
+    bigfloat_vector(lhs),
+    [](const bigfloat_type &x) { return boost::math::trigamma(x); }
+  ).encode();
+}
