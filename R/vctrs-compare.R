@@ -34,7 +34,14 @@ vec_compare_bignum <- function(x, y, na_equal = FALSE) {
   vec_assert(na_equal, ptype = logical(), size = 1L)
 
   args <- vec_recycle_common(x, y)
-  args <- vec_cast_common(!!!args)
+
+  # biginteger and double are not technically type-compatible
+  # we don't want to deal with lossy casts during comparisons so cast to bigfloat
+  if ((is_biginteger(x) && is.double(y)) || (is_biginteger(y) && is.double(x))) {
+    args <- vec_cast_common(!!!args, .to = new_bigfloat())
+  } else {
+    args <- vec_cast_common(!!!args)
+  }
 
   vec_compare_bignum2(args[[1]], args[[2]], na_equal)
 }

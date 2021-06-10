@@ -13,11 +13,12 @@
     
 ## Bug fixes
 
-* Casting a non-integer `double()` to `biginteger()` now returns the truncated integer, consistent with base vectors. Previously it would return `NA`. A lossy cast warning is still raised.
-* Casting a large `double()` to `biginteger()` now works correctly. Previously it might return `NA`, depending on the value of `options("scipen")`.
+* Casting a non-integer `double()` to `biginteger()` now returns the truncated integer, consistent with base vectors. Previously `NA` was returned. A lossy cast warning is still raised.
+* Casting a large `double()` to `biginteger()` now works correctly. Previously `NA` was returned, depending on the value of `options("scipen")`.
 * Casting `Inf` to `biginteger()` now raises a lossy cast warning.
 * Casting a large `biginteger()` to `bigfloat()` now raises a lossy cast warning when the `bigfloat()` precision is exceeded.
-* `is.finite()` and `is.infinite()` now correctly handle large `bigfloat()` values. Previously, such large values were considered to be infinite.
+* `is.finite()` and `is.infinite()` now correctly handle large `bigfloat()` values. Previously large values were considered infinite.
+* Comparisons between `biginteger()` and `double()` vectors are now possible (e.g. `biginteger(2) > 1.5`). Previously a lossy cast error was raised.
 
 
 # bignum 0.1.0
