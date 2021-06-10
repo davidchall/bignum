@@ -1,12 +1,17 @@
 # bignum (development version)
 
+## New features
+
 * `format()` functions now support customized output.
     * New `sigfig` and `digits` arguments control the displayed precision.
     * New `notation` argument chooses decimal, scientific or hexadecimal output.
     * New options `"bignum.sigfig"` and `"bignum.max_dec_width"` determine the default formatting.
-    * When a bignum vector is stored in a [tibble](https://tibble.tidyverse.org) column, the default formatting instead consults `"pillar.sigfig"` and `"pillar.max_dec_width"`. See `vignette("digits", package = "pillar")`.
+* When a bignum vector is stored in a [tibble](https://tibble.tidyverse.org) column, the formatting is adjusted to aid reading data vertically.
+    * The decimal point and exponent are aligned across rows and negative numbers are colored red.
+    * The options `"pillar.sigfig"` and `"pillar.max_dec_width"` determine tibble formatting.
+    * See `vignette("digits", package = "pillar")` for details.
     
-## Bug Fixes
+## Bug fixes
 
 * Casting a non-integer `double()` to `biginteger()` now returns the truncated integer, consistent with base vectors. Previously it would return `NA`. A lossy cast warning is still raised.
 * Casting a large `double()` to `biginteger()` now works correctly. Previously it might return `NA`, depending on the value of `options("scipen")`.
