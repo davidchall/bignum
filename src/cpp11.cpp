@@ -319,6 +319,20 @@ extern "C" SEXP _bignum_c_bigfloat_lgamma(SEXP lhs) {
     return cpp11::as_sexp(c_bigfloat_lgamma(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs)));
   END_CPP11
 }
+// bigfloat_interface.cpp
+cpp11::strings c_bigfloat_digamma(cpp11::strings lhs);
+extern "C" SEXP _bignum_c_bigfloat_digamma(SEXP lhs) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_bigfloat_digamma(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs)));
+  END_CPP11
+}
+// bigfloat_interface.cpp
+cpp11::strings c_bigfloat_trigamma(cpp11::strings lhs);
+extern "C" SEXP _bignum_c_bigfloat_trigamma(SEXP lhs) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_bigfloat_trigamma(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs)));
+  END_CPP11
+}
 // biginteger_interface.cpp
 cpp11::strings c_biginteger(cpp11::strings x);
 extern "C" SEXP _bignum_c_biginteger(SEXP x) {
@@ -486,6 +500,7 @@ extern SEXP _bignum_c_bigfloat_cummax(SEXP);
 extern SEXP _bignum_c_bigfloat_cummin(SEXP);
 extern SEXP _bignum_c_bigfloat_cumprod(SEXP);
 extern SEXP _bignum_c_bigfloat_cumsum(SEXP);
+extern SEXP _bignum_c_bigfloat_digamma(SEXP);
 extern SEXP _bignum_c_bigfloat_divide(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_exp(SEXP);
 extern SEXP _bignum_c_bigfloat_expm1(SEXP);
@@ -513,6 +528,7 @@ extern SEXP _bignum_c_bigfloat_tanh(SEXP);
 extern SEXP _bignum_c_bigfloat_to_double(SEXP);
 extern SEXP _bignum_c_bigfloat_to_integer(SEXP);
 extern SEXP _bignum_c_bigfloat_to_logical(SEXP);
+extern SEXP _bignum_c_bigfloat_trigamma(SEXP);
 extern SEXP _bignum_c_bigfloat_trunc(SEXP);
 extern SEXP _bignum_c_biginteger(SEXP);
 extern SEXP _bignum_c_biginteger_abs(SEXP);
@@ -554,6 +570,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat_cummin",       (DL_FUNC) &_bignum_c_bigfloat_cummin,       1},
     {"_bignum_c_bigfloat_cumprod",      (DL_FUNC) &_bignum_c_bigfloat_cumprod,      1},
     {"_bignum_c_bigfloat_cumsum",       (DL_FUNC) &_bignum_c_bigfloat_cumsum,       1},
+    {"_bignum_c_bigfloat_digamma",      (DL_FUNC) &_bignum_c_bigfloat_digamma,      1},
     {"_bignum_c_bigfloat_divide",       (DL_FUNC) &_bignum_c_bigfloat_divide,       2},
     {"_bignum_c_bigfloat_exp",          (DL_FUNC) &_bignum_c_bigfloat_exp,          1},
     {"_bignum_c_bigfloat_expm1",        (DL_FUNC) &_bignum_c_bigfloat_expm1,        1},
@@ -581,6 +598,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat_to_double",    (DL_FUNC) &_bignum_c_bigfloat_to_double,    1},
     {"_bignum_c_bigfloat_to_integer",   (DL_FUNC) &_bignum_c_bigfloat_to_integer,   1},
     {"_bignum_c_bigfloat_to_logical",   (DL_FUNC) &_bignum_c_bigfloat_to_logical,   1},
+    {"_bignum_c_bigfloat_trigamma",     (DL_FUNC) &_bignum_c_bigfloat_trigamma,     1},
     {"_bignum_c_bigfloat_trunc",        (DL_FUNC) &_bignum_c_bigfloat_trunc,        1},
     {"_bignum_c_biginteger",            (DL_FUNC) &_bignum_c_biginteger,            1},
     {"_bignum_c_biginteger_abs",        (DL_FUNC) &_bignum_c_biginteger_abs,        1},

@@ -150,6 +150,8 @@ atanh(x)
 # special functions
 gamma(x)
 lgamma(x)
+digamma(x)
+trigamma(x)
 factorial(x)
 lfactorial(x)
 ```

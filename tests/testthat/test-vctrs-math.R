@@ -131,9 +131,6 @@ test_that("math returning float works", {
   check_math(atanh, x)
   check_math(gamma, x)
   check_math(lgamma, x)
-})
-
-test_that("other operations fail", {
-  expect_error(trigamma(biginteger(2)), class = "bignum_error_unsupported")
-  expect_error(trigamma(bigfloat(2)), class = "bignum_error_unsupported")
+  check_math(digamma, x)
+  check_math(trigamma, c(1, NA))
 })
