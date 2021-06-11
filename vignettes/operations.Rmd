@@ -1,8 +1,8 @@
 ---
-title: "Supported Operations"
+title: "Supported operations"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Supported Operations}
+  %\VignetteIndexEntry{Supported operations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

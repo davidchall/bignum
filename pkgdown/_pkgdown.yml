@@ -1,3 +1,13 @@
+development:
+  mode: auto
+
+url: https://davidchall.github.io/bignum
+
+home:
+  title: bignum
+  description: Arbitrary-Precision Integer and Floating-Point Mathematics
+
+
 reference:
   - title: "Vector types"
     contents:
@@ -7,3 +17,9 @@ reference:
   - title: "Formatting"
     contents:
     - bignum-format
+
+articles:
+  - title: Vignettes
+    navbar: ~
+    contents:
+    - operations
