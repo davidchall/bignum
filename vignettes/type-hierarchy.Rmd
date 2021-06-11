@@ -1,0 +1,72 @@
+---
+title: "Hierarchy of data types"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Hierarchy of data types}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette follows terminology outlined by the vctrs package.
+For further information, see `help("faq-compatibility-types", package = "vctrs")`.
+
+There are three numeric types in base R: `logical`, `integer` and `double`.
+They form a natural hierarchy from the simplest (`logical`) to the richest (`double`), with richer types able to accommodate simpler types without losing information.
+
+* `integer` expands the set of integer values supported by `logical`.
+* `double` expands the set of integer values supported by `integer`, and _also_ supports non-integer values.
+
+The bignum package provides two additional numeric types: `biginteger` and `bigfloat`.
+These are type-compatible with the existing numeric types because they extend the set of possible values.
+However, the hierarchy becomes more complex because lossy casts are now possible.
+
+* `biginteger` expands the set of integer values supported by `double` (in fact, it supports _any_ integer value). But it _does not_ support non-integer values.
+* `bigfloat` expands the set of values supported by `double` (both in precision and range), but _does not_ support the entire range of integers supported by `biginteger`.
+
+```{r, echo=FALSE, fig.cap="Summary of numeric type hierarchies in base R and the bignum package. Arrows indicate the direction of richer data types. Dashed lines indicate the potential for lossy casts."}
+knitr::include_graphics("type-hierarchy.png", dpi = 300)
+```
+
+
+## Type conversion and lossy casts
+
+As discussed above, casting values from one type to another can lose information.
+
+We see an example in base R, when we cast a non-integer or large `double` to an `integer`:
+
+```{r}
+# non-integer double
+as.integer(1.5)
+
+# large double
+as.integer(1e10)
+```
+
+For illustrative purposes, we now consider how lossy casts can affect bignum conversions:
+
+```{r, error=TRUE}
+library(bignum)
+
+# double -> biginteger
+as_biginteger(1.5)
+
+# biginteger -> double
+as.double(biginteger(10)^16L)
+
+# bigfloat -> double
+as.double(bigfloat(1) / 3)
+
+# bigfloat -> biginteger
+as_biginteger(bigfloat(1.5))
+
+# biginteger -> bigfloat
+as_bigfloat(biginteger(10)^51L + 1L)
+```
+

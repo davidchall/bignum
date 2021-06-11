@@ -22,4 +22,5 @@ articles:
   - title: Vignettes
     navbar: ~
     contents:
+    - type-hierarchy
     - operations
