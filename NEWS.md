@@ -10,7 +10,8 @@
     * The decimal point and exponent are aligned across rows and negative numbers are colored red.
     * The options `"pillar.sigfig"` and `"pillar.max_dec_width"` determine tibble formatting.
     * See `vignette("digits", package = "pillar")` for details.
-* Added support for `digamma()` and `trigamma()` operations.
+* `digamma()` and `trigamma()` operations are now supported.
+* `log()` now supports the `base` argument.
 
 ## Bug fixes
 

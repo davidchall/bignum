@@ -72,65 +72,67 @@ test_that("special value math works", {
 })
 
 test_that("math returning same type works", {
-  check_math <- function(fun, x) {
+  check_math <- function(x, fun, ...) {
     expect_equal(
-      as.integer(fun(biginteger(x))),
-      suppressWarnings(fun(x))
+      as.integer(fun(biginteger(x), ...)),
+      suppressWarnings(fun(x, ...))
     )
     expect_equal(
-      as.double(fun(bigfloat(x))),
-      suppressWarnings(fun(x))
+      as.double(fun(bigfloat(x), ...)),
+      suppressWarnings(fun(x, ...))
     )
   }
 
   x <- c(-2, 2)
-  check_math(abs, x)
-  check_math(sign, x)
+  check_math(x, abs)
+  check_math(x, sign)
 
   x <- c(2, 3, NA, 1)
-  check_math(cumsum, x)
-  check_math(cumprod, x)
-  check_math(cummax, x)
-  check_math(cummin, x)
+  check_math(x, cumsum)
+  check_math(x, cumprod)
+  check_math(x, cummax)
+  check_math(x, cummin)
 })
 
 test_that("math returning float works", {
-  check_math <- function(fun, x) {
+  check_math <- function(x, fun, ...) {
     expect_equal(
-      allow_lossy_cast(as.double(fun(biginteger(x)))),
-      suppressWarnings(fun(x))
+      allow_lossy_cast(as.double(fun(biginteger(x), ...))),
+      suppressWarnings(fun(x, ...))
     )
     expect_equal(
-      allow_lossy_cast(as.double(fun(bigfloat(x)))),
-      suppressWarnings(fun(x))
+      allow_lossy_cast(as.double(fun(bigfloat(x), ...))),
+      suppressWarnings(fun(x, ...))
     )
   }
 
   x <- c(2, 3, NA, -1)
-  check_math(sqrt, x)
-  check_math(exp, x)
-  check_math(expm1, x)
-  check_math(log, x)
-  check_math(log10, x)
-  check_math(log2, x)
-  check_math(log1p, x)
-  check_math(cos, x)
-  check_math(sin, x)
-  check_math(tan, x)
-  check_math(cosh, x)
-  check_math(sinh, x)
-  check_math(tanh, x)
-  check_math(cospi, x)
-  check_math(sinpi, x)
-  check_math(tanpi, x)
-  check_math(acos, c(-1, 0, 1, NA))
-  check_math(asin, c(-1, 0, 1, NA))
-  check_math(atan, x)
-  check_math(acosh, x)
-  check_math(asinh, x)
-  check_math(atanh, x)
-  check_math(gamma, x)
-  check_math(lgamma, x)
-  check_math(digamma, x)
-  check_math(trigamma, c(1, NA))
+  check_math(x, sqrt)
+  check_math(x, exp)
+  check_math(x, expm1)
+  check_math(x, log)
+  check_math(x, log, 2)
+  check_math(x, log, base = 2)
+  check_math(x, log10)
+  check_math(x, log2)
+  check_math(x, log1p)
+  check_math(x, cos)
+  check_math(x, sin)
+  check_math(x, tan)
+  check_math(x, cosh)
+  check_math(x, sinh)
+  check_math(x, tanh)
+  check_math(x, cospi)
+  check_math(x, sinpi)
+  check_math(x, tanpi)
+  check_math(c(-1, 0, 1, NA), acos)
+  check_math(c(-1, 0, 1, NA), asin)
+  check_math(x, atan)
+  check_math(x, acosh)
+  check_math(x, asinh)
+  check_math(x, atanh)
+  check_math(x, gamma)
+  check_math(x, lgamma)
+  check_math(x, digamma)
+  check_math(c(1, NA), trigamma)
 })
