@@ -3,5 +3,10 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   operations: operations.html
-last_built: 2021-06-11T00:13Z
+  precision: precision.html
+  type-hierarchy: type-hierarchy.html
+last_built: 2021-06-13T16:17Z
+urls:
+  reference: https://davidchall.github.io/bignum/reference
+  article: https://davidchall.github.io/bignum/articles
 

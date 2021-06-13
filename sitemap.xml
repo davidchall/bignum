@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://davidchall.github.io/bignum/index.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/bigfloat.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/biginteger.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-constants.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-format.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-package.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-vctrs.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/articles/operations.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/articles/precision.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/articles/type-hierarchy.html</loc>
+  </url>
+</urlset>
