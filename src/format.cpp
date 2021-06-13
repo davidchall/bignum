@@ -6,7 +6,7 @@ enum bignum_format_notation format_notation(const std::string &input) {
   if (input == "sci") return bignum_format_sci;
   if (input == "hex") return bignum_format_hex;
   else cpp11::stop("Found unexpected formatting notation."); // # nocov
-};
+}
 
 cpp11::strings format_biginteger_vector(const biginteger_vector &x,
                                         enum bignum_format_notation notation) {
@@ -41,7 +41,7 @@ cpp11::strings format_biginteger_vector(const biginteger_vector &x,
   }
 
   return output;
-};
+}
 
 cpp11::strings format_bigfloat_vector(const bigfloat_vector &x,
                                       enum bignum_format_notation notation,
@@ -65,7 +65,7 @@ cpp11::strings format_bigfloat_vector(const bigfloat_vector &x,
   }
 
   return output;
-};
+}
 
 std::string format_bigfloat(const bigfloat_type &x,
                             enum bignum_format_notation notation,
@@ -113,7 +113,7 @@ int predecimal_digits(const bigfloat_type &x) {
 
   bigfloat_type pre = 1 + boost::multiprecision::floor(boost::multiprecision::log10(boost::multiprecision::abs(x)));
   return static_cast<int>(pre);
-};
+}
 
 bool has_nonzero_hidden_digits(const bigfloat_type &x, const std::string &visible) {
   if (x == 0) {
@@ -122,7 +122,7 @@ bool has_nonzero_hidden_digits(const bigfloat_type &x, const std::string &visibl
 
   bigfloat_type y(visible);
   return boost::multiprecision::abs(x - y) >= std::numeric_limits<bigfloat_type>::epsilon();
-};
+}
 
 std::string trim_terminal_zeros(const std::string &s, bool trim_point) {
   std::size_t pos_exp = s.find_first_of("e");
@@ -142,4 +142,4 @@ std::string trim_terminal_zeros(const std::string &s, bool trim_point) {
   }
 
   return mantissa + exponent;
-};
+}
