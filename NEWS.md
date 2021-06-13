@@ -2,7 +2,7 @@
 
 ## New features
 
-* New vignette: `vignette("type-hierarchy")`.
+* New `vignette("type-hierarchy")` and `vignette("precision")`.
 * `format()` functions now support customized output.
     * New `sigfig` and `digits` arguments control the displayed precision.
     * New `notation` argument chooses decimal, scientific or hexadecimal output.

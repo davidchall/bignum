@@ -1,0 +1,146 @@
+---
+title: "Control the displayed precision"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Control the displayed precision}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `biginteger()` and `bigfloat()` vectors are capable of storing numeric data at very high precision.
+Showing the full precision can quickly become overwhelming, so bignum provides tools to control the precision displayed in the console.
+
+These tools were strongly inspired by how the excellent [pillar](https://pillar.r-lib.org) package formats base R numeric vectors -- in particular `vignette("digits", package = "pillar")` and `vignette("numbers", package = "pillar")`.
+Indeed, this vignette follows the structure of those vignettes.
+Standing on the shoulders of giants...
+
+```{r setup}
+library(bignum)
+library(pillar)
+```
+
+
+## Standalone vectors
+
+### Default formatting
+
+Similar to pillar, the default formatting of bignum vectors is determined by two options.
+
+* The `"bignum.sigfig"` option controls the number of significant figures (digits) displayed. The default value is 7.
+* The `"bignum.max_dec_width"` option controls how wide the decimal notation can become before switching to scientific notation. The default value is 13.
+
+To demonstrate the default formatting, here are the first 7 significant figures of pi:
+
+```{r}
+bigpi
+```
+
+We can increase the displayed precision via the `"bignum.sigfig"` option:
+
+```{r}
+options(bignum.sigfig = 10)
+bigpi
+```
+
+Formatting using significant figures controls the total number of digits displayed (_before and after_ the decimal point), but it will always show every digit _before_ the decimal point.
+
+```{r}
+options(bignum.sigfig = 3)
+bigfloat(1.2345 * 10^(-1:4))
+```
+
+An important exception is that terminal zeros are only shown if there are non-zero digits beyond the displayed significant figures.
+
+```{r}
+options(bignum.sigfig = 7)
+bigfloat(1 + c(0, 1e-3, 1e-7))
+```
+
+The `"bignum.max_dec_width"` option controls how wide the output can be (including the decimal point) before it switches to scientific notation.
+It makes the decision based on the widest value in the vector.
+
+```{r}
+bigfloat(1234567890123)
+
+bigfloat(1234567890123.4)
+
+bigfloat(12345678901234)
+```
+
+
+### Custom formatting
+
+Sometimes you want more specific formatting, or to apply formatting to a single vector without changing global options.
+This is achieved using the `format()` function (see `help("bignum-format")`).
+
+The default formatting demonstrated above chooses between decimal and scientific notation, depending on how wide the output is and the `"bignum.max_dec_width"` option.
+The `format()` function provides a `notation` argument to override this decision.
+
+```{r}
+x <- bigfloat(1.2345 * 10^(-1:4))
+
+format(x, notation = "dec")
+
+format(x, notation = "sci")
+```
+
+The default formatting also decides the total number of digits to show based on the `"bignum.sigfig"` option.
+The `format()` function supports overriding this value using the `sigfig` argument.
+
+```{r}
+format(x, sigfig = 3)
+```
+
+But `format()` also supports specifying how many digits to display _after_ the decimal point, using the `digits` argument.
+If the value is positive, we show _exactly_ that many digits.
+If the value is negative, we show _at most_ that many digits (i.e. terminal zeros can be hidden).
+
+```{r}
+format(x, digits = 2)
+
+format(x, digits = -2)
+```
+
+
+
+## Tibble columns
+
+The [tibble](https://tibble.tidyverse.org) package allows bignum vectors to be stored in a data frame.
+When a tibble is printed, the vector values are displayed vertically as a column.
+Consequently, the default formatting is adjusted to make the data easier to read vertically.
+
+When stored as a tibble column, the bignum vector formatting consults two options.
+**Note:** These options are different from those used for formatting standalone vectors, because they reside within the pillar package (see `help("pillar-package")`).
+
+* The `"pillar.sigfig"` option controls the number of significant figures (digits) displayed. The default value is 3.
+* The `"pillar.max_dec_width"` option controls how wide the decimal notation can become before switching to scientific notation. The default value is 13.
+
+We use the `pillar()` function to demonstrate tibble columns without the overhead of the tibble package.
+
+```{r}
+pillar(x)
+```
+
+We can increase the displayed precision via the `"pillar.sigfig"` option:
+
+```{r}
+options(pillar.sigfig = 4)
+pillar(x)
+```
+
+Since the formatted data is aligned on the decimal point, the `"pillar.max_dec_width"` option works differently from `"bignum.max_dec_width"`.
+One row might have many digits on the left of the point, and another row might have many digits on the right of the point (see example above).
+The total width calculation accounts for both extremes.
+
+```{r}
+options(pillar.max_dec_width = 9)
+pillar(x)
+```
+

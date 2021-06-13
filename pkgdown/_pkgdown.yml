@@ -23,4 +23,5 @@ articles:
     navbar: ~
     contents:
     - type-hierarchy
+    - precision
     - operations

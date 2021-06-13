@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette follows terminology outlined by the vctrs package.
+This vignette follows terminology outlined by the [vctrs](https://vctrs.r-lib.org) package.
 For further information, see `help("faq-compatibility-types", package = "vctrs")`.
 
 There are three numeric types in base R: `logical`, `integer` and `double`.
