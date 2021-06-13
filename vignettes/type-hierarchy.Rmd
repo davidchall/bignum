@@ -27,8 +27,8 @@ The bignum package provides two additional numeric types: `biginteger` and `bigf
 These are type-compatible with the existing numeric types because they extend the set of possible values.
 However, the hierarchy becomes more complex because lossy casts are now possible.
 
-* `biginteger` expands the set of integer values supported by `double` (in fact, it supports _any_ integer value). But it _does not_ support non-integer values.
-* `bigfloat` expands the set of values supported by `double` (both in precision and range), but _does not_ support the entire range of integers supported by `biginteger`.
+* `biginteger` expands the set of integer values supported by `double`. In fact, it supports _any_ integer value (because `biginteger` uses arbitrary precision). But it _does not_ support non-integer values.
+* `bigfloat` expands the set of values supported by `double` (both in precision and range), but _does not_ support the entire range of integers supported by `biginteger` (because `bigfloat` uses fixed precision).
 
 ```{r, echo=FALSE, fig.cap="Summary of numeric type hierarchies in base R and the bignum package. Arrows indicate the direction of richer data types. Dashed lines indicate the potential for lossy casts."}
 knitr::include_graphics("type-hierarchy.png", dpi = 300)
