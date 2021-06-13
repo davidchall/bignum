@@ -110,9 +110,9 @@
 <p>The bignum package provides two additional numeric types: <code>biginteger</code> and <code>bigfloat</code>. These are type-compatible with the existing numeric types because they extend the set of possible values. However, the hierarchy becomes more complex because lossy casts are now possible.</p>
 <ul>
 <li>
-<code>biginteger</code> expands the set of integer values supported by <code>double</code> (in fact, it supports <em>any</em> integer value). But it <em>does not</em> support non-integer values.</li>
+<code>biginteger</code> expands the set of integer values supported by <code>double</code>. In fact, it supports <em>any</em> integer value (because <code>biginteger</code> uses arbitrary precision). But it <em>does not</em> support non-integer values.</li>
 <li>
-<code>bigfloat</code> expands the set of values supported by <code>double</code> (both in precision and range), but <em>does not</em> support the entire range of integers supported by <code>biginteger</code>.</li>
+<code>bigfloat</code> expands the set of values supported by <code>double</code> (both in precision and range), but <em>does not</em> support the entire range of integers supported by <code>biginteger</code> (because <code>bigfloat</code> uses fixed precision).</li>
 </ul>
 <div class="figure">
 <img src="type-hierarchy.png" alt=""><p class="caption">Summary of numeric type hierarchies in base R and the bignum package. Arrows indicate the direction of richer data types. Dashed lines indicate the potential for lossy casts.</p>
