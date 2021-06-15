@@ -1,5 +1,7 @@
 # bignum (development version)
 
+* `format()` no longer checks for misspelled arguments. This previously caused issues when storing a bignum vector inside a data.frame or data.table (#25).
+
 # bignum 0.2.0
 
 ## New features

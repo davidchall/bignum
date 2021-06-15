@@ -57,7 +57,6 @@ NULL
 #' @export
 format.bignum_biginteger <- function(x, ..., sigfig = NULL, digits = NULL,
                                      notation = c("fit", "dec", "sci", "hex")) {
-  ellipsis::check_dots_empty()
   notation <- arg_match(notation)
 
   switch(notation,
@@ -77,7 +76,6 @@ format.bignum_biginteger <- function(x, ..., sigfig = NULL, digits = NULL,
 #' @export
 format.bignum_bigfloat <- function(x, ..., sigfig = NULL, digits = NULL,
                                    notation = c("fit", "dec", "sci")) {
-  ellipsis::check_dots_empty()
   notation <- arg_match(notation)
 
   if (notation == "fit") {
