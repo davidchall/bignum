@@ -150,8 +150,8 @@ test_that("missing value works", {
 test_that("difficult cases work", {
   expect_equal(biginteger(c(1, 1e10)), biginteger(c("1", "10000000000")))
   expect_equal(biginteger(c(1, 1e23)), biginteger(c("1", "100000000000000000000000")))
-  expect_equal(
-    expect_warning(biginteger(c(1, 1e-10)), class = "bignum_warning_cast_lossy"),
-    biginteger(c("1", "0"))
+  expect_warning(
+    expect_equal(biginteger(c(1, 1e-10)), biginteger(c("1", "0"))),
+    class = "bignum_warning_cast_lossy"
   )
 })
