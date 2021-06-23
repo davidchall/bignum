@@ -188,6 +188,18 @@ c_bigfloat_trigamma <- function(lhs) {
   .Call(`_bignum_c_bigfloat_trigamma`, lhs)
 }
 
+c_bigfloat_seq_to_by <- function(from, to, by) {
+  .Call(`_bignum_c_bigfloat_seq_to_by`, from, to, by)
+}
+
+c_bigfloat_seq_to_lo <- function(from, to, length_out) {
+  .Call(`_bignum_c_bigfloat_seq_to_lo`, from, to, length_out)
+}
+
+c_bigfloat_seq_by_lo <- function(from, by, length_out) {
+  .Call(`_bignum_c_bigfloat_seq_by_lo`, from, by, length_out)
+}
+
 c_biginteger <- function(x) {
   .Call(`_bignum_c_biginteger`, x)
 }
@@ -270,4 +282,16 @@ c_biginteger_abs <- function(lhs) {
 
 c_biginteger_sign <- function(lhs) {
   .Call(`_bignum_c_biginteger_sign`, lhs)
+}
+
+c_biginteger_seq_to_by <- function(from, to, by) {
+  .Call(`_bignum_c_biginteger_seq_to_by`, from, to, by)
+}
+
+c_biginteger_seq_to_lo <- function(from, to, length_out) {
+  .Call(`_bignum_c_biginteger_seq_to_lo`, from, to, length_out)
+}
+
+c_biginteger_seq_by_lo <- function(from, by, length_out) {
+  .Call(`_bignum_c_biginteger_seq_by_lo`, from, by, length_out)
 }
