@@ -235,9 +235,9 @@ cpp11::strings c_biginteger_sign(cpp11::strings lhs) {
  *  Sequence operations  *
  *-----------------------*/
 [[cpp11::register]]
-cpp11::strings c_biginteger_seq_to_by(cpp11::strings from,
-                                      cpp11::strings to,
-                                      cpp11::strings by) {
+cpp11::strings c_biginteger_seq_to_by(const cpp11::strings& from,
+                                      const cpp11::strings& to,
+                                      const cpp11::strings& by) {
   const biginteger_type start = biginteger_type(std::string(from[0]));
   const biginteger_type end = biginteger_type(std::string(to[0]));
   const biginteger_type step = biginteger_type(std::string(by[0]));
@@ -267,8 +267,8 @@ cpp11::strings c_biginteger_seq_to_by(cpp11::strings from,
 }
 
 [[cpp11::register]]
-cpp11::strings c_biginteger_seq_to_lo(cpp11::strings from,
-                                      cpp11::strings to,
+cpp11::strings c_biginteger_seq_to_lo(const cpp11::strings& from,
+                                      const cpp11::strings& to,
                                       const cpp11::integers& length_out) {
   const biginteger_type start = biginteger_type(std::string(from[0]));
   const biginteger_type end = biginteger_type(std::string(to[0]));
@@ -303,8 +303,8 @@ cpp11::strings c_biginteger_seq_to_lo(cpp11::strings from,
 }
 
 [[cpp11::register]]
-cpp11::strings c_biginteger_seq_by_lo(cpp11::strings from,
-                                      cpp11::strings by,
+cpp11::strings c_biginteger_seq_by_lo(const cpp11::strings& from,
+                                      const cpp11::strings& by,
                                       const cpp11::integers& length_out) {
   const biginteger_type start = biginteger_type(std::string(from[0]));
   const biginteger_type step = biginteger_type(std::string(by[0]));

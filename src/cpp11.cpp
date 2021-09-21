@@ -334,24 +334,24 @@ extern "C" SEXP _bignum_c_bigfloat_trigamma(SEXP lhs) {
   END_CPP11
 }
 // bigfloat_interface.cpp
-cpp11::strings c_bigfloat_seq_to_by(cpp11::strings from, cpp11::strings to, cpp11::strings by);
+cpp11::strings c_bigfloat_seq_to_by(const cpp11::strings& from, const cpp11::strings& to, const cpp11::strings& by);
 extern "C" SEXP _bignum_c_bigfloat_seq_to_by(SEXP from, SEXP to, SEXP by) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_bigfloat_seq_to_by(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(from), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(to), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(by)));
+    return cpp11::as_sexp(c_bigfloat_seq_to_by(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by)));
   END_CPP11
 }
 // bigfloat_interface.cpp
-cpp11::strings c_bigfloat_seq_to_lo(cpp11::strings from, cpp11::strings to, const cpp11::integers& length_out);
+cpp11::strings c_bigfloat_seq_to_lo(const cpp11::strings& from, const cpp11::strings& to, const cpp11::integers& length_out);
 extern "C" SEXP _bignum_c_bigfloat_seq_to_lo(SEXP from, SEXP to, SEXP length_out) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_bigfloat_seq_to_lo(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(from), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+    return cpp11::as_sexp(c_bigfloat_seq_to_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
   END_CPP11
 }
 // bigfloat_interface.cpp
-cpp11::strings c_bigfloat_seq_by_lo(cpp11::strings from, cpp11::strings by, const cpp11::integers& length_out);
+cpp11::strings c_bigfloat_seq_by_lo(const cpp11::strings& from, const cpp11::strings& by, const cpp11::integers& length_out);
 extern "C" SEXP _bignum_c_bigfloat_seq_by_lo(SEXP from, SEXP by, SEXP length_out) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_bigfloat_seq_by_lo(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(from), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(by), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+    return cpp11::as_sexp(c_bigfloat_seq_by_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
   END_CPP11
 }
 // biginteger_interface.cpp
@@ -502,24 +502,24 @@ extern "C" SEXP _bignum_c_biginteger_sign(SEXP lhs) {
   END_CPP11
 }
 // biginteger_interface.cpp
-cpp11::strings c_biginteger_seq_to_by(cpp11::strings from, cpp11::strings to, cpp11::strings by);
+cpp11::strings c_biginteger_seq_to_by(const cpp11::strings& from, const cpp11::strings& to, const cpp11::strings& by);
 extern "C" SEXP _bignum_c_biginteger_seq_to_by(SEXP from, SEXP to, SEXP by) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_biginteger_seq_to_by(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(from), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(to), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(by)));
+    return cpp11::as_sexp(c_biginteger_seq_to_by(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by)));
   END_CPP11
 }
 // biginteger_interface.cpp
-cpp11::strings c_biginteger_seq_to_lo(cpp11::strings from, cpp11::strings to, const cpp11::integers& length_out);
+cpp11::strings c_biginteger_seq_to_lo(const cpp11::strings& from, const cpp11::strings& to, const cpp11::integers& length_out);
 extern "C" SEXP _bignum_c_biginteger_seq_to_lo(SEXP from, SEXP to, SEXP length_out) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_biginteger_seq_to_lo(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(from), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+    return cpp11::as_sexp(c_biginteger_seq_to_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
   END_CPP11
 }
 // biginteger_interface.cpp
-cpp11::strings c_biginteger_seq_by_lo(cpp11::strings from, cpp11::strings by, const cpp11::integers& length_out);
+cpp11::strings c_biginteger_seq_by_lo(const cpp11::strings& from, const cpp11::strings& by, const cpp11::integers& length_out);
 extern "C" SEXP _bignum_c_biginteger_seq_by_lo(SEXP from, SEXP by, SEXP length_out) {
   BEGIN_CPP11
-    return cpp11::as_sexp(c_biginteger_seq_by_lo(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(from), cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(by), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+    return cpp11::as_sexp(c_biginteger_seq_by_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
   END_CPP11
 }
 
