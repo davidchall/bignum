@@ -1,5 +1,7 @@
 # bignum (development version)
 
+* Adapted tests for testthat 3.1.0 (#27).
+
 # bignum 0.2.1
 
 * `format()` no longer checks for misspelled arguments. This previously caused issues when storing a bignum vector inside a data.frame or data.table (#25).
