@@ -15,7 +15,7 @@ warn_on_lossy_cast <- function(expr, x_ptype = NULL, to_ptype = NULL) {
 
       condition_data <- unclass(err)
       condition_data$class <- c("bignum_warning_cast_lossy", "vctrs_error_cast_lossy")
-      do.call(warn, condition_data)
+      do.call(warn, condition_data, quote = TRUE)
 
       invokeRestart("vctrs_restart_error_cast_lossy")
     },
