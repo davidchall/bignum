@@ -42,6 +42,7 @@ cnd_footer.bignum_warning_cast_lossy <- function(cnd, ...) {
 }
 
 #' @export
+# TODO: remove when rlang 1.0 is released
 conditionMessage.bignum_warning_cast_lossy <- function(c) {
   cnd_message(c)
 }
