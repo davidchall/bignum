@@ -136,6 +136,14 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#bignum-development-version" class="anchor"></a>bignum (development version)<small> Unreleased </small>
 </h1>
+<ul>
+<li>To suppress lossy cast warnings, you should now use <code><a href="https://rdrr.io/r/base/warning.html">suppressWarnings()</a></code> (<a href='https://github.com/davidchall/bignum/issues/29'>#29</a>).
+<ul>
+<li>If using R 4.1+, we recommend <code><a href="https://rdrr.io/r/base/warning.html">suppressWarnings(expr, classes = "bignum_warning_cast_lossy")</a></code>.</li>
+<li>Compatible with rlang 1.0.0.</li>
+</ul>
+</li>
+</ul>
 </div>
     <div id="bignum-022" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.2">

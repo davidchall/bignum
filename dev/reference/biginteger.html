@@ -179,7 +179,7 @@ is_biginteger() checks if an object is of class bignum_biginteger." />
 </div><div class='output co'>#&gt; <span class='warning'>Warning: </span></div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
 #&gt; [1] 2 2 3</div><div class='input'>
 <span class='co'># suppress warnings if they are expected</span>
-<span class='fu'>vctrs</span><span class='fu'>::</span><span class='fu'><a href='https://vctrs.r-lib.org/reference/vctrs-conditions.html'>allow_lossy_cast</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
 #&gt; [1] 2 2 3</div><div class='input'>
 <span class='co'># unsigned integers can be specified as hexadecimal</span>
