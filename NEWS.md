@@ -1,5 +1,8 @@
 # bignum (development version)
 
+* To suppress lossy cast warnings, you should now use `suppressWarnings()` (#29).
+    * If using R 4.1+, we recommend `suppressWarnings(expr, classes = "bignum_warning_cast_lossy")`.
+
 # bignum 0.2.2
 
 * Adapted tests for testthat 3.1.0 (#27).
