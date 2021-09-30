@@ -35,7 +35,7 @@ format(biginteger(2)^50L, notation = "dec")
 biginteger(c(2, 2.5, 3))
 
 # suppress warnings if they are expected
-vctrs::allow_lossy_cast(biginteger(c(2, 2.5, 3)))
+suppressWarnings(biginteger(c(2, 2.5, 3)))
 
 # unsigned integers can be specified as hexadecimal
 biginteger("0xffffffff")

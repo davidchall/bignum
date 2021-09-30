@@ -13,10 +13,7 @@ warn_on_lossy_cast <- function(expr, x_ptype = NULL, to_ptype = NULL) {
         return()
       }
 
-      condition_data <- unclass(err)
-      condition_data$class <- c("bignum_warning_cast_lossy", "vctrs_error_cast_lossy")
-      do.call(warn, condition_data)
-
+      warn(error = err, class = "bignum_warning_cast_lossy")
       invokeRestart("vctrs_restart_error_cast_lossy")
     },
     expr
@@ -25,13 +22,29 @@ warn_on_lossy_cast <- function(expr, x_ptype = NULL, to_ptype = NULL) {
 
 #' @export
 cnd_header.bignum_warning_cast_lossy <- function(cnd, ...) {
-  x_label <- format_arg_label(vec_ptype_full(cnd$x), cnd$x_arg)
-  to_label <- format_arg_label(vec_ptype_full(cnd$to), cnd$to_arg)
-  loss_type <- loss_type(cnd$loss_type)
+  x_label <- format_arg_label(vec_ptype_full(cnd$error$x), cnd$error$x_arg)
+  to_label <- format_arg_label(vec_ptype_full(cnd$error$to), cnd$error$to_arg)
+  loss_type <- loss_type(cnd$error$loss_type)
   paste0(
     "Loss of ", loss_type, " while converting from ",
     x_label, " to ", to_label, "."
   )
+}
+
+#' @export
+cnd_body.bignum_warning_cast_lossy <- function(cnd, ...) {
+  cnd_body(cnd$error)
+}
+
+#' @export
+cnd_footer.bignum_warning_cast_lossy <- function(cnd, ...) {
+  cnd_footer(cnd$error)
+}
+
+#' @export
+# TODO: remove when rlang 1.0 is released
+conditionMessage.bignum_warning_cast_lossy <- function(c) {
+  cnd_message(c)
 }
 
 
