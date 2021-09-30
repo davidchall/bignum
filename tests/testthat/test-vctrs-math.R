@@ -97,11 +97,11 @@ test_that("math returning same type works", {
 test_that("math returning float works", {
   check_math <- function(x, fun, ...) {
     expect_equal(
-      allow_lossy_cast(as.double(fun(biginteger(x), ...))),
+      suppressWarnings(as.double(fun(biginteger(x), ...))),
       suppressWarnings(fun(x, ...))
     )
     expect_equal(
-      allow_lossy_cast(as.double(fun(bigfloat(x), ...))),
+      suppressWarnings(as.double(fun(bigfloat(x), ...))),
       suppressWarnings(fun(x, ...))
     )
   }

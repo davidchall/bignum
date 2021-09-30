@@ -24,7 +24,7 @@ Imports:
     vctrs (>= 0.3.0)
 Suggests: 
     knitr,
-    pillar (>= 1.6.0),
+    pillar (>= 1.6.3),
     rmarkdown,
     testthat
 LinkingTo: 
