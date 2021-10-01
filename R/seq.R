@@ -10,6 +10,14 @@
 #' - `by`
 #' - Either `length.out` or `along.with`
 #'
+#' @param from Start value of the sequence. A [`biginteger`] or [`bigfloat`] scalar.
+#' @param to End value of the sequence. `to` is cast to the type of `from`.
+#' @param by Amount to increment the sequence by. `by` is cast to the type of `from`.
+#' @param length.out Length of the resulting sequence.
+#' @param along.with Vector who's length determines the length of the resulting sequence.
+#' @param ... These dots are for future extensions and must be empty.
+#' @return A sequence with the type of `from`.
+#'
 #' @export
 seq.bignum_vctr <- function(from,
                             to = NULL,
@@ -17,7 +25,8 @@ seq.bignum_vctr <- function(from,
                             length.out = NULL,
                             along.with = NULL,
                             ...) {
-  #check_dots_empty()
+  # TODO: wait for rlang 1.0
+  # check_dots_empty()
 
   vec_assert(from, size = 1L)
   if (is.na(from)) {

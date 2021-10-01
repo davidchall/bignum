@@ -6,6 +6,22 @@
 \usage{
 \method{seq}{bignum_vctr}(from, to = NULL, by = NULL, length.out = NULL, along.with = NULL, ...)
 }
+\arguments{
+\item{from}{Start value of the sequence. A \code{\link{biginteger}} or \code{\link{bigfloat}} scalar.}
+
+\item{to}{End value of the sequence. \code{to} is cast to the type of \code{from}.}
+
+\item{by}{Amount to increment the sequence by. \code{by} is cast to the type of \code{from}.}
+
+\item{length.out}{Length of the resulting sequence.}
+
+\item{along.with}{Vector who's length determines the length of the resulting sequence.}
+
+\item{...}{These dots are for future extensions and must be empty.}
+}
+\value{
+A sequence with the type of \code{from}.
+}
 \description{
 This is a bignum method for the \code{\link[=seq]{seq()}} generic.
 
