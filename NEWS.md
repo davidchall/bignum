@@ -1,5 +1,13 @@
 # bignum (development version)
 
+* To suppress lossy cast warnings, you should now use `suppressWarnings()` (#29).
+    * If using R 4.1+, we recommend `suppressWarnings(expr, classes = "bignum_warning_cast_lossy")`.
+    * Compatible with rlang 1.0.0.
+
+# bignum 0.2.2
+
+* Adapted tests for testthat 3.1.0 (#27).
+
 # bignum 0.2.1
 
 * `format()` no longer checks for misspelled arguments. This previously caused issues when storing a bignum vector inside a data.frame or data.table (#25).

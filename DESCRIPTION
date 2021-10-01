@@ -1,6 +1,6 @@
 Package: bignum
 Title: Arbitrary-Precision Integer and Floating-Point Mathematics
-Version: 0.2.1.9000
+Version: 0.2.2.9000
 Authors@R: 
     person(given = "David",
            family = "Hall",
@@ -24,7 +24,7 @@ Imports:
     vctrs (>= 0.3.0)
 Suggests: 
     knitr,
-    pillar (>= 1.6.0),
+    pillar (>= 1.6.3),
     rmarkdown,
     testthat
 LinkingTo: 
