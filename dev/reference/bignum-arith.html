@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Arbitrary-Precision Integer Vectors — biginteger • bignum</title>
+<title>Arithmetic operations — bignum-arith • bignum</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,9 @@
 
 
 
-<meta property="og:title" content="Arbitrary-Precision Integer Vectors — biginteger" />
-<meta property="og:description" content="biginteger() and as_biginteger() construct a vector designed to store
-any integer.
-is_biginteger() checks if an object is of class bignum_biginteger." />
+<meta property="og:title" content="Arithmetic operations — bignum-arith" />
+<meta property="og:description" content="biginteger and bigfloat vectors support the standard arithmetic operations.
+The base R documentation can be found at Arithmetic." />
 
 
 <meta name="robots" content="noindex">
@@ -128,61 +127,67 @@ is_biginteger() checks if an object is of class bignum_biginteger." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Arbitrary-Precision Integer Vectors</h1>
-    <small class="dont-index">Source: <a href='https://github.com/davidchall/bignum/blob/master/R/biginteger.R'><code>R/biginteger.R</code></a></small>
-    <div class="hidden name"><code>biginteger.Rd</code></div>
+    <h1>Arithmetic operations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/davidchall/bignum/blob/master/R/vctrs-arith.R'><code>R/vctrs-arith.R</code></a></small>
+    <div class="hidden name"><code>bignum-arith.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>biginteger()</code> and <code>as_biginteger()</code> construct a vector designed to store
-<em>any</em> integer.</p>
-<p><code>is_biginteger()</code> checks if an object is of class <code>bignum_biginteger</code>.</p>
+    <p><a href='biginteger.html'>biginteger</a> and <a href='bigfloat.html'>bigfloat</a> vectors support the standard arithmetic operations.
+The base R documentation can be found at <a href='https://rdrr.io/r/base/Arithmetic.html'>Arithmetic</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>biginteger</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>as_biginteger</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-
-<span class='fu'>is_biginteger</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>Object to be coerced or tested.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An S3 vector of class <code>bignum_biginteger</code>.</p>
+    <p>These arithmetic operations are <strong>type-stable</strong>, which means the output type
+depends only on the input types (not the input values). A biginteger vector
+is returned when the result must be an integer (e.g., addition of two integers).
+Otherwise a bigfloat vector is returned.</p>
+<p>The following table summarizes the return type for each combination, where
+"integer-like" refers to integer and biginteger vectors and "float-like"
+refers to double and bigfloat vectors.</p><table class='table'>
+<tr><td><strong>Input 1</strong></td><td><strong>Operator</strong></td><td><strong>Input 2</strong></td><td></td><td><strong>Result</strong></td></tr>
+<tr><td>Integer-like</td><td>+, -, *, ^, %%</td><td>Integer-like</td><td>-&gt;</td><td>biginteger</td></tr>
+<tr><td>Integer-like</td><td>+, -, *, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Float-like</td><td>+, -, *, ^, %%</td><td>Integer-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Float-like</td><td>+, -, *, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Any</td><td>/</td><td>Any</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Any</td><td>%/%</td><td>Any</td><td>-&gt;</td><td>biginteger</td></tr>
+</table>
+
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='bignum-constants.html'>NA_biginteger_</a></code> to represent missing values.</p>
-<p><code><a href='bignum-format.html'>format()</a></code> for pretty printing.</p>
-<p><code>vignette("operations")</code> for supported operations.</p></div>
+    <div class='dont-index'><p>Other bignum operations: 
+<code><a href='bignum-compare.html'>bignum-compare</a></code>,
+<code><a href='bignum-math.html'>bignum-math</a></code>,
+<code><a href='bignum-special.html'>bignum-special</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># default options limit displayed precision</span>
-<span class='fu'>biginteger</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>50L</span>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='biginteger.html'>biginteger</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='bigfloat.html'>bigfloat</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+
+<span class='op'>+</span><span class='va'>x</span>
 </div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
-#&gt; [1] 1.125900e+15</div><div class='input'>
-<span class='co'># display full precision</span>
-<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>50L</span>, notation <span class='op'>=</span> <span class='st'>"dec"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "1125899906842624"</div><div class='input'>
-<span class='co'># lossy casts raise a warning</span>
-<span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: </span></div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
-#&gt; [1] 2 2 3</div><div class='input'>
-<span class='co'># suppress warnings if they are expected</span>
-<span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
-#&gt; [1] 2 2 3</div><div class='input'>
-<span class='co'># unsigned integers can be specified as hexadecimal</span>
-<span class='fu'>biginteger</span><span class='op'>(</span><span class='st'>"0xffffffff"</span><span class='op'>)</span>
+#&gt; [1] 5</div><div class='input'><span class='op'>-</span><span class='va'>x</span>
 </div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
-#&gt; [1] 4294967295</div></pre>
+#&gt; [1] -5</div><div class='input'><span class='va'>x</span> <span class='op'>+</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 7</div><div class='input'><span class='va'>x</span> <span class='op'>-</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 3</div><div class='input'><span class='va'>x</span> <span class='op'>*</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 10</div><div class='input'><span class='va'>x</span> <span class='op'>/</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 2.5</div><div class='input'><span class='va'>x</span> <span class='op'>^</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 25</div><div class='input'><span class='va'>x</span> <span class='op'>%%</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 1</div><div class='input'><span class='va'>x</span> <span class='op'>%/%</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
+#&gt; [1] 2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

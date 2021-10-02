@@ -10,22 +10,31 @@
     <loc>https://davidchall.github.io/bignum/reference/biginteger.html</loc>
   </url>
   <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-arith.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-compare.html</loc>
+  </url>
+  <url>
     <loc>https://davidchall.github.io/bignum/reference/bignum-constants.html</loc>
   </url>
   <url>
     <loc>https://davidchall.github.io/bignum/reference/bignum-format.html</loc>
   </url>
   <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-math.html</loc>
+  </url>
+  <url>
     <loc>https://davidchall.github.io/bignum/reference/bignum-package.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/reference/bignum-special.html</loc>
   </url>
   <url>
     <loc>https://davidchall.github.io/bignum/reference/bignum-vctrs.html</loc>
   </url>
   <url>
     <loc>https://davidchall.github.io/bignum/reference/seq.bignum_vctr.html</loc>
-  </url>
-  <url>
-    <loc>https://davidchall.github.io/bignum/articles/operations.html</loc>
   </url>
   <url>
     <loc>https://davidchall.github.io/bignum/articles/precision.html</loc>
