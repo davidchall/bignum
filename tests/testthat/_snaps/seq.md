@@ -124,3 +124,8 @@
 
     The supplied output size does not result in a non-fractional sequence between `from` and `to`.
 
+# `to` is always cast to `from`
+
+    Can't convert from `to` <bigfloat> to `from` <biginteger> due to loss of precision.
+    * Locations: 1
+
