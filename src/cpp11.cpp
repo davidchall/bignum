@@ -333,6 +333,27 @@ extern "C" SEXP _bignum_c_bigfloat_trigamma(SEXP lhs) {
     return cpp11::as_sexp(c_bigfloat_trigamma(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs)));
   END_CPP11
 }
+// bigfloat_interface.cpp
+cpp11::strings c_bigfloat_seq_to_by(const cpp11::strings& from, const cpp11::strings& to, const cpp11::strings& by);
+extern "C" SEXP _bignum_c_bigfloat_seq_to_by(SEXP from, SEXP to, SEXP by) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_bigfloat_seq_to_by(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by)));
+  END_CPP11
+}
+// bigfloat_interface.cpp
+cpp11::strings c_bigfloat_seq_to_lo(const cpp11::strings& from, const cpp11::strings& to, const cpp11::integers& length_out);
+extern "C" SEXP _bignum_c_bigfloat_seq_to_lo(SEXP from, SEXP to, SEXP length_out) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_bigfloat_seq_to_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+  END_CPP11
+}
+// bigfloat_interface.cpp
+cpp11::strings c_bigfloat_seq_by_lo(const cpp11::strings& from, const cpp11::strings& by, const cpp11::integers& length_out);
+extern "C" SEXP _bignum_c_bigfloat_seq_by_lo(SEXP from, SEXP by, SEXP length_out) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_bigfloat_seq_by_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+  END_CPP11
+}
 // biginteger_interface.cpp
 cpp11::strings c_biginteger(cpp11::strings x);
 extern "C" SEXP _bignum_c_biginteger(SEXP x) {
@@ -480,6 +501,27 @@ extern "C" SEXP _bignum_c_biginteger_sign(SEXP lhs) {
     return cpp11::as_sexp(c_biginteger_sign(cpp11::as_cpp<cpp11::decay_t<cpp11::strings>>(lhs)));
   END_CPP11
 }
+// biginteger_interface.cpp
+cpp11::strings c_biginteger_seq_to_by(const cpp11::strings& from, const cpp11::strings& to, const cpp11::strings& by);
+extern "C" SEXP _bignum_c_biginteger_seq_to_by(SEXP from, SEXP to, SEXP by) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_biginteger_seq_to_by(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by)));
+  END_CPP11
+}
+// biginteger_interface.cpp
+cpp11::strings c_biginteger_seq_to_lo(const cpp11::strings& from, const cpp11::strings& to, const cpp11::integers& length_out);
+extern "C" SEXP _bignum_c_biginteger_seq_to_lo(SEXP from, SEXP to, SEXP length_out) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_biginteger_seq_to_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(to), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+  END_CPP11
+}
+// biginteger_interface.cpp
+cpp11::strings c_biginteger_seq_by_lo(const cpp11::strings& from, const cpp11::strings& by, const cpp11::integers& length_out);
+extern "C" SEXP _bignum_c_biginteger_seq_by_lo(SEXP from, SEXP by, SEXP length_out) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(c_biginteger_seq_by_lo(cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(from), cpp11::as_cpp<cpp11::decay_t<const cpp11::strings&>>(by), cpp11::as_cpp<cpp11::decay_t<const cpp11::integers&>>(length_out)));
+  END_CPP11
+}
 
 extern "C" {
 /* .Call calls */
@@ -517,6 +559,9 @@ extern SEXP _bignum_c_bigfloat_multiply(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_pow(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_prod(SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_rank(SEXP);
+extern SEXP _bignum_c_bigfloat_seq_by_lo(SEXP, SEXP, SEXP);
+extern SEXP _bignum_c_bigfloat_seq_to_by(SEXP, SEXP, SEXP);
+extern SEXP _bignum_c_bigfloat_seq_to_lo(SEXP, SEXP, SEXP);
 extern SEXP _bignum_c_bigfloat_sign(SEXP);
 extern SEXP _bignum_c_bigfloat_sin(SEXP);
 extern SEXP _bignum_c_bigfloat_sinh(SEXP);
@@ -545,6 +590,9 @@ extern SEXP _bignum_c_biginteger_pow(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_prod(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_quotient(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_rank(SEXP);
+extern SEXP _bignum_c_biginteger_seq_by_lo(SEXP, SEXP, SEXP);
+extern SEXP _bignum_c_biginteger_seq_to_by(SEXP, SEXP, SEXP);
+extern SEXP _bignum_c_biginteger_seq_to_lo(SEXP, SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_sign(SEXP);
 extern SEXP _bignum_c_biginteger_subtract(SEXP, SEXP);
 extern SEXP _bignum_c_biginteger_sum(SEXP, SEXP);
@@ -587,6 +635,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat_pow",          (DL_FUNC) &_bignum_c_bigfloat_pow,          2},
     {"_bignum_c_bigfloat_prod",         (DL_FUNC) &_bignum_c_bigfloat_prod,         2},
     {"_bignum_c_bigfloat_rank",         (DL_FUNC) &_bignum_c_bigfloat_rank,         1},
+    {"_bignum_c_bigfloat_seq_by_lo",    (DL_FUNC) &_bignum_c_bigfloat_seq_by_lo,    3},
+    {"_bignum_c_bigfloat_seq_to_by",    (DL_FUNC) &_bignum_c_bigfloat_seq_to_by,    3},
+    {"_bignum_c_bigfloat_seq_to_lo",    (DL_FUNC) &_bignum_c_bigfloat_seq_to_lo,    3},
     {"_bignum_c_bigfloat_sign",         (DL_FUNC) &_bignum_c_bigfloat_sign,         1},
     {"_bignum_c_bigfloat_sin",          (DL_FUNC) &_bignum_c_bigfloat_sin,          1},
     {"_bignum_c_bigfloat_sinh",         (DL_FUNC) &_bignum_c_bigfloat_sinh,         1},
@@ -615,6 +666,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_biginteger_prod",       (DL_FUNC) &_bignum_c_biginteger_prod,       2},
     {"_bignum_c_biginteger_quotient",   (DL_FUNC) &_bignum_c_biginteger_quotient,   2},
     {"_bignum_c_biginteger_rank",       (DL_FUNC) &_bignum_c_biginteger_rank,       1},
+    {"_bignum_c_biginteger_seq_by_lo",  (DL_FUNC) &_bignum_c_biginteger_seq_by_lo,  3},
+    {"_bignum_c_biginteger_seq_to_by",  (DL_FUNC) &_bignum_c_biginteger_seq_to_by,  3},
+    {"_bignum_c_biginteger_seq_to_lo",  (DL_FUNC) &_bignum_c_biginteger_seq_to_lo,  3},
     {"_bignum_c_biginteger_sign",       (DL_FUNC) &_bignum_c_biginteger_sign,       1},
     {"_bignum_c_biginteger_subtract",   (DL_FUNC) &_bignum_c_biginteger_subtract,   2},
     {"_bignum_c_biginteger_sum",        (DL_FUNC) &_bignum_c_biginteger_sum,        2},

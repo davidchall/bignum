@@ -449,3 +449,84 @@ cpp11::strings c_bigfloat_trigamma(cpp11::strings lhs) {
     [](const bigfloat_type &x) { return boost::math::trigamma(x); }
   ).encode();
 }
+
+
+/*-----------------------*
+ *  Sequence operations  *
+ *-----------------------*/
+[[cpp11::register]]
+cpp11::strings c_bigfloat_seq_to_by(const cpp11::strings& from,
+                                    const cpp11::strings& to,
+                                    const cpp11::strings& by) {
+  const bigfloat_type start = bigfloat_type(std::string(from[0]));
+  const bigfloat_type end = bigfloat_type(std::string(to[0]));
+  const bigfloat_type step = bigfloat_type(std::string(by[0]));
+
+  // Base seq() requires negative `by` when creating a decreasing seq, so this
+  // helps be compatible with that.
+  if (start > end && step > 0) {
+    cpp11::stop("When `from` is greater than `to`, `by` must be negative.");
+  }
+  if (start < end && step < 0) {
+    cpp11::stop("When `from` is less than `to`, `by` must be positive.");
+  }
+
+  const bigfloat_type num = end - start;
+  const bigfloat_type den = step;
+  const bigfloat_type length_out = trunc(num / den) + 1;
+
+  const std::size_t size = static_cast<std::size_t>(length_out);
+
+  bigfloat_vector output(size);
+
+  for (std::size_t i=0; i<size; ++i) {
+    output.data[i] = start + step * i;
+  }
+
+  return output.encode();
+}
+
+[[cpp11::register]]
+cpp11::strings c_bigfloat_seq_to_lo(const cpp11::strings& from,
+                                    const cpp11::strings& to,
+                                    const cpp11::integers& length_out) {
+  const bigfloat_type start = bigfloat_type(std::string(from[0]));
+  const bigfloat_type end = bigfloat_type(std::string(to[0]));
+  const std::size_t size = length_out[0];
+
+  bigfloat_vector output(size);
+
+  if (size == 1) {
+    // Avoid division by zero
+    output.data[0] = start;
+    return output.encode();
+  }
+
+  const bigfloat_type num = end - start;
+  const bigfloat_type den = static_cast<bigfloat_type>(size - 1);
+
+  const bigfloat_type step = num / den;
+
+  for (std::size_t i=0; i<size; ++i) {
+    output.data[i] = start + step * i;
+  }
+
+  return output.encode();
+}
+
+[[cpp11::register]]
+cpp11::strings c_bigfloat_seq_by_lo(const cpp11::strings& from,
+                                    const cpp11::strings& by,
+                                    const cpp11::integers& length_out) {
+  const bigfloat_type start = bigfloat_type(std::string(from[0]));
+  const bigfloat_type step = bigfloat_type(std::string(by[0]));
+  const std::size_t size = length_out[0];
+
+  bigfloat_vector output(size);
+
+  for (std::size_t i=0; i<size; ++i) {
+    output.data[i] = start + step * i;
+  }
+
+  return output.encode();
+}

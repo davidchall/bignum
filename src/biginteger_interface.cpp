@@ -229,3 +229,92 @@ cpp11::strings c_biginteger_sign(cpp11::strings lhs) {
     [](const biginteger_type &x) { return x.sign(); }
   ).encode();
 }
+
+
+/*-----------------------*
+ *  Sequence operations  *
+ *-----------------------*/
+[[cpp11::register]]
+cpp11::strings c_biginteger_seq_to_by(const cpp11::strings& from,
+                                      const cpp11::strings& to,
+                                      const cpp11::strings& by) {
+  const biginteger_type start = biginteger_type(std::string(from[0]));
+  const biginteger_type end = biginteger_type(std::string(to[0]));
+  const biginteger_type step = biginteger_type(std::string(by[0]));
+
+  // Base seq() requires negative `by` when creating a decreasing seq, so this
+  // helps be compatible with that.
+  if (start > end && step > 0) {
+    cpp11::stop("When `from` is greater than `to`, `by` must be negative.");
+  }
+  if (start < end && step < 0) {
+    cpp11::stop("When `from` is less than `to`, `by` must be positive.");
+  }
+
+  const biginteger_type num = end - start;
+  const biginteger_type den = step;
+  const biginteger_type length_out = num / den + 1;
+
+  const std::size_t size = static_cast<std::size_t>(length_out);
+
+  biginteger_vector output(size);
+
+  for (std::size_t i=0; i<size; ++i) {
+    output.data[i] = start + step * i;
+  }
+
+  return output.encode();
+}
+
+[[cpp11::register]]
+cpp11::strings c_biginteger_seq_to_lo(const cpp11::strings& from,
+                                      const cpp11::strings& to,
+                                      const cpp11::integers& length_out) {
+  const biginteger_type start = biginteger_type(std::string(from[0]));
+  const biginteger_type end = biginteger_type(std::string(to[0]));
+  const std::size_t size = length_out[0];
+
+  biginteger_vector output(size);
+
+  if (size == 1) {
+    // Avoid division by zero
+    output.data[0] = start;
+    return output.encode();
+  }
+
+  const biginteger_type num = end - start;
+  const biginteger_type den = static_cast<biginteger_type>(size - 1);
+
+  const biginteger_type step = num / den;
+  const biginteger_type rem = num % den;
+
+  if (rem != 0) {
+    cpp11::stop(
+      "The supplied output size does not result in a non-fractional "
+      "sequence between `from` and `to`."
+    );
+  }
+
+  for (std::size_t i=0; i<size; ++i) {
+    output.data[i] = start + step * i;
+  }
+
+  return output.encode();
+}
+
+[[cpp11::register]]
+cpp11::strings c_biginteger_seq_by_lo(const cpp11::strings& from,
+                                      const cpp11::strings& by,
+                                      const cpp11::integers& length_out) {
+  const biginteger_type start = biginteger_type(std::string(from[0]));
+  const biginteger_type step = biginteger_type(std::string(by[0]));
+  const std::size_t size = length_out[0];
+
+  biginteger_vector output(size);
+
+  for (std::size_t i=0; i<size; ++i) {
+    output.data[i] = start + step * i;
+  }
+
+  return output.encode();
+}
