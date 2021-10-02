@@ -137,7 +137,9 @@
 <a href="#bignum-development-version" class="anchor"></a>bignum (development version)<small> Unreleased </small>
 </h1>
 <ul>
-<li>To suppress lossy cast warnings, you should now use <code><a href="https://rdrr.io/r/base/warning.html">suppressWarnings()</a></code> (<a href='https://github.com/davidchall/bignum/issues/29'>#29</a>).
+<li><p>New <code><a href="../reference/seq.bignum_vctr.html">seq.bignum_vctr()</a></code> for generating sequences of <code>biginteger</code> or <code>bigfloat</code> (<a href='https://github.com/davidchall/bignum/issues/30'>#30</a>).</p></li>
+<li>
+<p>To suppress lossy cast warnings, you should now use <code><a href="https://rdrr.io/r/base/warning.html">suppressWarnings()</a></code> (<a href='https://github.com/davidchall/bignum/issues/29'>#29</a>).</p>
 <ul>
 <li>If using R 4.1+, we recommend <code><a href="https://rdrr.io/r/base/warning.html">suppressWarnings(expr, classes = "bignum_warning_cast_lossy")</a></code>.</li>
 <li>Compatible with rlang 1.0.0.</li>
