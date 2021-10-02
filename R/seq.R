@@ -1,23 +1,36 @@
-#' Sequences: bignum
+#' Sequences of bignum vectors
 #'
 #' @description
-#' This is a bignum method for the [seq()] generic.
-#'
-#' Using `seq()` on bignum objects always retains the type of `from`.
+#' Generate a regular sequence of [`biginteger`] or [`bigfloat`] values.
 #'
 #' When calling `seq()`, exactly two of the following must be specified:
 #' - `to`
 #' - `by`
 #' - Either `length.out` or `along.with`
 #'
-#' @param from Start value of the sequence. A [`biginteger`] or [`bigfloat`] scalar.
-#' @param to End value of the sequence. `to` is cast to the type of `from`.
-#' @param by Amount to increment the sequence by. `by` is cast to the type of `from`.
+#' @param from Start value of the sequence. Always included in the result.
+#'
+#'   A [`biginteger`] or [`bigfloat`] scalar.
+#' @param to Stop value of the sequence. Only included in the result if `by`
+#'   divides the interval between `from` and `to` exactly.
+#'
+#'   `to` is cast to the type of `from`.
+#' @param by Amount to increment the sequence by.
+#'
+#'   `by` is cast to the type of `from`.
 #' @param length.out Length of the resulting sequence.
 #' @param along.with Vector who's length determines the length of the resulting sequence.
 #' @param ... These dots are for future extensions and must be empty.
 #' @return A sequence with the type of `from`.
 #'
+#' @examples
+#' seq(biginteger(0), 10, by = 2)
+#'
+#' seq(biginteger(0), 10, length.out = 3)
+#'
+#' seq(biginteger(0), by = 3, length.out = 3)
+#'
+#' seq(bigfloat(0), by = -0.05, length.out = 6)
 #' @export
 seq.bignum_vctr <- function(from,
                             to = NULL,

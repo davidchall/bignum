@@ -2,16 +2,23 @@
 % Please edit documentation in R/seq.R
 \name{seq.bignum_vctr}
 \alias{seq.bignum_vctr}
-\title{Sequences: bignum}
+\title{Sequences of bignum vectors}
 \usage{
 \method{seq}{bignum_vctr}(from, to = NULL, by = NULL, length.out = NULL, along.with = NULL, ...)
 }
 \arguments{
-\item{from}{Start value of the sequence. A \code{\link{biginteger}} or \code{\link{bigfloat}} scalar.}
+\item{from}{Start value of the sequence. Always included in the result.
 
-\item{to}{End value of the sequence. \code{to} is cast to the type of \code{from}.}
+A \code{\link{biginteger}} or \code{\link{bigfloat}} scalar.}
 
-\item{by}{Amount to increment the sequence by. \code{by} is cast to the type of \code{from}.}
+\item{to}{Stop value of the sequence. Only included in the result if \code{by}
+divides the interval between \code{from} and \code{to} exactly.
+
+\code{to} is cast to the type of \code{from}.}
+
+\item{by}{Amount to increment the sequence by.
+
+\code{by} is cast to the type of \code{from}.}
 
 \item{length.out}{Length of the resulting sequence.}
 
@@ -23,9 +30,7 @@
 A sequence with the type of \code{from}.
 }
 \description{
-This is a bignum method for the \code{\link[=seq]{seq()}} generic.
-
-Using \code{seq()} on bignum objects always retains the type of \code{from}.
+Generate a regular sequence of \code{\link{biginteger}} or \code{\link{bigfloat}} values.
 
 When calling \code{seq()}, exactly two of the following must be specified:
 \itemize{
@@ -33,4 +38,13 @@ When calling \code{seq()}, exactly two of the following must be specified:
 \item \code{by}
 \item Either \code{length.out} or \code{along.with}
 }
+}
+\examples{
+seq(biginteger(0), 10, by = 2)
+
+seq(biginteger(0), 10, length.out = 3)
+
+seq(biginteger(0), by = 3, length.out = 3)
+
+seq(bigfloat(0), by = -0.05, length.out = 6)
 }
