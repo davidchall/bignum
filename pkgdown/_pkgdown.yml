@@ -19,6 +19,7 @@ reference:
     - bignum-format
   - title: "Operations"
     contents:
+    - has_concept("bignum operations")
     - seq.bignum_vctr
 
 articles:

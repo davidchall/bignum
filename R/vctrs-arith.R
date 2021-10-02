@@ -1,3 +1,44 @@
+#' Arithmetic operations
+#'
+#' [biginteger] and [bigfloat] vectors support the standard arithmetic operations.
+#' The base R documentation can be found at [Arithmetic].
+#'
+#' @return
+#' These arithmetic operations are **type-stable**, which means the output type
+#' depends only on the input types (not the input values). A biginteger vector
+#' is returned when the result must be an integer (e.g., addition of two integers).
+#' Otherwise a bigfloat vector is returned.
+#'
+#' The following table summarizes the return type for each combination, where
+#' "integer-like" refers to integer and biginteger vectors and "float-like"
+#' refers to double and bigfloat vectors.
+#'
+#' | **Input 1**  | **Operator**    | **Input 2**  |    | **Result** |
+#' |:-------------|:---------------:|:-------------|:--:|:-----------|
+#' | Integer-like | +, -, *, ^, %%  | Integer-like | -> | biginteger |
+#' | Integer-like | +, -, *, ^, %%  | Float-like   | -> | bigfloat   |
+#' | Float-like   | +, -, *, ^, %%  | Integer-like | -> | bigfloat   |
+#' | Float-like   | +, -, *, ^, %%  | Float-like   | -> | bigfloat   |
+#' | Any          | /               | Any          | -> | bigfloat   |
+#' | Any          | %/%             | Any          | -> | biginteger |
+#'
+#' @examples
+#' x <- biginteger(5)
+#' y <- bigfloat(2)
+#'
+#' +x
+#' -x
+#' x + y
+#' x - y
+#' x * y
+#' x / y
+#' x ^ y
+#' x %% y
+#' x %/% y
+#' @family bignum operations
+#' @name bignum-arith
+NULL
+
 vec_arith_bigfloat <- function(op, x, y) {
   args <- vec_recycle_common(
     vec_cast(x, new_bigfloat()),

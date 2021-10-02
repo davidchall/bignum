@@ -6,6 +6,8 @@
     * If using R 4.1+, we recommend `suppressWarnings(expr, classes = "bignum_warning_cast_lossy")`.
     * Compatible with rlang 1.0.0.
 
+* `vignette("operations")` has been removed and this documentation has been moved to man topics.
+
 # bignum 0.2.2
 
 * Adapted tests for testthat 3.1.0 (#27).

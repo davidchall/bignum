@@ -1,3 +1,24 @@
+#' Comparison operations
+#'
+#' [biginteger] and [bigfloat] vectors support the standard comparison operations.
+#' The base R documentation can be found at [Comparison].
+#'
+#' @return A logical vector.
+#'
+#' @examples
+#' x <- biginteger(5)
+#' y <- bigfloat(2)
+#'
+#' x < y
+#' x > y
+#' x <= y
+#' x >= y
+#' x == y
+#' x != y
+#' @family bignum operations
+#' @name bignum-compare
+NULL
+
 # comparison operations --------------------------------------------------------
 
 #' @export

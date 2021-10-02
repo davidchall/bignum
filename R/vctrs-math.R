@@ -1,3 +1,104 @@
+#' Mathematical operations
+#'
+#' [biginteger] and [bigfloat] vectors support many of the standard mathematical
+#' operations. The base R documentation can be found by searching for the
+#' individual functions (e.g. [mean()]).
+#'
+#' @return The returned value depends on the individual function. We recommend
+#'   reading the base R documentation for a specific function to understand
+#'   the expected result.
+#'
+#' @examples
+#' x <- biginteger(1:5)
+#'
+#' # summary
+#' sum(x)
+#' prod(x)
+#' max(x)
+#' min(x)
+#' range(x)
+#' mean(x)
+#'
+#' # cumulative
+#' cumsum(x)
+#' cumprod(x)
+#' cummax(x)
+#' cummin(x)
+#'
+#' # rounding
+#' floor(x)
+#' ceiling(x)
+#' trunc(x)
+#'
+#' # miscellaneous
+#' abs(x)
+#' sign(x)
+#' sqrt(x)
+#'
+#' # logarithms and exponentials
+#' log(x)
+#' log10(x)
+#' log2(x)
+#' log1p(x)
+#' exp(x)
+#' expm1(x)
+#'
+#' # trigonometric
+#' cos(x)
+#' sin(x)
+#' tan(x)
+#' acos(x)
+#' asin(x)
+#' atan(x)
+#' cospi(x)
+#' sinpi(x)
+#' tanpi(x)
+#'
+#' # hyperbolic
+#' cosh(x)
+#' sinh(x)
+#' tanh(x)
+#' acosh(x)
+#' asinh(x)
+#' atanh(x)
+#'
+#' # special functions
+#' gamma(x)
+#' lgamma(x)
+#' digamma(x)
+#' trigamma(x)
+#' factorial(x)
+#' lfactorial(x)
+#' @family bignum operations
+#' @name bignum-math
+NULL
+
+#' Check for special values
+#'
+#' @description
+#' [biginteger] and [bigfloat] support missing values (via `NA_biginteger_` and
+#' `NA_bigfloat_` respectively).
+#'
+#' [bigfloat] additionally supports positive and negative infinity and
+#' 'Not a Number' values. Usually these are the result of a calculation, but
+#' they can also be created manually by casting from [numeric] to [bigfloat].
+#'
+#' These functions check for the presence of these special values. The base R
+#' documentation can be found at [is.na()] and [is.finite()].
+#'
+#' @return A logical vector.
+#'
+#' @examples
+#' x <- bigfloat(c(0, NA, Inf, -Inf, NaN))
+#'
+#' is.na(x)
+#' is.finite(x)
+#' is.infinite(x)
+#' is.nan(x)
+#' @family bignum operations
+#' @name bignum-special
+NULL
+
 vec_math_bigfloat <- function(.fn, .x, ..., na.rm = FALSE) {
   switch(.fn,
 
