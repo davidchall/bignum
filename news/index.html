@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bignum</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -98,9 +98,6 @@
     </li>
     <li>
       <a href="../articles/precision.html">Control the displayed precision</a>
-    </li>
-    <li>
-      <a href="../articles/operations.html">Supported operations</a>
     </li>
   </ul>
 </li>
@@ -132,9 +129,25 @@
       <small>Source: <a href='https://github.com/davidchall/bignum/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="bignum-030" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.0">
+<a href="#bignum-030" class="anchor"></a>bignum 0.3.0<small> 2021-10-15 </small>
+</h1>
+<ul>
+<li><p>New <code><a href="../reference/seq.bignum_vctr.html">seq.bignum_vctr()</a></code> for generating sequences of <code>biginteger</code> or <code>bigfloat</code> (<a href='https://github.com/davidchall/bignum/issues/30'>#30</a>).</p></li>
+<li>
+<p>To suppress lossy cast warnings, you should now use <code><a href="https://rdrr.io/r/base/warning.html">suppressWarnings()</a></code> (<a href='https://github.com/davidchall/bignum/issues/29'>#29</a>).</p>
+<ul>
+<li>If using R 4.1+, we recommend <code><a href="https://rdrr.io/r/base/warning.html">suppressWarnings(expr, classes = "bignum_warning_cast_lossy")</a></code>.</li>
+<li>Compatible with rlang 1.0.0.</li>
+</ul>
+</li>
+<li><p><code>vignette("operations")</code> has been removed and this documentation has been moved to man topics.</p></li>
+</ul>
+</div>
     <div id="bignum-022" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.2">
-<a href="#bignum-022" class="anchor"></a>bignum 0.2.2<small> Unreleased </small>
+<a href="#bignum-022" class="anchor"></a>bignum 0.2.2<small> 2021-09-21 </small>
 </h1>
 <ul>
 <li>Adapted tests for testthat 3.1.0 (<a href='https://github.com/davidchall/bignum/issues/27'>#27</a>).</li>
@@ -210,7 +223,7 @@
 </li>
 <li><p>Constants for common situations: <code>NA_biginteger_</code>, <code>NA_bigfloat_</code>, <code>bigpi</code>.</p></li>
 <li>
-<p>Support for many basic operations (see <code><a href="../articles/operations.html">vignette("operations")</a></code>):</p>
+<p>Support for many basic operations (see <code>vignette("operations")</code>):</p>
 <ul>
 <li>Check for special values: <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html">is.finite()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html">is.infinite()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html">is.nan()</a></code>
 </li>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Arithmetic Operations — bignum-arith • bignum</title>
+<title>Arithmetic operations — bignum-arith • bignum</title>
 
 
 <!-- jquery -->
@@ -39,19 +39,9 @@
 
 
 
-<meta property="og:title" content="Arithmetic Operations — bignum-arith" />
-<meta property="og:description" content="biginteger and bigfloat vectors support the standard
-arithmetic operations.+ x
-- x
-x + y
-x - y
-x * y
-x / y
-x ^ y
-x %% y
-x %/% y
-
-" />
+<meta property="og:title" content="Arithmetic operations — bignum-arith" />
+<meta property="og:description" content="biginteger and bigfloat vectors support the standard arithmetic operations.
+The base R documentation can be found at Arithmetic." />
 
 
 
@@ -83,7 +73,7 @@ x %/% y
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bignum</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -91,16 +81,39 @@ x %/% y
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/type-hierarchy.html">Hierarchy of data types</a>
+    </li>
+    <li>
+      <a href="../articles/precision.html">Control the displayed precision</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/davidchall/bignum/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -114,24 +127,14 @@ x %/% y
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Arithmetic Operations</h1>
-    
+    <h1>Arithmetic operations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/davidchall/bignum/blob/master/R/vctrs-arith.R'><code>R/vctrs-arith.R</code></a></small>
     <div class="hidden name"><code>bignum-arith.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code><a href='biginteger.html'>biginteger</a></code> and <code><a href='bigfloat.html'>bigfloat</a></code> vectors support the standard
-<a href='https://rdrr.io/r/base/Arithmetic.html'>arithmetic operations</a>.</p><pre><span class='op'>+</span> <span class='va'>x</span>
-<span class='op'>-</span> <span class='va'>x</span>
-<span class='va'>x</span> <span class='op'>+</span> <span class='va'>y</span>
-<span class='va'>x</span> <span class='op'>-</span> <span class='va'>y</span>
-<span class='va'>x</span> <span class='op'>*</span> <span class='va'>y</span>
-<span class='va'>x</span> <span class='op'>/</span> <span class='va'>y</span>
-<span class='va'>x</span> <span class='op'>^</span> <span class='va'>y</span>
-<span class='va'>x</span> <span class='op'>%%</span> <span class='va'>y</span>
-<span class='va'>x</span> <span class='op'>%/%</span> <span class='va'>y</span>
-</pre>
-
+    <p><a href='biginteger.html'>biginteger</a> and <a href='bigfloat.html'>bigfloat</a> vectors support the standard arithmetic operations.
+The base R documentation can be found at <a href='https://rdrr.io/r/base/Arithmetic.html'>Arithmetic</a>.</p>
     </div>
 
 
@@ -146,30 +149,45 @@ Otherwise a bigfloat vector is returned.</p>
 "integer-like" refers to integer and biginteger vectors and "float-like"
 refers to double and bigfloat vectors.</p><table class='table'>
 <tr><td><strong>Input 1</strong></td><td><strong>Operator</strong></td><td><strong>Input 2</strong></td><td></td><td><strong>Result</strong></td></tr>
-<tr><td>Integer-like</td><td>+, -, *, ^, %%, %/%</td><td>Integer-like</td><td>-&gt;</td><td>biginteger</td></tr>
-<tr><td>Integer-like</td><td>/</td><td>Integer-like</td><td>-&gt;</td><td>bigfloat</td></tr>
-<tr><td>Integer-like</td><td>+, -, *, /, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
-<tr><td>Integer-like</td><td>%/%</td><td>Float-like</td><td>-&gt;</td><td>biginteger</td></tr>
-<tr><td>Float-like</td><td>+, -, *, /, ^, %%</td><td>Integer-like</td><td>-&gt;</td><td>bigfloat</td></tr>
-<tr><td>Float-like</td><td>%/%</td><td>Integer-like</td><td>-&gt;</td><td>biginteger</td></tr>
-<tr><td>Float-like</td><td>+, -, *, /, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
-<tr><td>Float-like</td><td>%/%</td><td>Float-like</td><td>-&gt;</td><td>biginteger</td></tr>
+<tr><td>Integer-like</td><td>+, -, *, ^, %%</td><td>Integer-like</td><td>-&gt;</td><td>biginteger</td></tr>
+<tr><td>Integer-like</td><td>+, -, *, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Float-like</td><td>+, -, *, ^, %%</td><td>Integer-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Float-like</td><td>+, -, *, ^, %%</td><td>Float-like</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Any</td><td>/</td><td>Any</td><td>-&gt;</td><td>bigfloat</td></tr>
+<tr><td>Any</td><td>%/%</td><td>Any</td><td>-&gt;</td><td>biginteger</td></tr>
 </table>
 
 
-    <h2 class="hasAnchor" id="recycling-rules"><a class="anchor" href="#recycling-rules"></a>Recycling rules</h2>
-
-    
-
-<p>The two inputs have <strong>compatible sizes</strong> if:</p><ul>
-<li><p>Both input vectors have the same length, or</p></li>
-<li><p>One input is a scalar (length 1) which is recycled.</p></li>
-</ul>
-
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Base R <a href='https://rdrr.io/r/base/Arithmetic.html'>arithmetic operations</a>.</p></div>
+    <div class='dont-index'><p>Other bignum operations: 
+<code><a href='bignum-compare.html'>bignum-compare</a></code>,
+<code><a href='bignum-math.html'>bignum-math</a></code>,
+<code><a href='bignum-special.html'>bignum-special</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='biginteger.html'>biginteger</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='bigfloat.html'>bigfloat</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+
+<span class='op'>+</span><span class='va'>x</span>
+</div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
+#&gt; [1] 5</div><div class='input'><span class='op'>-</span><span class='va'>x</span>
+</div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
+#&gt; [1] -5</div><div class='input'><span class='va'>x</span> <span class='op'>+</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 7</div><div class='input'><span class='va'>x</span> <span class='op'>-</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 3</div><div class='input'><span class='va'>x</span> <span class='op'>*</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 10</div><div class='input'><span class='va'>x</span> <span class='op'>/</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 2.5</div><div class='input'><span class='va'>x</span><span class='op'>^</span><span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 25</div><div class='input'><span class='va'>x</span> <span class='op'>%%</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[1]&gt;
+#&gt; [1] 1</div><div class='input'><span class='va'>x</span> <span class='op'>%/%</span> <span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
+#&gt; [1] 2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

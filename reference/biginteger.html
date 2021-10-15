@@ -74,7 +74,7 @@ is_biginteger() checks if an object is of class bignum_biginteger." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bignum</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -101,9 +101,6 @@ is_biginteger() checks if an object is of class bignum_biginteger." />
     </li>
     <li>
       <a href="../articles/precision.html">Control the displayed precision</a>
-    </li>
-    <li>
-      <a href="../articles/operations.html">Supported operations</a>
     </li>
   </ul>
 </li>
@@ -164,7 +161,7 @@ is_biginteger() checks if an object is of class bignum_biginteger." />
 
     <div class='dont-index'><p><code><a href='bignum-constants.html'>NA_biginteger_</a></code> to represent missing values.</p>
 <p><code><a href='bignum-format.html'>format()</a></code> for pretty printing.</p>
-<p><code><a href='../articles/operations.html'>vignette("operations")</a></code> for supported operations.</p></div>
+<p><code>vignette("operations")</code> for supported operations.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># default options limit displayed precision</span>
@@ -179,7 +176,7 @@ is_biginteger() checks if an object is of class bignum_biginteger." />
 </div><div class='output co'>#&gt; <span class='warning'>Warning: </span></div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
 #&gt; [1] 2 2 3</div><div class='input'>
 <span class='co'># suppress warnings if they are expected</span>
-<span class='fu'>vctrs</span><span class='fu'>::</span><span class='fu'><a href='https://vctrs.r-lib.org/reference/vctrs-conditions.html'>allow_lossy_cast</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
 #&gt; [1] 2 2 3</div><div class='input'>
 <span class='co'># unsigned integers can be specified as hexadecimal</span>

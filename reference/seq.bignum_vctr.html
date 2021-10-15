@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Internal vctrs methods — bignum-vctrs • bignum</title>
+<title>Sequences of bignum vectors — seq.bignum_vctr • bignum</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,14 @@
 
 
 
-<meta property="og:title" content="Internal vctrs methods — bignum-vctrs" />
-<meta property="og:description" content="Internal vctrs methods" />
+<meta property="og:title" content="Sequences of bignum vectors — seq.bignum_vctr" />
+<meta property="og:description" content="Generate a regular sequence of biginteger or bigfloat values.
+When calling seq(), exactly two of the following must be specified:
+to
+by
+Either length.out or along.with
+
+" />
 
 
 
@@ -126,27 +132,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Internal vctrs methods</h1>
-    <small class="dont-index">Source: <a href='https://github.com/davidchall/bignum/blob/master/R/bignum-package.R'><code>R/bignum-package.R</code></a>, <a href='https://github.com/davidchall/bignum/blob/master/R/vctrs-arith.R'><code>R/vctrs-arith.R</code></a></small>
-    <div class="hidden name"><code>bignum-vctrs.Rd</code></div>
+    <h1>Sequences of bignum vectors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/davidchall/bignum/blob/master/R/seq.R'><code>R/seq.R</code></a></small>
+    <div class="hidden name"><code>seq.bignum_vctr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Internal vctrs methods</p>
+    <p>Generate a regular sequence of <code><a href='biginteger.html'>biginteger</a></code> or <code><a href='bigfloat.html'>bigfloat</a></code> values.</p>
+<p>When calling <code><a href='https://rdrr.io/r/base/seq.html'>seq()</a></code>, exactly two of the following must be specified:</p><ul>
+<li><p><code>to</code></p></li>
+<li><p><code>by</code></p></li>
+<li><p>Either <code>length.out</code> or <code>along.with</code></p></li>
+</ul>
+
     </div>
 
     <pre class="usage"><span class='co'># S3 method for bignum_vctr</span>
-<span class='fu'>vec_arith</span><span class='op'>(</span><span class='va'>op</span>, <span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>from</span>, to <span class='op'>=</span> <span class='cn'>NULL</span>, by <span class='op'>=</span> <span class='cn'>NULL</span>, length.out <span class='op'>=</span> <span class='cn'>NULL</span>, along.with <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
-<span class='co'># S3 method for bignum_biginteger</span>
-<span class='fu'>vec_arith</span><span class='op'>(</span><span class='va'>op</span>, <span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>...</span><span class='op'>)</span></pre>
-
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>from</th>
+      <td><p>Start value of the sequence. Always included in the result.</p>
+<p>A <code><a href='biginteger.html'>biginteger</a></code> or <code><a href='bigfloat.html'>bigfloat</a></code> scalar.</p></td>
+    </tr>
+    <tr>
+      <th>to</th>
+      <td><p>Stop value of the sequence. Only included in the result if <code>by</code>
+divides the interval between <code>from</code> and <code>to</code> exactly.</p>
+<p><code>to</code> is cast to the type of <code>from</code>.</p></td>
+    </tr>
+    <tr>
+      <th>by</th>
+      <td><p>Amount to increment the sequence by.</p>
+<p><code>by</code> is cast to the type of <code>from</code>.</p></td>
+    </tr>
+    <tr>
+      <th>length.out</th>
+      <td><p>Length of the resulting sequence.</p></td>
+    </tr>
+    <tr>
+      <th>along.with</th>
+      <td><p>Vector who's length determines the length of the resulting sequence.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>These dots are for future extensions and must be empty.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>vec_arith.bignum_vctr()</code> returns a <code><a href='bigfloat.html'>bigfloat</a></code> vector.</p>
-<p><code>vec_arith.bignum_biginteger()</code> returns a <code><a href='biginteger.html'>biginteger</a></code> vector.</p>
+    <p>A sequence with the type of <code>from</code>.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='biginteger.html'>biginteger</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>, <span class='fl'>10</span>, by <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;biginteger[6]&gt;
+#&gt; [1] 0  2  4  6  8  10</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='biginteger.html'>biginteger</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>, <span class='fl'>10</span>, length.out <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
+#&gt; [1] 0  5  10</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='biginteger.html'>biginteger</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='fl'>3</span>, length.out <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
+#&gt; [1] 0 3 6</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='bigfloat.html'>bigfloat</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.05</span>, length.out <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;bigfloat[6]&gt;
+#&gt; [1] 0     -0.05 -0.1  -0.15 -0.2  -0.25</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

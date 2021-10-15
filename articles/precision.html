@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bignum</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -58,9 +58,6 @@
     </li>
     <li>
       <a href="../articles/precision.html">Control the displayed precision</a>
-    </li>
-    <li>
-      <a href="../articles/operations.html">Supported operations</a>
     </li>
   </ul>
 </li>
@@ -142,9 +139,11 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1234567890123</span><span class="op">)</span>
 <span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
 <span class="co">#&gt; [1] 1234567890123</span>
+
 <span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1234567890123.4</span><span class="op">)</span>
 <span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
 <span class="co">#&gt; [1] 1.234568e+12</span>
+
 <span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">12345678901234</span><span class="op">)</span>
 <span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
 <span class="co">#&gt; [1] 1.234568e+13</span></code></pre></div>
@@ -159,6 +158,7 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">x</span>, notation <span class="op">=</span> <span class="st">"dec"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "0.12345" "1.2345"  "12.345"  "123.45"  "1234.5"  "12345"</span>
+
 <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">x</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1.2345e-01" "1.2345e+00" "1.2345e+01" "1.2345e+02" "1.2345e+03"</span>
 <span class="co">#&gt; [6] "1.2345e+04"</span></code></pre></div>
@@ -170,6 +170,7 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; [1] "0.12"     "1.23"     "12.35"    "123.45"   "1234.50"  "12345.00"</span>
+
 <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; [1] "0.12"   "1.23"   "12.35"  "123.45" "1234.5" "12345"</span></code></pre></div>
 </div>
