@@ -12,7 +12,7 @@ status](https://www.r-pkg.org/badges/version/bignum)](https://CRAN.R-project.org
 [![R build
 status](https://github.com/davidchall/bignum/workflows/R-CMD-check/badge.svg)](https://github.com/davidchall/bignum/actions)
 [![Coverage
-status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](https://codecov.io/gh/davidchall/bignum?branch=master)
+status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](https://app.codecov.io/gh/davidchall/bignum?branch=master)
 <!-- badges: end -->
 
 bignum provides numeric vectors with greater precision than R atomic
