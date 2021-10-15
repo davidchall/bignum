@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   precision: precision.html
   type-hierarchy: type-hierarchy.html
-last_built: 2021-10-15T00:48Z
+last_built: 2021-10-15T01:01Z
 urls:
   reference: https://davidchall.github.io/bignum/reference
   article: https://davidchall.github.io/bignum/articles
