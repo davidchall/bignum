@@ -14,9 +14,8 @@ operations. The base R documentation can be found by searching for the
 individual functions (e.g. \code{\link[=mean]{mean()}}).
 }
 \examples{
-x <- biginteger(1:5)
-
 # summary
+x <- bigfloat(1:5)
 sum(x)
 prod(x)
 max(x)
@@ -25,22 +24,26 @@ range(x)
 mean(x)
 
 # cumulative
+x <- bigfloat(1:5)
 cumsum(x)
 cumprod(x)
 cummax(x)
 cummin(x)
 
 # rounding
+x <- bigfloat(1.5)
 floor(x)
 ceiling(x)
 trunc(x)
 
 # miscellaneous
+x <- bigfloat(2)
 abs(x)
 sign(x)
 sqrt(x)
 
 # logarithms and exponentials
+x <- bigfloat(2)
 log(x)
 log10(x)
 log2(x)
@@ -49,6 +52,7 @@ exp(x)
 expm1(x)
 
 # trigonometric
+x <- bigfloat(0.25)
 cos(x)
 sin(x)
 tan(x)
@@ -60,14 +64,16 @@ sinpi(x)
 tanpi(x)
 
 # hyperbolic
+x <- bigfloat(0.25)
 cosh(x)
 sinh(x)
 tanh(x)
-acosh(x)
+acosh(bigfloat(2))
 asinh(x)
 atanh(x)
 
 # special functions
+x <- bigfloat(2.5)
 gamma(x)
 lgamma(x)
 digamma(x)
