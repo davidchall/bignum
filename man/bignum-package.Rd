@@ -6,12 +6,7 @@
 \alias{bignum-package}
 \title{bignum: Arbitrary-Precision Integer and Floating-Point Mathematics}
 \description{
-Classes for storing and manipulating arbitrary-precision
-    integer vectors and high-precision floating-point vectors. These
-    extend the range and precision of the 'integer' and 'double' data
-    types found in R. This package utilizes the 'Boost.Multiprecision' C++
-    library. It is specifically designed to work well with the 'tidyverse'
-    collection of R packages.
+Classes for storing and manipulating arbitrary-precision integer vectors and high-precision floating-point vectors. These extend the range and precision of the 'integer' and 'double' data types found in R. This package utilizes the 'Boost.Multiprecision' C++ library. It is specifically designed to work well with the 'tidyverse' collection of R packages.
 }
 \seealso{
 Useful links:

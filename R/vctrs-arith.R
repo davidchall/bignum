@@ -32,7 +32,7 @@
 #' x - y
 #' x * y
 #' x / y
-#' x ^ y
+#' x^y
 #' x %% y
 #' x %/% y
 #' @family bignum operations
