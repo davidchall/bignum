@@ -23,6 +23,7 @@ numeric vectors.
 
 They prioritize precision over performance, so computations are slower
 than those using `integer()` or `double()`.
+Under the hood, the Boost library [cpp_bin_float](https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_bin_float.html) is used to perform the computations.
 
 ## Installation
 
