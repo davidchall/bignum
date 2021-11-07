@@ -24,6 +24,12 @@ numeric vectors.
 They prioritize precision over performance, so computations are slower
 than those using `integer()` or `double()`.
 
+Under the hood, bignum uses the
+[cpp_int](https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html)
+and
+[cpp_bin_float_50](https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_bin_float.html)
+data types from the Boost.Multiprecision C++ library.
+
 ## Installation
 
 You can install the released version of bignum from
