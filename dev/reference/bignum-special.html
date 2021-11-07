@@ -160,13 +160,17 @@ documentation can be found at <code><a href='https://rdrr.io/r/base/NA.html'>is.
 <code><a href='bignum-math.html'>bignum-math</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='bigfloat.html'>bigfloat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='cn'>NA</span>, <span class='cn'>Inf</span>, <span class='op'>-</span><span class='cn'>Inf</span>, <span class='cn'>NaN</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE  TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/is.finite.html'>is.finite</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/is.finite.html'>is.infinite</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE  TRUE FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/is.finite.html'>is.nan</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE  TRUE</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='bigfloat.html'>bigfloat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='cn'>NA</span>, <span class='cn'>Inf</span>, <span class='op'>-</span><span class='cn'>Inf</span>, <span class='cn'>NaN</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE  TRUE FALSE FALSE  TRUE</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/is.finite.html'>is.finite</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  TRUE FALSE FALSE FALSE FALSE</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/is.finite.html'>is.infinite</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE FALSE  TRUE  TRUE FALSE</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/is.finite.html'>is.nan</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE FALSE FALSE FALSE  TRUE</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

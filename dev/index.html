@@ -98,6 +98,7 @@
 <code><a href="reference/bigfloat.html">bigfloat()</a></code> stores 50 decimal digits of precision.</li>
 </ul>
 <p>They prioritize precision over performance, so computations are slower than those using <code><a href="https://rdrr.io/r/base/integer.html">integer()</a></code> or <code><a href="https://rdrr.io/r/base/double.html">double()</a></code>.</p>
+<p>Under the hood, bignum uses the <a href="https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html">cpp_int</a> and <a href="https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_bin_float.html">cpp_bin_float_50</a> data types from the Boost.Multiprecision C++ library.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>

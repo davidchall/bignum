@@ -164,25 +164,32 @@ is_biginteger() checks if an object is of class bignum_biginteger." />
 <p><code>vignette("operations")</code> for supported operations.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># default options limit displayed precision</span>
-<span class='fu'>biginteger</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>50L</span>
-</div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
-#&gt; [1] 1.125900e+15</div><div class='input'>
-<span class='co'># display full precision</span>
-<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>50L</span>, notation <span class='op'>=</span> <span class='st'>"dec"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "1125899906842624"</div><div class='input'>
-<span class='co'># lossy casts raise a warning</span>
-<span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: </span></div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
-#&gt; [1] 2 2 3</div><div class='input'>
-<span class='co'># suppress warnings if they are expected</span>
-<span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;biginteger[3]&gt;
-#&gt; [1] 2 2 3</div><div class='input'>
-<span class='co'># unsigned integers can be specified as hexadecimal</span>
-<span class='fu'>biginteger</span><span class='op'>(</span><span class='st'>"0xffffffff"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;biginteger[1]&gt;
-#&gt; [1] 4294967295</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># default options limit displayed precision</span></span>
+<span class='r-in'><span class='fu'>biginteger</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>50L</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;biginteger[1]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.125900e+15</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># display full precision</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>50L</span>, notation <span class='op'>=</span> <span class='st'>"dec"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "1125899906842624"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># lossy casts raise a warning</span></span>
+<span class='r-in'><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Loss of precision while converting from &lt;double&gt; to &lt;biginteger&gt;.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> * Locations: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;biginteger[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2 2 3</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># suppress warnings if they are expected</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>biginteger</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2.5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;biginteger[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2 2 3</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># unsigned integers can be specified as hexadecimal</span></span>
+<span class='r-in'><span class='fu'>biginteger</span><span class='op'>(</span><span class='st'>"0xffffffff"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;biginteger[1]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 4294967295</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
