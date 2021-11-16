@@ -3,6 +3,7 @@
 
 
 #include "cpp11/declarations.hpp"
+#include <R_ext/Visibility.h>
 
 // bigfloat_interface.cpp
 cpp11::strings c_bigfloat(cpp11::strings x);
@@ -524,82 +525,6 @@ extern "C" SEXP _bignum_c_biginteger_seq_by_lo(SEXP from, SEXP by, SEXP length_o
 }
 
 extern "C" {
-/* .Call calls */
-extern SEXP _bignum_c_bigfloat(SEXP);
-extern SEXP _bignum_c_bigfloat_abs(SEXP);
-extern SEXP _bignum_c_bigfloat_acos(SEXP);
-extern SEXP _bignum_c_bigfloat_acosh(SEXP);
-extern SEXP _bignum_c_bigfloat_add(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_asin(SEXP);
-extern SEXP _bignum_c_bigfloat_asinh(SEXP);
-extern SEXP _bignum_c_bigfloat_atan(SEXP);
-extern SEXP _bignum_c_bigfloat_atanh(SEXP);
-extern SEXP _bignum_c_bigfloat_ceiling(SEXP);
-extern SEXP _bignum_c_bigfloat_compare(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_cos(SEXP);
-extern SEXP _bignum_c_bigfloat_cosh(SEXP);
-extern SEXP _bignum_c_bigfloat_cummax(SEXP);
-extern SEXP _bignum_c_bigfloat_cummin(SEXP);
-extern SEXP _bignum_c_bigfloat_cumprod(SEXP);
-extern SEXP _bignum_c_bigfloat_cumsum(SEXP);
-extern SEXP _bignum_c_bigfloat_digamma(SEXP);
-extern SEXP _bignum_c_bigfloat_divide(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_exp(SEXP);
-extern SEXP _bignum_c_bigfloat_expm1(SEXP);
-extern SEXP _bignum_c_bigfloat_floor(SEXP);
-extern SEXP _bignum_c_bigfloat_format(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_gamma(SEXP);
-extern SEXP _bignum_c_bigfloat_lgamma(SEXP);
-extern SEXP _bignum_c_bigfloat_log(SEXP);
-extern SEXP _bignum_c_bigfloat_log10(SEXP);
-extern SEXP _bignum_c_bigfloat_log1p(SEXP);
-extern SEXP _bignum_c_bigfloat_log2(SEXP);
-extern SEXP _bignum_c_bigfloat_modulo(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_multiply(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_pow(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_prod(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_rank(SEXP);
-extern SEXP _bignum_c_bigfloat_seq_by_lo(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_seq_to_by(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_seq_to_lo(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_sign(SEXP);
-extern SEXP _bignum_c_bigfloat_sin(SEXP);
-extern SEXP _bignum_c_bigfloat_sinh(SEXP);
-extern SEXP _bignum_c_bigfloat_sqrt(SEXP);
-extern SEXP _bignum_c_bigfloat_subtract(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_sum(SEXP, SEXP);
-extern SEXP _bignum_c_bigfloat_tan(SEXP);
-extern SEXP _bignum_c_bigfloat_tanh(SEXP);
-extern SEXP _bignum_c_bigfloat_to_double(SEXP);
-extern SEXP _bignum_c_bigfloat_to_integer(SEXP);
-extern SEXP _bignum_c_bigfloat_to_logical(SEXP);
-extern SEXP _bignum_c_bigfloat_trigamma(SEXP);
-extern SEXP _bignum_c_bigfloat_trunc(SEXP);
-extern SEXP _bignum_c_biginteger(SEXP);
-extern SEXP _bignum_c_biginteger_abs(SEXP);
-extern SEXP _bignum_c_biginteger_add(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_compare(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_cummax(SEXP);
-extern SEXP _bignum_c_biginteger_cummin(SEXP);
-extern SEXP _bignum_c_biginteger_cumprod(SEXP);
-extern SEXP _bignum_c_biginteger_cumsum(SEXP);
-extern SEXP _bignum_c_biginteger_format(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_modulo(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_multiply(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_pow(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_prod(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_quotient(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_rank(SEXP);
-extern SEXP _bignum_c_biginteger_seq_by_lo(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_seq_to_by(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_seq_to_lo(SEXP, SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_sign(SEXP);
-extern SEXP _bignum_c_biginteger_subtract(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_sum(SEXP, SEXP);
-extern SEXP _bignum_c_biginteger_to_double(SEXP);
-extern SEXP _bignum_c_biginteger_to_integer(SEXP);
-extern SEXP _bignum_c_biginteger_to_logical(SEXP);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_bignum_c_bigfloat",              (DL_FUNC) &_bignum_c_bigfloat,              1},
     {"_bignum_c_bigfloat_abs",          (DL_FUNC) &_bignum_c_bigfloat_abs,          1},
@@ -679,7 +604,7 @@ static const R_CallMethodDef CallEntries[] = {
 };
 }
 
-extern "C" void R_init_bignum(DllInfo* dll){
+extern "C" attribute_visible void R_init_bignum(DllInfo* dll){
   R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
   R_useDynamicSymbols(dll, FALSE);
   R_forceSymbols(dll, TRUE);

@@ -21,7 +21,7 @@ cpp11::logicals c_biginteger_to_logical(cpp11::strings x) {
   cpp11::writable::logicals output(input.size());
 
   for (std::size_t i=0; i<input.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
@@ -44,7 +44,7 @@ cpp11::integers c_biginteger_to_integer(cpp11::strings x) {
   int vmin = std::numeric_limits<int>::min();
 
   for (std::size_t i=0; i<input.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
@@ -66,7 +66,7 @@ cpp11::doubles c_biginteger_to_double(cpp11::strings x) {
   cpp11::writable::doubles output(input.size());
 
   for (std::size_t i=0; i<input.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
