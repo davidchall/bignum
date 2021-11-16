@@ -5,7 +5,7 @@
 bigfloat_vector::bigfloat_vector(cpp11::strings x) : bigfloat_vector(x.size()) {
   std::size_t vsize = x.size();
   for (std::size_t i=0; i<vsize; ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 

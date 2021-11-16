@@ -6,7 +6,7 @@ Vec unary_operation(const Vec &x, const Func &UnaryOperation) {
   Vec output(x.size());
 
   for (std::size_t i=0; i<x.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
@@ -33,7 +33,7 @@ Vec binary_operation(const Vec &lhs, const Vec &rhs, const Func &BinaryOperation
   Vec output(lhs.size());
 
   for (std::size_t i=0; i<lhs.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
@@ -60,7 +60,7 @@ Vec binary_operation(const Vec &lhs, const cpp11::integers &rhs, const Func &Bin
   Vec output(lhs.size());
 
   for (std::size_t i=0; i<lhs.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
@@ -87,7 +87,7 @@ Vec accumulate_operation(const Vec &x, const Vec &init, bool na_rm, const Func &
   Vec output = init;
 
   for (std::size_t i=0; i<x.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
@@ -120,7 +120,7 @@ Vec partial_accumulate_operation(const Vec &x, const Func &BinaryOperation) {
   output.is_na[0] = x.is_na[0];
 
   for (std::size_t i=1; i<x.size(); ++i) {
-    if ((i-1) % 10000 == 0) {
+    if ((i-1) % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 

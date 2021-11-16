@@ -25,7 +25,7 @@ cpp11::strings format_biginteger_vector(const biginteger_vector &x,
   }
 
   for (std::size_t i=0; i<x.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
@@ -49,7 +49,7 @@ cpp11::strings format_bigfloat_vector(const bigfloat_vector &x,
   cpp11::writable::strings output(x.size());
 
   for (std::size_t i=0; i<x.size(); ++i) {
-    if (i % 10000 == 0) {
+    if (i % 8192 == 0) {
       cpp11::check_user_interrupt();
     }
 
