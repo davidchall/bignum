@@ -1,7 +1,7 @@
 # bignum 0.3.1
 
 * `biginteger()` now accepts strings with leading zeros (#37).
-* Empty strings are now correctly treated as missing data (NA).
+* Empty strings are now correctly treated as missing data (i.e., return NA).
 * Fix for CRAN checks.
 
 # bignum 0.3.0
@@ -58,12 +58,14 @@ First CRAN release.
 
 * Constants for common situations: `NA_biginteger_`, `NA_bigfloat_`, `bigpi`.
 
-* Support for many basic operations (see `vignette("operations")`):
-    * Check for special values: `is.na()`, `is.finite()`, `is.infinite()`,
-      `is.nan()`
-    * Comparison: `<`, `>`, `<=`, `>=`, `==`, `!=`
-    * Arithmetic: `+`, `-`, `*`, `/`, `^`, `%%`, `%/%`
-    * Mathematical:
+* Support for many basic operations:
+    * Check for special values (`help("bignum-special")`):
+        * `is.na()`, `is.finite()`, `is.infinite()`, `is.nan()`
+    * Comparison (`help("bignum-compare")`):
+        * `<`, `>`, `<=`, `>=`, `==`, `!=`
+    * Arithmetic (`help("bignum-arith")`): 
+        * `+`, `-`, `*`, `/`, `^`, `%%`, `%/%`
+    * Mathematical (`help("bignum-math")`):
         * `sum()`, `prod()`, `max()`, `min()`, `range()`, `mean()`
         * `cumsum()`, `cumprod()`, `cummax()`, `cummin()`
         * `floor()`, `ceiling()`, `trunc()`
