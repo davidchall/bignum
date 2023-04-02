@@ -35,7 +35,7 @@
     Code
       format(bigfloat(1), notation = "hex")
     Error <rlang_error>
-      `notation` must be one of "fit", "dec", or "sci".
+      `notation` must be one of "fit", "dec", or "sci", not "hex".
 
 # biginteger: input validation
 
@@ -74,7 +74,7 @@
     Code
       format(biginteger(1), notation = "unknown")
     Error <rlang_error>
-      `notation` must be one of "fit", "dec", "sci", or "hex".
+      `notation` must be one of "fit", "dec", "sci", or "hex", not "unknown".
 
 # options: input validation
 
