@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,16 +41,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -68,7 +64,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/davidchall/bignum/">
+  <a href="https://github.com/davidchall/bignum/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,9 +81,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="bignum" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#bignum" class="anchor"></a>bignum</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="bignum">bignum<a class="anchor" aria-label="anchor" href="#bignum"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>bignum provides numeric vectors with greater precision than R atomic numeric vectors.</p>
@@ -97,57 +93,57 @@
 <li>
 <code><a href="reference/bigfloat.html">bigfloat()</a></code> stores 50 decimal digits of precision.</li>
 </ul>
-<p>They prioritize precision over performance, so computations are slower than those using <code><a href="https://rdrr.io/r/base/integer.html">integer()</a></code> or <code><a href="https://rdrr.io/r/base/double.html">double()</a></code>.</p>
-<p>Under the hood, bignum uses the <a href="https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html">cpp_int</a> and <a href="https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_bin_float.html">cpp_bin_float_50</a> data types from the Boost.Multiprecision C++ library.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of bignum from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>They prioritize precision over performance, so computations are slower than those using <code><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer()</a></code> or <code><a href="https://rdrr.io/r/base/double.html" class="external-link">double()</a></code>.</p>
+<p>Under the hood, bignum uses the <a href="https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html" class="external-link">cpp_int</a> and <a href="https://www.boost.org/doc/libs/1_77_0/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_bin_float.html" class="external-link">cpp_bin_float_50</a> data types from the Boost.Multiprecision C++ library.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of bignum from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"bignum"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"bignum"</span><span class="op">)</span></span></code></pre></div>
 <p>Or you can install the development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"davidchall/bignum"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"davidchall/bignum"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p>Before starting, we’ll increase the displayed precision so we can see the benefits of bignum.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>bignum.sigfig <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>bignum.max_dec_width <span class="op">=</span> <span class="fl">52</span><span class="op">)</span></code></pre></div>
-<div id="arbitrary-precision-integer-vector" class="section level3">
-<h3 class="hasAnchor">
-<a href="#arbitrary-precision-integer-vector" class="anchor"></a>Arbitrary-precision integer vector</h3>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>bignum.sigfig <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>bignum.max_dec_width <span class="op">=</span> <span class="fl">52</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="arbitrary-precision-integer-vector">Arbitrary-precision integer vector<a class="anchor" aria-label="anchor" href="#arbitrary-precision-integer-vector"></a>
+</h3>
 <p>The limited precision of atomic vectors introduces errors when working with very large integers. As an example, let’s calculate the factorial of 23. In base R, we’d calculate:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="fl">23</span><span class="op">)</span>
-<span class="co">#&gt; [1] 25852016738884978212864</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">factorial</a></span><span class="op">(</span><span class="fl">23</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 25852016738884978212864</span></span></code></pre></div>
 <p>The factorial of 23 includes a factor of 10, and so the final digit <em>must</em> be zero. Using <code><a href="reference/biginteger.html">biginteger()</a></code> yields the correct result:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/prod.html">prod</a></span><span class="op">(</span><span class="fu"><a href="reference/biginteger.html">biginteger</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">23</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; &lt;biginteger[1]&gt;</span>
-<span class="co">#&gt; [1] 25852016738884976640000</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/prod.html" class="external-link">prod</a></span><span class="op">(</span><span class="fu"><a href="reference/biginteger.html">biginteger</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">23</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;biginteger[1]&gt;</span></span>
+<span><span class="co">#&gt; [1] 25852016738884976640000</span></span></code></pre></div>
 </div>
-<div id="high-precision-floating-point-vector" class="section level3">
-<h3 class="hasAnchor">
-<a href="#high-precision-floating-point-vector" class="anchor"></a>High-precision floating-point vector</h3>
-<p><code><a href="reference/bigfloat.html">bigfloat()</a></code> vectors support much higher precision than <code><a href="https://rdrr.io/r/base/double.html">double()</a></code> vectors:</p>
+<div class="section level3">
+<h3 id="high-precision-floating-point-vector">High-precision floating-point vector<a class="anchor" aria-label="anchor" href="#high-precision-floating-point-vector"></a>
+</h3>
+<p><code><a href="reference/bigfloat.html">bigfloat()</a></code> vectors support much higher precision than <code><a href="https://rdrr.io/r/base/double.html" class="external-link">double()</a></code> vectors:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span>
-<span class="co">#&gt; [1] 0.33333333333333331483</span>
-<span class="fu"><a href="reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span>
-<span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
-<span class="co">#&gt; [1] 0.33333333333333333333333333333333333333333333333333</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span></span>
+<span><span class="co">#&gt; [1] 0.33333333333333331483</span></span>
+<span><span class="fu"><a href="reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span></span>
+<span><span class="co">#&gt; &lt;bigfloat[1]&gt;</span></span>
+<span><span class="co">#&gt; [1] 0.33333333333333333333333333333333333333333333333333</span></span></code></pre></div>
 <p>However, you need to be careful not to limit the precision accidentally:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
-<span class="co">#&gt; [1] 0.333333333333333</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;bigfloat[1]&gt;</span></span>
+<span><span class="co">#&gt; [1] 0.333333333333333</span></span></code></pre></div>
 <hr>
-<p>Please note that the bignum project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the bignum project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
 </div>
@@ -155,56 +151,66 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=bignum">https://​cloud.r-project.org/​package=bignum</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/davidchall/bignum/">https://​github.com/​davidchall/​bignum/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/davidchall/bignum/issues">https://​github.com/​davidchall/​bignum/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=bignum" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/davidchall/bignum/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/davidchall/bignum/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>David Hall <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-2193-0480" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing bignum</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=bignum"><img src="https://www.r-pkg.org/badges/version/bignum" alt="CRAN status"></a></li>
-<li><a href="https://github.com/davidchall/bignum/actions"><img src="https://github.com/davidchall/bignum/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://app.codecov.io/gh/davidchall/bignum?branch=master"><img src="https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li>David Hall <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-2193-0480" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=bignum" class="external-link"><img src="https://www.r-pkg.org/badges/version/bignum" alt="CRAN status"></a></li>
+<li><a href="https://github.com/davidchall/bignum/actions" class="external-link"><img src="https://github.com/davidchall/bignum/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://app.codecov.io/gh/davidchall/bignum?branch=master" class="external-link"><img src="https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by David Hall.</p>
+  <p></p>
+<p>Developed by David Hall.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -212,6 +218,8 @@
 
   
 
+
+  
 
   </body>
 </html>
