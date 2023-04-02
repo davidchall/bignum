@@ -15,10 +15,12 @@ biginteger_vector::biginteger_vector(cpp11::strings x) : biginteger_vector(x.siz
       try {
         std::string str(x[i]);
 
-        // remove leading zeros
-        size_t n_lead_zero = str.find_first_not_of('0');
-        n_lead_zero = std::max((size_t)0, std::min(n_lead_zero, str.size()-1));
-        str.erase(0, n_lead_zero);
+        // remove leading zeros (unless hexadecimal)
+        if (str[0] == '0') {
+          if (str.size() >= 2 && str.compare(0, 2, "0x") != 0 && str.compare(0, 2, "0X") != 0) {
+            str.erase(0, str.find_first_not_of('0'));
+          }
+        }
 
         data[i] = biginteger_type(str);
       } catch (...) {

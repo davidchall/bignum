@@ -7,6 +7,11 @@ test_that("zero-length input works", {
 test_that("data input works", {
   expect_length(biginteger(1L), 1)
   expect_length(biginteger(c(1L, 2)), 2)
+
+  expect_equal(biginteger(c(0L, 28L, -234L)), c(biginteger(0L), biginteger(28L), biginteger(-234L)))
+  expect_equal(biginteger(c(0, 28, -234)), biginteger(c(0L, 28L, -234L)))
+  expect_equal(biginteger(c("0", "28", "-234")), biginteger(c(0L, 28L, -234L)))
+  expect_equal(biginteger(c("0x0", "0xff", "0Xff")), biginteger(c(0, 255L, 255L)))
 })
 
 test_that("input validation works", {
