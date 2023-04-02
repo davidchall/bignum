@@ -1,4 +1,4 @@
-# bignum (development version)
+# bignum 0.3.1
 
 * `biginteger()` now accepts strings with leading zeros (#37).
 * Empty strings are now correctly treated as missing data (NA).
