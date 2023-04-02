@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bignum</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.1.9000</span>
       </span>
     </div>
 
@@ -62,9 +62,12 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="bignum-development-version">bignum (development version)<a class="anchor" aria-label="anchor" href="#bignum-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.1" id="bignum-031">bignum 0.3.1<small>2023-04-02</small><a class="anchor" aria-label="anchor" href="#bignum-031"></a></h2>
 <ul><li>
 <code><a href="../reference/biginteger.html">biginteger()</a></code> now accepts strings with leading zeros (<a href="https://github.com/davidchall/bignum/issues/37" class="external-link">#37</a>).</li>
-<li>Empty strings are now correctly treated as missing data (NA).</li>
+<li>Empty strings are now correctly treated as missing data (i.e., return NA).</li>
 <li>Fix for CRAN checks.</li>
 </ul></div>
     <div class="section level2">
@@ -130,14 +133,23 @@
 </ul></li>
 <li><p>Constants for common situations: <code>NA_biginteger_</code>, <code>NA_bigfloat_</code>, <code>bigpi</code>.</p></li>
 <li>
-<p>Support for many basic operations (see <code>vignette("operations")</code>):</p>
-<ul><li>Check for special values: <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.finite()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.infinite()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.nan()</a></code>
+<p>Support for many basic operations:</p>
+<ul><li>Check for special values (<code><a href="../reference/bignum-special.html">help("bignum-special")</a></code>):
+<ul><li>
+<code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.finite()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.infinite()</a></code>, <code><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.nan()</a></code>
 </li>
-<li>Comparison: <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>
+</ul></li>
+<li>Comparison (<code><a href="../reference/bignum-compare.html">help("bignum-compare")</a></code>):
+<ul><li>
+<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>
 </li>
-<li>Arithmetic: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>, <code>%%</code>, <code>%/%</code>
+</ul></li>
+<li>Arithmetic (<code><a href="../reference/bignum-arith.html">help("bignum-arith")</a></code>):
+<ul><li>
+<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>, <code>%%</code>, <code>%/%</code>
 </li>
-<li>Mathematical:
+</ul></li>
+<li>Mathematical (<code><a href="../reference/bignum-math.html">help("bignum-math")</a></code>):
 <ul><li>
 <code><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum()</a></code>, <code><a href="https://rdrr.io/r/base/prod.html" class="external-link">prod()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min()</a></code>, <code><a href="https://rdrr.io/r/base/range.html" class="external-link">range()</a></code>, <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code>
 </li>
