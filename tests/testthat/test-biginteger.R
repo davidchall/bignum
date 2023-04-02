@@ -10,6 +10,7 @@ test_that("data input works", {
 })
 
 test_that("input validation works", {
+  expect_equal(biginteger(""), NA_biginteger_)
   expect_equal(biginteger("hello"), NA_biginteger_)
 })
 
@@ -158,7 +159,7 @@ test_that("difficult cases work", {
 
 test_that("leading zeros allowed", {
   expect_equal(
-    biginteger(c("01", "07", "08", "010")),
-    biginteger(c(1, 7, 8, 10))
+    biginteger(c("00", "01", "07", "08", "010")),
+    biginteger(c(0, 1, 7, 8, 10))
   )
 })

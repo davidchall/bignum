@@ -9,11 +9,18 @@ biginteger_vector::biginteger_vector(cpp11::strings x) : biginteger_vector(x.siz
       cpp11::check_user_interrupt();
     }
 
-    if (x[i] == NA_STRING) {
+    if (x[i] == NA_STRING || x[i].size() == 0) {
       is_na[i] = true;
     } else {
       try {
-        data[i] = biginteger_type(std::string(x[i]));
+        std::string str(x[i]);
+
+        // remove leading zeros
+        size_t n_lead_zero = str.find_first_not_of('0');
+        n_lead_zero = std::max((size_t)0, std::min(n_lead_zero, str.size()-1));
+        str.erase(0, n_lead_zero);
+
+        data[i] = biginteger_type(str);
       } catch (...) {
         is_na[i] = true;
       }
