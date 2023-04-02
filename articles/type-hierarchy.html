@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bignum</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/davidchall/bignum/">
+  <a href="https://github.com/davidchall/bignum/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,87 +78,112 @@
 
       
 
-      </header><script src="type-hierarchy_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Hierarchy of data types</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/davidchall/bignum/blob/master/vignettes/type-hierarchy.Rmd"><code>vignettes/type-hierarchy.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/davidchall/bignum/blob/HEAD/vignettes/type-hierarchy.Rmd" class="external-link"><code>vignettes/type-hierarchy.Rmd</code></a></small>
       <div class="hidden name"><code>type-hierarchy.Rmd</code></div>
 
     </div>
 
     
     
-<p>This vignette follows terminology outlined by the <a href="https://vctrs.r-lib.org">vctrs</a> package. For further information, see <code><a href="https://vctrs.r-lib.org/reference/faq-compatibility-types.html">help("faq-compatibility-types", package = "vctrs")</a></code>.</p>
-<p>There are three numeric types in base R: <code>logical</code>, <code>integer</code> and <code>double</code>. They form a natural hierarchy from the simplest (<code>logical</code>) to the richest (<code>double</code>), with richer types able to accommodate simpler types without losing information.</p>
+<p>This vignette follows terminology outlined by the <a href="https://vctrs.r-lib.org" class="external-link">vctrs</a> package. For further
+information, see
+<code><a href="https://vctrs.r-lib.org/reference/faq-compatibility-types.html" class="external-link">help("faq-compatibility-types", package = "vctrs")</a></code>.</p>
+<p>There are three numeric types in base R: <code>logical</code>,
+<code>integer</code> and <code>double</code>. They form a natural
+hierarchy from the simplest (<code>logical</code>) to the richest
+(<code>double</code>), with richer types able to accommodate simpler
+types without losing information.</p>
 <ul>
 <li>
-<code>integer</code> expands the set of integer values supported by <code>logical</code>.</li>
+<code>integer</code> expands the set of integer values supported by
+<code>logical</code>.</li>
 <li>
-<code>double</code> expands the set of integer values supported by <code>integer</code>, and <em>also</em> supports non-integer values.</li>
+<code>double</code> expands the set of integer values supported by
+<code>integer</code>, and <em>also</em> supports non-integer
+values.</li>
 </ul>
-<p>The bignum package provides two additional numeric types: <code>biginteger</code> and <code>bigfloat</code>. These are type-compatible with the existing numeric types because they extend the set of possible values. However, the hierarchy becomes more complex because lossy casts are now possible.</p>
+<p>The bignum package provides two additional numeric types:
+<code>biginteger</code> and <code>bigfloat</code>. These are
+type-compatible with the existing numeric types because they extend the
+set of possible values. However, the hierarchy becomes more complex
+because lossy casts are now possible.</p>
 <ul>
 <li>
-<code>biginteger</code> expands the set of integer values supported by <code>double</code>. In fact, it supports <em>any</em> integer value (because <code>biginteger</code> uses arbitrary precision). But it <em>does not</em> support non-integer values.</li>
+<code>biginteger</code> expands the set of integer values supported
+by <code>double</code>. In fact, it supports <em>any</em> integer value
+(because <code>biginteger</code> uses arbitrary precision). But it
+<em>does not</em> support non-integer values.</li>
 <li>
-<code>bigfloat</code> expands the set of values supported by <code>double</code> (both in precision and range), but <em>does not</em> support the entire range of integers supported by <code>biginteger</code> (because <code>bigfloat</code> uses fixed precision).</li>
+<code>bigfloat</code> expands the set of values supported by
+<code>double</code> (both in precision and range), but <em>does not</em>
+support the entire range of integers supported by
+<code>biginteger</code> (because <code>bigfloat</code> uses fixed
+precision).</li>
 </ul>
 <div class="figure">
-<img src="type-hierarchy.png" alt=""><p class="caption">Summary of numeric type hierarchies in base R and the bignum package. Arrows indicate the direction of richer data types. Dashed lines indicate the potential for lossy casts.</p>
+<img src="type-hierarchy.png" alt=""><p class="caption">Summary of numeric type hierarchies in base R and the
+bignum package. Arrows indicate the direction of richer data types.
+Dashed lines indicate the potential for lossy casts.</p>
 </div>
-<div id="type-conversion-and-lossy-casts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#type-conversion-and-lossy-casts" class="anchor"></a>Type conversion and lossy casts</h2>
-<p>As discussed above, casting values from one type to another can lose information.</p>
-<p>We see an example in base R, when we cast a non-integer or large <code>double</code> to an <code>integer</code>:</p>
+<div class="section level2">
+<h2 id="type-conversion-and-lossy-casts">Type conversion and lossy casts<a class="anchor" aria-label="anchor" href="#type-conversion-and-lossy-casts"></a>
+</h2>
+<p>As discussed above, casting values from one type to another can lose
+information.</p>
+<p>We see an example in base R, when we cast a non-integer or large
+<code>double</code> to an <code>integer</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># non-integer double</span>
-<span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1</span>
-
-<span class="co"># large double</span>
-<span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fl">1e10</span><span class="op">)</span>
-<span class="co">#&gt; Warning: NAs introduced by coercion to integer range</span>
-<span class="co">#&gt; [1] NA</span></code></pre></div>
-<p>For illustrative purposes, we now consider how lossy casts can affect bignum conversions:</p>
+<code class="sourceCode R"><span><span class="co"># non-integer double</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span></span>
+<span><span class="co"># large double</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fl">1e10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: NAs introduced by coercion to integer range</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<p>For illustrative purposes, we now consider how lossy casts can affect
+bignum conversions:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://davidchall.github.io/bignum/">bignum</a></span><span class="op">)</span>
-
-<span class="co"># double -&gt; biginteger</span>
-<span class="fu"><a href="../reference/biginteger.html">as_biginteger</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Loss of precision while converting from &lt;double&gt; to &lt;biginteger&gt;.</span>
-<span class="co">#&gt; * Locations: 1</span>
-<span class="co">#&gt; &lt;biginteger[1]&gt;</span>
-<span class="co">#&gt; [1] 1</span>
-
-<span class="co"># biginteger -&gt; double</span>
-<span class="fu"><a href="https://rdrr.io/r/base/double.html">as.double</a></span><span class="op">(</span><span class="fu"><a href="../reference/biginteger.html">biginteger</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">^</span><span class="fl">16L</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Loss of precision while converting from &lt;biginteger&gt; to &lt;double&gt;.</span>
-<span class="co">#&gt; * Locations: 1</span>
-<span class="co">#&gt; [1] 1e+16</span>
-
-<span class="co"># bigfloat -&gt; double</span>
-<span class="fu"><a href="https://rdrr.io/r/base/double.html">as.double</a></span><span class="op">(</span><span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Loss of precision while converting from &lt;bigfloat&gt; to &lt;double&gt;.</span>
-<span class="co">#&gt; * Locations: 1</span>
-<span class="co">#&gt; [1] 0.3333333</span>
-
-<span class="co"># bigfloat -&gt; biginteger</span>
-<span class="fu"><a href="../reference/biginteger.html">as_biginteger</a></span><span class="op">(</span><span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Loss of precision while converting from &lt;bigfloat&gt; to &lt;biginteger&gt;.</span>
-<span class="co">#&gt; * Locations: 1</span>
-<span class="co">#&gt; &lt;biginteger[1]&gt;</span>
-<span class="co">#&gt; [1] 1</span>
-
-<span class="co"># biginteger -&gt; bigfloat</span>
-<span class="fu"><a href="../reference/bigfloat.html">as_bigfloat</a></span><span class="op">(</span><span class="fu"><a href="../reference/biginteger.html">biginteger</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">^</span><span class="fl">51L</span> <span class="op">+</span> <span class="fl">1L</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Loss of precision while converting from &lt;biginteger&gt; to &lt;bigfloat&gt;.</span>
-<span class="co">#&gt; * Locations: 1</span>
-<span class="co">#&gt; &lt;bigfloat[1]&gt;</span>
-<span class="co">#&gt; [1] 1e+51</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://davidchall.github.io/bignum/">bignum</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># double -&gt; biginteger</span></span>
+<span><span class="fu"><a href="../reference/biginteger.html">as_biginteger</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Loss of precision while converting from `x` &lt;double&gt; to &lt;biginteger&gt;.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Locations: 1</span></span>
+<span><span class="co">#&gt; &lt;biginteger[1]&gt;</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span></span>
+<span><span class="co"># biginteger -&gt; double</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="fu"><a href="../reference/biginteger.html">biginteger</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">^</span><span class="fl">16L</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Loss of precision while converting from `x` &lt;biginteger&gt; to &lt;double&gt;.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Locations: 1</span></span>
+<span><span class="co">#&gt; [1] 1e+16</span></span>
+<span></span>
+<span><span class="co"># bigfloat -&gt; double</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Loss of precision while converting from `x` &lt;bigfloat&gt; to &lt;double&gt;.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Locations: 1</span></span>
+<span><span class="co">#&gt; [1] 0.3333333</span></span>
+<span></span>
+<span><span class="co"># bigfloat -&gt; biginteger</span></span>
+<span><span class="fu"><a href="../reference/biginteger.html">as_biginteger</a></span><span class="op">(</span><span class="fu"><a href="../reference/bigfloat.html">bigfloat</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Loss of precision while converting from `x` &lt;bigfloat&gt; to &lt;biginteger&gt;.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Locations: 1</span></span>
+<span><span class="co">#&gt; &lt;biginteger[1]&gt;</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span></span>
+<span><span class="co"># biginteger -&gt; bigfloat</span></span>
+<span><span class="fu"><a href="../reference/bigfloat.html">as_bigfloat</a></span><span class="op">(</span><span class="fu"><a href="../reference/biginteger.html">biginteger</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">^</span><span class="fl">51L</span> <span class="op">+</span> <span class="fl">1L</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Loss of precision while converting from `x` &lt;biginteger&gt; to &lt;bigfloat&gt;.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Locations: 1</span></span>
+<span><span class="co">#&gt; &lt;bigfloat[1]&gt;</span></span>
+<span><span class="co">#&gt; [1] 1e+51</span></span></code></pre></div>
 </div>
   </div>
 
@@ -177,11 +198,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by David Hall.</p>
+  <p></p>
+<p>Developed by David Hall.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -189,6 +212,8 @@
 
   
 
+
+  
 
   </body>
 </html>

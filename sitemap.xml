@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://davidchall.github.io/bignum/404.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/articles/precision.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/articles/type-hierarchy.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/authors.html</loc>
+  </url>
+  <url>
     <loc>https://davidchall.github.io/bignum/index.html</loc>
+  </url>
+  <url>
+    <loc>https://davidchall.github.io/bignum/news/index.html</loc>
   </url>
   <url>
     <loc>https://davidchall.github.io/bignum/reference/bigfloat.html</loc>
@@ -34,12 +64,9 @@
     <loc>https://davidchall.github.io/bignum/reference/bignum-vctrs.html</loc>
   </url>
   <url>
+    <loc>https://davidchall.github.io/bignum/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://davidchall.github.io/bignum/reference/seq.bignum_vctr.html</loc>
-  </url>
-  <url>
-    <loc>https://davidchall.github.io/bignum/articles/precision.html</loc>
-  </url>
-  <url>
-    <loc>https://davidchall.github.io/bignum/articles/type-hierarchy.html</loc>
   </url>
 </urlset>
