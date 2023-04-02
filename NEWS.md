@@ -1,6 +1,8 @@
 # bignum (development version)
 
-`biginteger()` now accepts string inputs with leading zeros (#37).
+* `biginteger()` now accepts strings with leading zeros (#37).
+* Empty strings are now correctly treated as missing data (NA).
+* Fix for CRAN checks.
 
 # bignum 0.3.0
 

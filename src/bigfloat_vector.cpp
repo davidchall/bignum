@@ -9,7 +9,7 @@ bigfloat_vector::bigfloat_vector(cpp11::strings x) : bigfloat_vector(x.size()) {
       cpp11::check_user_interrupt();
     }
 
-    if (x[i] == NA_STRING) {
+    if (x[i] == NA_STRING || x[i].size() == 0) {
       is_na[i] = true;
     } else {
       try {

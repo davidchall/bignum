@@ -10,6 +10,7 @@ test_that("data input works", {
 })
 
 test_that("input validation works", {
+  expect_equal(bigfloat(""), NA_bigfloat_)
   expect_equal(bigfloat("hello"), NA_bigfloat_)
 })
 
@@ -192,7 +193,7 @@ test_that("infinity works", {
 
 test_that("leading zeros allowed", {
   expect_equal(
-    bigfloat(c("01", "07", "08", "010")),
-    bigfloat(c(1, 7, 8, 10))
+    bigfloat(c("00", "01", "07", "08", "010")),
+    bigfloat(c(0, 1, 7, 8, 10))
   )
 })
