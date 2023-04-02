@@ -18,8 +18,8 @@ status](https://codecov.io/gh/davidchall/bignum/branch/master/graph/badge.svg)](
 bignum provides numeric vectors with greater precision than R atomic
 numeric vectors.
 
--   `biginteger()` stores any integer (i.e. arbitrary precision).
--   `bigfloat()` stores 50 decimal digits of precision.
+- `biginteger()` stores any integer (i.e. arbitrary precision).
+- `bigfloat()` stores 50 decimal digits of precision.
 
 They prioritize precision over performance, so computations are slower
 than those using `integer()` or `double()`.
