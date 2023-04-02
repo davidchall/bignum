@@ -189,3 +189,10 @@ test_that("infinity works", {
   expect_equal(bigfloat(1) / 0, bigfloat(Inf))
   expect_equal(bigfloat(-1) / 0, bigfloat(-Inf))
 })
+
+test_that("leading zeros allowed", {
+  expect_equal(
+    bigfloat(c("01", "07", "08", "010")),
+    bigfloat(c(1, 7, 8, 10))
+  )
+})

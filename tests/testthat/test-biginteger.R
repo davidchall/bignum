@@ -155,3 +155,10 @@ test_that("difficult cases work", {
     class = "bignum_warning_cast_lossy"
   )
 })
+
+test_that("leading zeros allowed", {
+  expect_equal(
+    biginteger(c("01", "07", "08", "010")),
+    biginteger(c(1, 7, 8, 10))
+  )
+})
