@@ -1,5 +1,7 @@
 # bignum (development version)
 
+`biginteger()` now accepts string inputs with leading zeros (#37).
+
 # bignum 0.3.0
 
 * New `seq.bignum_vctr()` for generating sequences of `biginteger` or `bigfloat` (#30).

@@ -191,5 +191,8 @@ as_biginteger.default <- function(x) {
 
 #' @export
 as_biginteger.character <- function(x) {
+  # remove leading zeros
+  x <- sub("^0+", "", x)
+
   new_biginteger(x)
 }
