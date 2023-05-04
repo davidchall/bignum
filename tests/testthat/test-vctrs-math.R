@@ -133,6 +133,6 @@ test_that("math returning float works", {
   check_math(x, atanh)
   check_math(x, gamma)
   check_math(x, lgamma)
-  check_math(x, digamma)
+  check_math(c(2, 3, NA), digamma)
   check_math(c(1, NA), trigamma)
 })
